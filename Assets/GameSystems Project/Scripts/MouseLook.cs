@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-//Errors : 17
+
 namespace Debugging.Player
 {
     [AddComponentMenu("RPG/Player/Mouse Look")]
@@ -41,7 +41,7 @@ namespace Debugging.Player
             {
                 _rotY += Input.GetAxis("Mouse Y")  * sensitivity * Time.deltaTime;
                 _rotY = Mathf.Clamp(_rotY,minY,maxY);
-                transform.localEulerAngles = new Vector3(-_rotY,0.0f);
+                transform.localEulerAngles = new Vector3(-_rotY,0,0);
             }
         }
     }   

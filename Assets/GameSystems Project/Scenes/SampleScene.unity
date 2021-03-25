@@ -523,10 +523,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0996d3d5ada3544bebce47a794bcc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
   walkSpeed: 10
   runSpeed: 20
   crouchSpeed: 5
-  jumpSpeed: 300
+  jumpSpeed: 10
 --- !u!143 &1978452238
 CharacterController:
   m_ObjectHideFlags: 0
@@ -558,6 +559,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   axis: 0
-  sensitivity: 100
+  sensitivity: 162
   minY: -60
   maxY: 60
