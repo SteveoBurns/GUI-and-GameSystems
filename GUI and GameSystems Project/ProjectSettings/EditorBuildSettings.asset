@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/GUI and GameSystems Project/Scenes/Splash Screen.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/GUI and GameSystems Project/Scenes/Any Key.unity
+    guid: 4225875ea51cfcc47a358227ef4ed20b
+  - enabled: 1
+    path: Assets/GUI and GameSystems Project/Scenes/Main Menu.unity
+    guid: 2d50426c64f899646a1a9ce2a1f46b25
+  - enabled: 1
+    path: Assets/GUI and GameSystems Project/Scenes/Loading Screen.unity
+    guid: 8664b21f55fd01c4f9048c4789d2479d
+  - enabled: 1
+    path: Assets/GUI and GameSystems Project/Scenes/Character Customizer.unity
+    guid: f1eb8cc8dea831d469cf8523dd612583
   m_configObjects: {}

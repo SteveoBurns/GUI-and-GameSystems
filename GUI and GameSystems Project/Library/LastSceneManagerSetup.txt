@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/GUI and GameSystems Project/Scenes/SampleScene.unity
+- path: Assets/GUI and GameSystems Project/Scenes/Loading Screen.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
