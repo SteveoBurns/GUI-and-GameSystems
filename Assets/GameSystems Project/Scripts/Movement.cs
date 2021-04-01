@@ -17,10 +17,13 @@ namespace Debugging.Player
         private Vector3 _moveDir;
 
         private CharacterController _charC;
+        private Animator characterAnimator;
+
 
         private void Start()
         {
             _charC = GetComponent<CharacterController>();
+            characterAnimator = GetComponentInChildren<Animator>();
             
         }
         private void Update()
@@ -29,6 +32,19 @@ namespace Debugging.Player
         }
         private void Move()
         {
+            Vector2 controlVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            
+            if(controlVector.magnitude >= 0.05f)
+            {
+                characterAnimator.SetBool("moving", true);
+            }
+            else
+            {
+                characterAnimator.SetBool("moving", false);
+
+            }
+            // can also use characterAnimator.SetBool("moving", controlVector.magnitude >= 0.05f); as the test is true or false
+
             if (_charC.isGrounded)
             {
                 if (Input.GetButton("Fire3"))
@@ -43,7 +59,7 @@ namespace Debugging.Player
                 {
                     moveSpeed = walkSpeed;
                 }
-                _moveDir = transform.TransformDirection(new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) * moveSpeed); 
+                _moveDir = transform.TransformDirection(new Vector3(controlVector.x, 0, controlVector.y) * moveSpeed); 
                 
                 if (Input.GetButton("Jump"))
                 {
