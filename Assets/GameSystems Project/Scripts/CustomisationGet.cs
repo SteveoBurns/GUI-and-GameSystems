@@ -1,0 +1,73 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CustomisationGet : MonoBehaviour
+{
+    [SerializeField] private Renderer characterRenderer;
+    [SerializeField] public GameObject player;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+
+        Load();
+    }
+
+    public void Load()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        SetTexture("skin", data.visual[0]);
+        SetTexture("eyes", data.visual[1]);
+        SetTexture("mouth", data.visual[2]);
+        SetTexture("hair", data.visual[3]);
+        SetTexture("armour", data.visual[4]);
+        SetTexture("clothes", data.visual[5]);
+        player.name = data.name;
+
+    }
+
+    void SetTexture(string type, int index)
+    {
+        Texture2D texture = null;
+        int matIndex = 0;
+        switch (type)
+        {
+            case "skin":
+                texture = Resources.Load("Character/Skin_" + index) as Texture2D;
+                matIndex = 1;
+                break;
+            case "eyes":
+                texture = Resources.Load("Character/Eyes_" + index) as Texture2D;
+                matIndex = 2;
+                break;
+            case "mouth":
+                texture = Resources.Load("Character/Mouth_" + index) as Texture2D;
+                matIndex = 3;
+                break;
+            case "hair":
+                texture = Resources.Load("Character/Hair_" + index) as Texture2D;
+                matIndex = 4;
+                break;
+            case "armour":
+                texture = Resources.Load("Character/Armour_" + index) as Texture2D;
+                matIndex = 5;
+                break;
+            case "clothes":
+                texture = Resources.Load("Character/Clothes_" + index) as Texture2D;
+                matIndex = 6;
+                break;
+        }
+                
+        Material[] mats = characterRenderer.materials;
+        mats[matIndex].mainTexture = texture;
+        characterRenderer.materials = mats;
+
+
+
+
+    }
+    
+}
