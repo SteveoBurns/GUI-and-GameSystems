@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 
 namespace Debugging.Player
@@ -9,12 +11,20 @@ namespace Debugging.Player
     [RequireComponent(typeof(CharacterController))]
     public class Movement : MonoBehaviour
     {
+        
 
         [Header("Speed Vars")]
         public float moveSpeed;
         public float walkSpeed, runSpeed, crouchSpeed, jumpSpeed;
+        public int baseSpeed;
         private float _gravity = 20.0f;
         private Vector3 _moveDir;
+
+        public int staminaMax;
+        public float stamina;
+        [SerializeField] public Slider staminaSlider;
+        [SerializeField] public TMP_Text staminaText;
+
 
         private CharacterController _charC;
         private Animator characterAnimator;
@@ -24,11 +34,25 @@ namespace Debugging.Player
         {
             _charC = GetComponent<CharacterController>();
             characterAnimator = GetComponentInChildren<Animator>();
+            baseSpeed = CustomisationGet.speed / 2;
             
+            staminaMax = CustomisationGet.stamina;
+            staminaSlider.maxValue = staminaMax;
+            stamina = staminaMax;
+            
+
         }
         private void Update()
         {
             Move();
+            LevelUp();
+            staminaSlider.value = stamina;            
+            staminaText.text = "Stamina: " + Mathf.RoundToInt(stamina) + "/" + staminaMax;
+
+            if (stamina < staminaMax && !Input.GetButton("Sprint"))
+            {
+                stamina += Time.deltaTime;
+            }
         }
         private void Move()
         {
@@ -47,19 +71,20 @@ namespace Debugging.Player
 
             if (_charC.isGrounded)
             {
-                if (Input.GetButton("Sprint"))
+                if (Input.GetButton("Sprint") && stamina > 0)
                 {
-                    moveSpeed = runSpeed;
+                    moveSpeed = runSpeed * baseSpeed;
+                    stamina -= Time.deltaTime;
                     characterAnimator.SetFloat("speed", 2);
                 }
                 else if (Input.GetButton("Crouch"))
                 {
-                    moveSpeed = crouchSpeed;
+                    moveSpeed = crouchSpeed * baseSpeed;
                     characterAnimator.SetFloat("speed", 0.5f);
                 }
                 else
                 {
-                    moveSpeed = walkSpeed;
+                    moveSpeed = walkSpeed * baseSpeed;
                     characterAnimator.SetFloat("speed", 1);
                 }
                 _moveDir = transform.TransformDirection(new Vector3(controlVector.x, 0, controlVector.y) * moveSpeed); 
@@ -68,11 +93,21 @@ namespace Debugging.Player
                 {
                     _moveDir.y = jumpSpeed;
                    
-                }
+                }                
             }
+            
             _moveDir.y -= _gravity * Time.deltaTime;
             _charC.Move(_moveDir * Time.deltaTime);
         }
-        
+
+        public void LevelUp()
+        {
+            if (Input.GetButtonDown("LevelUp"))
+            {
+                staminaMax  += Mathf.RoundToInt(staminaMax * 0.3f);
+                staminaSlider.maxValue = staminaMax;
+            }
+        }
+
     }
 }

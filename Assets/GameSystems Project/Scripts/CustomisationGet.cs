@@ -6,12 +6,21 @@ public class CustomisationGet : MonoBehaviour
 {
     [SerializeField] private Renderer characterRenderer;
     [SerializeField] public GameObject player;
+    public static string characterName;
+    public static int classIndex;
+    public static int raceIndex;
+    public static string raceName;
+
+    public static int healthMax;
+    public static int healthRegen;
+    public static int speed;
+    public static int stamina;
+    public static int manaMax;
+    public static int manaRegen;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-
         Load();
     }
 
@@ -25,7 +34,18 @@ public class CustomisationGet : MonoBehaviour
         SetTexture("hair", data.visual[3]);
         SetTexture("armour", data.visual[4]);
         SetTexture("clothes", data.visual[5]);
-        player.name = data.name;
+        characterName = data.name;
+        classIndex = data.classIndex;
+        raceIndex = data.raceIndex;
+        raceName = data.raceName;
+
+
+        healthMax = data.stats[0];
+        healthRegen = data.stats[1];
+        speed = data.stats[2];
+        stamina = data.stats[3];
+        manaMax = data.stats[4];
+        manaRegen = data.stats[5];
 
     }
 

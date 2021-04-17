@@ -8,28 +8,19 @@ public class PlayerData
     public string name;
     public int classIndex;
     public int raceIndex;
-    public int[] stats;
-    /*public int healthStat;
-    public int healthRegenStat;
-    public int speedStat;
-    public int staminaStat;
-    public int manaStat;
-    public int manaRegenStat;
-    */
+    public string raceName;
+
+    public int[] stats;   
     public int[] visual;
-    /*
-    public int skinIndex;
-    public int eyesIndex;
-    public int mouthIndex;
-    public int hairIndex;
-    public int armourIndex;
-    public int clothesIndex;
-    */
+    
 
     public PlayerData (CustomisationSet player)
     {
         name = player.characterName;
         classIndex = player.selectedClassIndex;
+        raceIndex = player.raceIndex;
+        raceName = player.raceName;
+
         stats = new int[6];
         stats[0] = (player.characterStats[0].baseStats + player.characterStats[0].tempStats);
         stats[1] = (player.characterStats[1].baseStats + player.characterStats[1].tempStats);

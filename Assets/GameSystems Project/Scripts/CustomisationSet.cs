@@ -51,8 +51,8 @@ public class CustomisationSet : MonoBehaviour
     List<string> names = new List<string>() { "Select Class", "Barbarian", "Ranger", "Mage" };
     [SerializeField] private TMP_Dropdown raceDropdown;
     [SerializeField] private TMP_Text raceAbilityText;
-    private int raceIndex;
-    private string raceName;
+    public int raceIndex;
+    public string raceName;
     List<string> races = new List<string>() { "Select Race", "Human", "Elf", "Dwarf" };
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private TMP_Text healthRegenText;
@@ -72,6 +72,7 @@ public class CustomisationSet : MonoBehaviour
         classDropdown.AddOptions(names);
         raceDropdown.AddOptions(races);
 
+        //Setting temp stats to 0
         for (int i = 0; i < characterStats.Length; i++)
         {
             characterStats[i].tempStats = 0;
@@ -118,30 +119,7 @@ public class CustomisationSet : MonoBehaviour
         SceneManager.LoadScene("Level");
     }
 
-    public void LoadPlayer()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-
-        characterName = data.name;
-        selectedClassIndex = data.classIndex;
-        characterStats[0].baseStats = data.stats[0];
-        characterStats[1].baseStats = data.stats[1];
-        characterStats[2].baseStats = data.stats[2];
-        characterStats[3].baseStats = data.stats[3];
-        characterStats[4].baseStats = data.stats[4];
-        characterStats[5].baseStats = data.stats[5];
-
-        skinIndex = data.visual[0];
-        eyesIndex = data.visual[1];
-        mouthIndex = data.visual[2];
-        hairIndex = data.visual[3];
-        armourIndex = data.visual[4];
-        clothesIndex = data.visual[5];
-
-
-    }
-
-
+    
     public void NameInput()
     {
         characterName = nameInput.text;
@@ -282,7 +260,7 @@ public class CustomisationSet : MonoBehaviour
         {
             statPoints--;
             characterStats[0].tempStats++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             SetClassStats(1);            
         }
     }
@@ -292,7 +270,7 @@ public class CustomisationSet : MonoBehaviour
         {
             statPoints--;
             characterStats[1].tempStats++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             SetClassStats(1);
         }
     }
@@ -302,7 +280,7 @@ public class CustomisationSet : MonoBehaviour
         {
             statPoints--;
             characterStats[2].tempStats++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             SetClassStats(1);
         }
     }
@@ -312,7 +290,7 @@ public class CustomisationSet : MonoBehaviour
         {
             statPoints--;
             characterStats[3].tempStats++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             SetClassStats(1);
         }
     }
@@ -322,7 +300,7 @@ public class CustomisationSet : MonoBehaviour
         {
             statPoints--;
             characterStats[4].tempStats++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             SetClassStats(1);
         }
     }
@@ -332,7 +310,7 @@ public class CustomisationSet : MonoBehaviour
         {
             statPoints--;
             characterStats[5].tempStats++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             SetClassStats(1);
         }
     }
@@ -344,7 +322,7 @@ public class CustomisationSet : MonoBehaviour
         if (statPoints < 10 && characterStats[0].tempStats > 0)
         {
             statPoints++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             characterStats[0].tempStats--;
             SetClassStats(1);
             
@@ -355,7 +333,7 @@ public class CustomisationSet : MonoBehaviour
         if (statPoints < 10 && characterStats[1].tempStats > 0)
         {
             statPoints++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             characterStats[1].tempStats--;
             SetClassStats(1);
 
@@ -366,7 +344,7 @@ public class CustomisationSet : MonoBehaviour
         if (statPoints < 10 && characterStats[2].tempStats > 0)
         {
             statPoints++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             characterStats[2].tempStats--;
             SetClassStats(1);
 
@@ -377,7 +355,7 @@ public class CustomisationSet : MonoBehaviour
         if (statPoints < 10 && characterStats[3].tempStats > 0)
         {
             statPoints++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             characterStats[3].tempStats--;
             SetClassStats(1);
 
@@ -388,7 +366,7 @@ public class CustomisationSet : MonoBehaviour
         if (statPoints < 10 && characterStats[4].tempStats > 0)
         {
             statPoints++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             characterStats[4].tempStats--;
             SetClassStats(1);
 
@@ -399,7 +377,7 @@ public class CustomisationSet : MonoBehaviour
         if (statPoints < 10 && characterStats[5].tempStats > 0)
         {
             statPoints++;
-            statPointsText.text = statPoints.ToString();
+            statPointsText.text = "Points: " + statPoints.ToString();
             characterStats[5].tempStats--;
             SetClassStats(1);
 
