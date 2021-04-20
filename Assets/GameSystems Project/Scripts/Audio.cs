@@ -7,20 +7,14 @@ public class Audio : MonoBehaviour
 {
     [SerializeField] private AudioSource click;
 
+
+    /// <summary>
+    /// Plays Click sound.
+    /// </summary>
     public void PlayClick()
     {
         click.Play();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

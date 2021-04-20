@@ -4,10 +4,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// Holds all the players data other than movement.
+/// </summary>
 public class PlayerStats : MonoBehaviour
 {
     [Header("Name")]
     public string characterName;
+    [SerializeField] private TMP_Text nameText;
 
     [Header("Class")]
     public int classIndex;
@@ -43,6 +47,7 @@ public class PlayerStats : MonoBehaviour
         description.text = raceName + " " + className;
         levelInt = 1;
         level.text = "Level: " + levelInt;
+        nameText.text = characterName;
     }
 
     // Update is called once per frame
@@ -54,6 +59,9 @@ public class PlayerStats : MonoBehaviour
         LevelUp();
     }
 
+    /// <summary>
+    /// Sets all the saved data from CustomisationGet
+    /// </summary>
     private void SetValues()
     {
         characterName = CustomisationGet.characterName;
@@ -71,6 +79,10 @@ public class PlayerStats : MonoBehaviour
         manaSlider.maxValue = manaMax;
     }
 
+    /// <summary>
+    /// Gets tha class index and sets the Name
+    /// </summary>
+    /// <param name="index"></param>
     private void ClassName(int index)
     {
         switch (index)
@@ -87,6 +99,9 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// The function that controls mana usage and mana regen
+    /// </summary>
     private void UseMana()
     {
         if (Input.GetButton("Cast") && mana > 0)
@@ -99,6 +114,9 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update Sliders with correct & updated values 
+    /// </summary>
     private void UpdateSliders()
     {
         healthSlider.maxValue = healthMax;
@@ -110,6 +128,9 @@ public class PlayerStats : MonoBehaviour
         manatext.text = "Mana: " + Mathf.RoundToInt(mana) + "/" + manaMax;
     }
 
+    /// <summary>
+    /// Function for taking damage and health regen
+    /// </summary>
     private void GetHurt()
     {
         if (Input.GetButton("Damage"))
@@ -122,6 +143,9 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function for leveling up. Sets level text, level int and max of mana & health bars.
+    /// </summary>
     public void LevelUp()
     {
         if (Input.GetButtonDown("LevelUp"))

@@ -13,7 +13,10 @@ public class PlayerData
     public int[] stats;   
     public int[] visual;
     
-
+    /// <summary>
+    /// The data that is going to be saved pulls from CustomisationSet.
+    /// </summary>
+    /// <param name="player"></param>
     public PlayerData (CustomisationSet player)
     {
         name = player.characterName;

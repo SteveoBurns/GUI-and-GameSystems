@@ -4,6 +4,10 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
+    /// <summary>
+    /// The save player function that can be called to save the data in PLayerData.
+    /// </summary>
+    /// <param name="player"></param>
     public static void SavePlayer(CustomisationSet player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -17,6 +21,11 @@ public static class SaveSystem
         stream.Close();
     }
 
+
+    /// <summary>
+    /// The load player function that loads PlayerData
+    /// </summary>
+    /// <returns></returns>
     public static PlayerData LoadPlayer()
     {
         string path = Application.persistentDataPath + "/player.save";

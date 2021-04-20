@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 namespace Debugging.Player
 {
+    /// <summary>
+    /// Controls player movement
+    /// </summary>
     [AddComponentMenu("RPG/Player/Movement")]
     [RequireComponent(typeof(CharacterController))]
     public class Movement : MonoBehaviour
@@ -36,6 +39,7 @@ namespace Debugging.Player
             characterAnimator = GetComponentInChildren<Animator>();
             baseSpeed = CustomisationGet.speed / 2;
             
+            //Sets stamina values
             staminaMax = CustomisationGet.stamina;
             staminaSlider.maxValue = staminaMax;
             stamina = staminaMax;
@@ -46,6 +50,8 @@ namespace Debugging.Player
         {
             Move();
             LevelUp();
+
+            #region Stamina Bar update and regen
             staminaSlider.value = stamina;            
             staminaText.text = "Stamina: " + Mathf.RoundToInt(stamina) + "/" + staminaMax;
 
@@ -53,6 +59,7 @@ namespace Debugging.Player
             {
                 stamina += Time.deltaTime;
             }
+            #endregion
         }
         private void Move()
         {
@@ -100,6 +107,9 @@ namespace Debugging.Player
             _charC.Move(_moveDir * Time.deltaTime);
         }
 
+        /// <summary>
+        /// Controls the stamina bar when levelling up.
+        /// </summary>
         public void LevelUp()
         {
             if (Input.GetButtonDown("LevelUp"))

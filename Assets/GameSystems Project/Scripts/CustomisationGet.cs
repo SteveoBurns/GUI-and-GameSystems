@@ -6,11 +6,14 @@ public class CustomisationGet : MonoBehaviour
 {
     [SerializeField] private Renderer characterRenderer;
     [SerializeField] public GameObject player;
+
+    [Header("Names")]
     public static string characterName;
     public static int classIndex;
     public static int raceIndex;
     public static string raceName;
 
+    [Header("Stats")]
     public static int healthMax;
     public static int healthRegen;
     public static int speed;
@@ -24,6 +27,9 @@ public class CustomisationGet : MonoBehaviour
         Load();
     }
 
+    /// <summary>
+    /// Loads all the saved player data
+    /// </summary>
     public void Load()
     {
         PlayerData data = SaveSystem.LoadPlayer();
@@ -49,6 +55,11 @@ public class CustomisationGet : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Sets the saved textures to the character
+    /// </summary>
+    /// <param name="type">Name of texture</param>
+    /// <param name="index">Texture index number</param>
     void SetTexture(string type, int index)
     {
         Texture2D texture = null;

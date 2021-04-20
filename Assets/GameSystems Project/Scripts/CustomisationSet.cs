@@ -27,6 +27,7 @@ public class CustomisationSet : MonoBehaviour
 
     
     public int statPoints = 10;
+
     [Header("Texture Lists")]
     public List<Texture2D> skin = new List<Texture2D>();
     public List<Texture2D> eyes = new List<Texture2D>();
@@ -69,6 +70,7 @@ public class CustomisationSet : MonoBehaviour
         matName = new string[] { "Skin", "Eyes", "Mouth", "Hair", "Armour", "Clothes" };
 
         selectedClass = new string[] { "Barbarian", "Ranger", "Mage" };
+
         classDropdown.AddOptions(names);
         raceDropdown.AddOptions(races);
 
@@ -78,6 +80,7 @@ public class CustomisationSet : MonoBehaviour
             characterStats[i].tempStats = 0;
         }
 
+        // Adds all the textures from Resources into their respective lists
         #region Adding Textures to Lists
         for (int i = 0; i < skinMax; i++)
         {
@@ -112,6 +115,9 @@ public class CustomisationSet : MonoBehaviour
         #endregion
     }
           
+    /// <summary>
+    /// Save player function saves data from the customiser and loads the game scene
+    /// </summary>
     public void SavePlayer()
     {
         SaveSystem.SavePlayer(this);
@@ -124,8 +130,9 @@ public class CustomisationSet : MonoBehaviour
     {
         characterName = nameInput.text;
         Debug.Log(characterName);
-    }
+    }   //Sets Character name after inputing data
 
+    //Takes slider value and sets corresponding textures
     #region Apperance Slider Functions
     public void SkinSlider(float index)
     {
@@ -217,7 +224,9 @@ public class CustomisationSet : MonoBehaviour
 
     }
 
-    #endregion
+    #endregion  
+
+    // functions for the dropdown boxes
     #region Dropdown Functions
     public void RaceDropdown(int index)
     {
@@ -243,16 +252,18 @@ public class CustomisationSet : MonoBehaviour
 
                 break;
         }
-    }
+    } //selects the race
     public void ClassDropdown(int index)
     {
         selectedClassIndex = index - 1;
         ChooseClass(index - 1);
         SetClassStats(index);
         Debug.Log("selected class" + index);
-    }
-    #endregion
-    #region Stat Points Plus
+    }   //chooses class and sets stats
+    #endregion      
+
+    //All the Stats + functions for buttons
+    #region Stat Points Plus  
 
     public void PlusHealth()
     {
@@ -316,6 +327,8 @@ public class CustomisationSet : MonoBehaviour
     }
 
     #endregion
+
+    // All the stats - functions for buttons
     #region Stat Points Minus
     public void MinusHealth()
     {
@@ -383,8 +396,12 @@ public class CustomisationSet : MonoBehaviour
 
         }
     }
-    #endregion
+    #endregion 
 
+    /// <summary>
+    /// Sets stat textboxes with updated stats.
+    /// </summary>
+    /// <param name="_index"></param>
     public void SetClassStats(int _index)
     {
         switch (_index - 1)
@@ -401,6 +418,10 @@ public class CustomisationSet : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Sets the base stats & ability for each class
+    /// </summary>
+    /// <param name="classIndex"></param>
     public void ChooseClass(int classIndex)
     {
         switch (classIndex)
@@ -443,6 +464,10 @@ public class CustomisationSet : MonoBehaviour
     
     
 }
+
+/// <summary>
+/// Enum for classes
+/// </summary>
     public enum CharacterClass
     {
         Barbarian,
