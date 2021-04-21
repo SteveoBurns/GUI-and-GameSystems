@@ -25,7 +25,7 @@ public class CustomisationSet : MonoBehaviour
     };
     public Stats[] characterStats;
 
-    
+    [Header("Starting Stat Points")]
     public int statPoints = 10;
 
     [Header("Texture Lists")]
@@ -38,23 +38,27 @@ public class CustomisationSet : MonoBehaviour
     [Header("Current Texture Index")]
     public int skinIndex;
     public int eyesIndex, mouthIndex, hairIndex, armourIndex, clothesIndex;
-    [Header("Renderer")]
-    public Renderer characterRenderer;
     [Header ("Max amount of textures per type")]
     public int skinMax;
     public int eyesMax, mouthMax, hairMax, armourMax, clothesMax;
+    [Header("Renderer")]
+    public Renderer characterRenderer;
     
     private string[] matName = new string[6];
 
-    [Header("Input Fields")]
+    [Header("Class Inputs")]
     [SerializeField] private TMP_Dropdown classDropdown;
     [SerializeField] private TMP_Text classAbilityText;
     List<string> names = new List<string>() { "Select Class", "Barbarian", "Ranger", "Mage" };
+
+    [Header("Race Inputs")]
     [SerializeField] private TMP_Dropdown raceDropdown;
     [SerializeField] private TMP_Text raceAbilityText;
     public int raceIndex;
     public string raceName;
     List<string> races = new List<string>() { "Select Race", "Human", "Elf", "Dwarf" };
+
+    [Header("Stat Text Fields")]
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private TMP_Text healthRegenText;
     [SerializeField] private TMP_Text speedText;
@@ -70,6 +74,7 @@ public class CustomisationSet : MonoBehaviour
         matName = new string[] { "Skin", "Eyes", "Mouth", "Hair", "Armour", "Clothes" };
 
         selectedClass = new string[] { "Barbarian", "Ranger", "Mage" };
+
 
         classDropdown.AddOptions(names);
         raceDropdown.AddOptions(races);
