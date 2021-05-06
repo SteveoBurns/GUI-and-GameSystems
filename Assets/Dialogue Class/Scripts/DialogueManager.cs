@@ -45,13 +45,17 @@ public class DialogueManager : MonoBehaviour
         int i = 0;
         foreach (LineOfDialogue item in dialogue.dialogueOptions)
         {
-            Button spawnedButton =  Instantiate(buttonPrefab, buttonPanel).GetComponent<Button>();
-            spawnedButton.GetComponentInChildren<Text>().text = item.topic;
+            float? currentApproval = FactionsManager.theManagerOfFactions.getFactionsApproval(dialogue.faction);
+            if (currentApproval != null && currentApproval > item.minApproval)
+            {
+                Button spawnedButton = Instantiate(buttonPrefab, buttonPanel).GetComponent<Button>();
+                spawnedButton.GetComponentInChildren<Text>().text = item.topic;
 
-            int i2 = i;
-            spawnedButton.onClick.AddListener(delegate { ButtonClick(i2); });
-            i++;
-            //print(item.topic);
+                int i2 = i;
+                spawnedButton.onClick.AddListener(delegate { ButtonClick(i2); });
+                i++;
+                //print(item.topic);
+            }
         }
 
         //Spawn the goodbye button
@@ -67,11 +71,16 @@ public class DialogueManager : MonoBehaviour
         responsePanel.SetActive(true);
         responseText.text = currentDialogue.goodbye.response;
         print(currentDialogue.goodbye.response);
-        CleanUpButtons();
             
-        
-            
-        dialoguePanel.SetActive(false);
+        if(currentDialogue.goodbye.nextDialogue != null)
+        {
+            LoadDialogue(currentDialogue = currentDialogue.goodbye.nextDialogue);
+        }
+        else
+        {
+            CleanUpButtons();
+            dialoguePanel.SetActive(false);
+        }    
     }
 
     public void ButtonClick(int dialogueNum)

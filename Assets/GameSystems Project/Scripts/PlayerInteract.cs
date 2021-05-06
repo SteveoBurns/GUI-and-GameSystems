@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-   
+
+    private void Awake()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
@@ -16,7 +20,7 @@ public class PlayerInteract : MonoBehaviour
             {
                 if (hit.transform.tag == "NPC")
                 {
-                    Dialogue npcDialogue = hit.transform.GetComponent<Dialogue>();
+                    Dialogue npcDialogue = hit.transform.GetComponents<Dialogue>()[0];
                     if (npcDialogue)
                     {
                         DialogueManager.theManager.LoadDialogue(npcDialogue);

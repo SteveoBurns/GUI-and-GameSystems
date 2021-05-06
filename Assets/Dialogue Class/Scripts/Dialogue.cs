@@ -10,6 +10,7 @@ public class Dialogue : MonoBehaviour
 
     public LineOfDialogue[] dialogueOptions;
 
+    public string faction;
 
     
 
