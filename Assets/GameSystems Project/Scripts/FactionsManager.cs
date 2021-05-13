@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class Factions
 {
-    public string factionname;
-    float _approval;
-    public float Approval
+    public string factionName;
+    [SerializeField, Range(-1,1)] float _approval;
+    public float approval
     {
         set
         {
@@ -18,6 +18,11 @@ public class Factions
             return _approval;
         }
     }
+    public Factions(float initialApproval)
+    {
+        approval = initialApproval;
+    }
+
 }
 
 
@@ -26,6 +31,7 @@ public class FactionsManager : MonoBehaviour
     public static FactionsManager theManagerOfFactions;
     
     Dictionary<string, Factions> factions;
+    [SerializeField] public List<Factions> initialiseFactions = new List<Factions>();
 
     private void Awake()
     {
@@ -35,25 +41,37 @@ public class FactionsManager : MonoBehaviour
             Destroy(this);
 
         factions = new Dictionary<string, Factions>();
-        factions.Add("VampiresThralls", new Factions());
+        foreach (Factions faction in initialiseFactions)
+        {
+            factions.Add(faction.factionName, faction);
+        }
     }
 
     public float? FactionsApproval(string factionName, float value)
     {
         if (factions.ContainsKey(factionName))
         {
-            factions[factionName].Approval += value;
-            return factions[factionName].Approval;
+            factions[factionName].approval += value;
+            return factions[factionName].approval;
         }
         return null;
     }
 
-    public float? getFactionsApproval(string factionName)
+    public float? FactionsApproval(string factionName)
     {
         if (factions.ContainsKey(factionName))
         {            
-            return factions[factionName].Approval;
+            return factions[factionName].approval;
         }
         return null;
     }
+
+    /*Example of adding to approval function
+    void AddApproval()
+    {
+        
+    }
+
+
+    */
 }

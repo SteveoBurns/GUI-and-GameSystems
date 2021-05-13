@@ -7,6 +7,8 @@ public class LineOfDialogue
     public string topic, response;
     
     public float minApproval = -1f;
+    public float changeApproval = 0f;
+
 
     public Dialogue nextDialogue;
 

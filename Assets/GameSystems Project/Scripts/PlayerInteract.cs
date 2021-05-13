@@ -15,8 +15,9 @@ public class PlayerInteract : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 2))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 20))
             {
                 if (hit.transform.tag == "NPC")
                 {
@@ -24,7 +25,8 @@ public class PlayerInteract : MonoBehaviour
                     if (npcDialogue)
                     {
                         DialogueManager.theManager.LoadDialogue(npcDialogue);
-                        Cursor.lockState = CursorLockMode.None;
+                        Cursor.lockState = CursorLockMode.Confined;
+                        Cursor.visible = true;
                     }
                 }
             }

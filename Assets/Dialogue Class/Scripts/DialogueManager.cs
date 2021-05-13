@@ -45,7 +45,7 @@ public class DialogueManager : MonoBehaviour
         int i = 0;
         foreach (LineOfDialogue item in dialogue.dialogueOptions)
         {
-            float? currentApproval = FactionsManager.theManagerOfFactions.getFactionsApproval(dialogue.faction);
+            float? currentApproval = FactionsManager.theManagerOfFactions.FactionsApproval(dialogue.faction);
             if (currentApproval != null && currentApproval > item.minApproval)
             {
                 Button spawnedButton = Instantiate(buttonPrefab, buttonPanel).GetComponent<Button>();
@@ -53,9 +53,10 @@ public class DialogueManager : MonoBehaviour
 
                 int i2 = i;
                 spawnedButton.onClick.AddListener(delegate { ButtonClick(i2); });
-                i++;
+                //i++;
                 //print(item.topic);
             }
+            i++;
         }
 
         //Spawn the goodbye button
@@ -85,9 +86,16 @@ public class DialogueManager : MonoBehaviour
 
     public void ButtonClick(int dialogueNum)
     {
+        //Changing the factions approval when clicking the dialogue option
+        FactionsManager.theManagerOfFactions.FactionsApproval(currentDialogue.faction, currentDialogue.dialogueOptions[dialogueNum].changeApproval);
+
         print(currentDialogue.dialogueOptions[dialogueNum].response);
         responsePanel.SetActive(true);
         responseText.text = currentDialogue.dialogueOptions[dialogueNum].response;
+        if (currentDialogue.dialogueOptions[dialogueNum].nextDialogue != null)
+        {
+            LoadDialogue(currentDialogue = currentDialogue.dialogueOptions[dialogueNum].nextDialogue);
+        }
 
     }
 
