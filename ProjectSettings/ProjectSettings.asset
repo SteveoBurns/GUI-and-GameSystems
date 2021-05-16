@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Steven Burns
   productName: GameSystems Project
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 1059188513989c74da0af2c26be5ace6, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.27058825, g: 0.10196079, b: 0.0627451, a: 1}
   m_ShowUnitySplashScreen: 1
