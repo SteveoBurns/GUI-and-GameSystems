@@ -54,6 +54,11 @@ public class MainMenu : MonoBehaviour
 #endif
     }
 
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
     public void NewGame()
     {
         SceneManager.LoadScene("Customize");

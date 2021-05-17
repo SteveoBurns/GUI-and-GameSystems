@@ -7,6 +7,9 @@ public class CustomisationGet : MonoBehaviour
     [SerializeField] private Renderer characterRenderer;
     [SerializeField] public GameObject player;
 
+    
+    public PlayerStats playerStats;
+
     [Header("Names")]
     public static string characterName;
     public static int classIndex;
@@ -33,6 +36,38 @@ public class CustomisationGet : MonoBehaviour
     public void Load()
     {
         PlayerData data = SaveSystem.LoadPlayer();
+
+        SetTexture("skin", data.visual[0]);
+        SetTexture("eyes", data.visual[1]);
+        SetTexture("mouth", data.visual[2]);
+        SetTexture("hair", data.visual[3]);
+        SetTexture("armour", data.visual[4]);
+        SetTexture("clothes", data.visual[5]);
+        characterName = data.name;
+        classIndex = data.classIndex;
+        raceIndex = data.raceIndex;
+        raceName = data.raceName;
+
+
+        healthMax = data.stats[0];
+        healthRegen = data.stats[1];
+        speed = data.stats[2];
+        stamina = data.stats[3];
+        manaMax = data.stats[4];
+        manaRegen = data.stats[5];
+
+    }
+
+    public void SaveInGame()
+    {
+        SaveSystem.SavePlayerInGame(playerStats, PlayerData.ThePlayerData);
+        Debug.Log("Saved In Game");
+    }
+
+
+    public void LoadInGame()
+    {
+        PlayerDataInGame data = SaveSystem.LoadPlayerInGame();
 
         SetTexture("skin", data.visual[0]);
         SetTexture("eyes", data.visual[1]);

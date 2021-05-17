@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerData
 {
+    public static PlayerData ThePlayerData;
+
     public string name;
     public int classIndex;
     public int raceIndex;

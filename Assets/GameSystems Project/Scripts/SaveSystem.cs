@@ -22,6 +22,8 @@ public static class SaveSystem
     }
 
 
+
+
     /// <summary>
     /// The load player function that loads PlayerData
     /// </summary>
@@ -47,5 +49,43 @@ public static class SaveSystem
         }
     }
 
+
+    /// <summary>
+    /// This funciton is for Loading the save within the game
+    /// </summary>
+    /// <returns>PlayerDataInGame</returns>
+    public static PlayerDataInGame LoadPlayerInGame()
+    {
+        string path = Application.persistentDataPath + "/playerInGame.save";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            PlayerDataInGame data = formatter.Deserialize(stream) as PlayerDataInGame;
+            stream.Close();
+
+            return data;
+
+        }
+        else
+        {
+            Debug.LogError("save file not found in" + path);
+            return null;
+        }
+    }
+
+    public static void SavePlayerInGame(PlayerStats player, PlayerData _data)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/playerInGame.save";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        PlayerDataInGame data = new PlayerDataInGame(player, _data);
+
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
 
 }

@@ -9,6 +9,8 @@ using UnityEngine.UI;
 /// </summary>
 public class PlayerStats : MonoBehaviour
 {
+    public static PlayerStats ThePlayerStats;
+
     [Header("Name")]
     public string characterName;
     [SerializeField] private TMP_Text nameText;
