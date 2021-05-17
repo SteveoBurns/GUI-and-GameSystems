@@ -82,19 +82,19 @@ public class MainMenu : MonoBehaviour
     #region Volume Sliders
     public void VolumeSlider(float _volume)
     {
-        VolumeRemap(_volume);
+        _volume = VolumeRemap(_volume);
         audioMixer.SetFloat("masterVolume", _volume);
     }
 
     public void SFXSlider(float _volume)
     {
-        VolumeRemap(_volume);
+        _volume = VolumeRemap(_volume);
         audioMixer.SetFloat("sfxVolume", _volume);
     }
 
     public float VolumeRemap(float value)
     {
-        return -80 + (value - 0) * (20 - -80) / (1 - 0);
+        return -60 + (value - 0) * (20 - -60) / (1 - 0);
     }
     #endregion
 
