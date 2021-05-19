@@ -10,6 +10,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject responsePanel;
     [SerializeField] Text responseText;
 
+    public static bool inDialogue = false;
+
     GameObject dialoguePanel;
 
     Dialogue currentDialogue;
@@ -18,6 +20,8 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        inDialogue = false;
+
         dialoguePanel = transform.Find("Scroll View").gameObject;
         dialoguePanel.SetActive(false);
 
@@ -34,6 +38,7 @@ public class DialogueManager : MonoBehaviour
 
     public void LoadDialogue(Dialogue dialogue)
     {
+        inDialogue = true;
         dialoguePanel.SetActive(true);
         responsePanel.SetActive(true);
         CleanUpButtons();
@@ -81,6 +86,7 @@ public class DialogueManager : MonoBehaviour
         {
             CleanUpButtons();
             dialoguePanel.SetActive(false);
+            inDialogue = false;
         }    
     }
 

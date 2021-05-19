@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-
-    private void Awake()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -25,7 +21,7 @@ public class PlayerInteract : MonoBehaviour
                     if (npcDialogue)
                     {
                         DialogueManager.theManager.LoadDialogue(npcDialogue);
-                        Cursor.lockState = CursorLockMode.Confined;
+                        Cursor.lockState = CursorLockMode.None;
                         Cursor.visible = true;
                     }
                 }

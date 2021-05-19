@@ -13,6 +13,8 @@ public class PauseController : MonoBehaviour
         pausePanel.SetActive(false);
         isPaused = false;
         Time.timeScale = 1;
+        
+
     }
 
     // Update is called once per frame
@@ -22,7 +24,9 @@ public class PauseController : MonoBehaviour
             PauseGame();        
         else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
             UnPauseGame();
-
+        if(!isPaused && !DialogueManager.inDialogue)
+        Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     public void PauseGame()
@@ -39,5 +43,8 @@ public class PauseController : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1;
         pausePanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
+
     }
 }
