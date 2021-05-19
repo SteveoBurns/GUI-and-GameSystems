@@ -25,7 +25,7 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] private TMP_Text description;
     [SerializeField] private TMP_Text level;    
-    private int levelInt;
+    public int levelInt;
 
     [Header ("Health")]
     [SerializeField] private Slider healthSlider;
@@ -64,13 +64,15 @@ public class PlayerStats : MonoBehaviour
     /// <summary>
     /// Sets all the saved data from CustomisationGet
     /// </summary>
-    private void SetValues()
+    public void SetValues()
     {
         characterName = CustomisationGet.characterName;
         classIndex = CustomisationGet.classIndex;
         raceIndex = CustomisationGet.raceIndex;
         raceName = CustomisationGet.raceName;
 
+        levelInt = CustomisationGet.level;
+        level.text = "Level: " + levelInt;
         healthMax = CustomisationGet.healthMax;
         health = healthMax;
         healthRegen = CustomisationGet.healthRegen;

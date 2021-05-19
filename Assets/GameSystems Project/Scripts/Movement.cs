@@ -50,7 +50,7 @@ namespace Debugging.Player
         {
             Move();
             LevelUp();
-
+            staminaMax = CustomisationGet.stamina;
             #region Stamina Bar update and regen
             staminaSlider.value = stamina;            
             staminaText.text = "Stamina: " + Mathf.RoundToInt(stamina) + "/" + staminaMax;

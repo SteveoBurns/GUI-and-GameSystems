@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerDataInGame
 {
     public string name;
+    public int level;
     public int classIndex;
     public int raceIndex;
     public string raceName;
@@ -21,6 +22,7 @@ public class PlayerDataInGame
     {
 
         name = player.characterName;
+        level = player.levelInt;
         classIndex = player.classIndex;
         raceIndex = player.raceIndex;
         raceName = player.raceName;

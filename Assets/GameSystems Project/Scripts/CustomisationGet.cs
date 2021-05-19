@@ -10,6 +10,7 @@ public class CustomisationGet : MonoBehaviour
     
     public PlayerStats playerStats;
 
+
     [Header("Names")]
     public static string characterName;
     public static int classIndex;
@@ -17,6 +18,7 @@ public class CustomisationGet : MonoBehaviour
     public static string raceName;
 
     [Header("Stats")]
+    public static int level;
     public static int healthMax;
     public static int healthRegen;
     public static int speed;
@@ -28,6 +30,7 @@ public class CustomisationGet : MonoBehaviour
     void Start()
     {
         Load();
+        
     }
 
     /// <summary>
@@ -79,7 +82,7 @@ public class CustomisationGet : MonoBehaviour
         classIndex = data.classIndex;
         raceIndex = data.raceIndex;
         raceName = data.raceName;
-
+        level = data.level;
 
         healthMax = data.stats[0];
         healthRegen = data.stats[1];
@@ -87,6 +90,8 @@ public class CustomisationGet : MonoBehaviour
         stamina = data.stats[3];
         manaMax = data.stats[4];
         manaRegen = data.stats[5];
+
+        playerStats.SetValues();
 
     }
 
