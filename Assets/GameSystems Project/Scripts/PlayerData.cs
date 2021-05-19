@@ -41,7 +41,8 @@ public class PlayerData
         visual[3] = player.hairIndex;
         visual[4] = player.armourIndex;
         visual[5] = player.clothesIndex;
-        
+
+        ThePlayerData = this;
     }
 
 
