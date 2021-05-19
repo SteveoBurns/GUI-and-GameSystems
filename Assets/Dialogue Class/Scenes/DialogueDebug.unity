@@ -123,6 +123,61 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &55704805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 55704806}
+  - component: {fileID: 55704807}
+  m_Layer: 0
+  m_Name: Kill Quests
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &55704806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55704805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1436428143}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &55704807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55704805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40cc3883c8569f34191f92207af6b142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Kill all the things
+  description: kill all the things
+  reward:
+    experience: 10
+    gold: 100
+  stage: 0
+  requiredLevel: 0
+  previousQuest: 
+  unlockedQuests:
+  - 
+  requiredKills: 15
+  killCount: 0
 --- !u!1 &261469448
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,20 +391,31 @@ MonoBehaviour:
   goodbye:
     topic: See ya brosephene!
     response: Laters Brochacho.
-    minIntel: 0
+    minApproval: -1
+    changeApproval: 0
+    nextDialogue: {fileID: 0}
   dialogueOptions:
   - topic: Hey bro, whats happening?
     response: Not much Bromeo!
-    minIntel: 0
+    minApproval: -1
+    changeApproval: 0
+    nextDialogue: {fileID: 0}
   - topic: You look like a bean.
     response: Your mums a bean!
-    minIntel: 1
+    minApproval: -1
+    changeApproval: 0
+    nextDialogue: {fileID: 0}
   - topic: What is over that hill?
     response: Your Mum!
-    minIntel: 0
+    minApproval: -1
+    changeApproval: 0
+    nextDialogue: {fileID: 0}
   - topic: Is that all you've got? Your mum jokes?
     response: ......... You're Mum's a joke! hahahahahaha
-    minIntel: 0
+    minApproval: -1
+    changeApproval: 0
+    nextDialogue: {fileID: 0}
+  faction: 
 --- !u!1 &1219648606
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +499,77 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1436428141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1436428143}
+  - component: {fileID: 1436428142}
+  - component: {fileID: 1436428144}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1436428142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436428141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50aee29fdb1c0545938baeec4195ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests:
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!4 &1436428143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436428141}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 512, y: 288, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 55704806}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1436428144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436428141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40cc3883c8569f34191f92207af6b142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: 
+  description: 
+  reward:
+    experience: 0
+    gold: 0
+  stage: 0
+  requiredLevel: 0
+  previousQuest: 
+  unlockedQuests: []
+  requiredKills: 0
+  killCount: 0
 --- !u!1 &1854152846
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,9 +744,41 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4424808075916142107, guid: 12c3ef660ce1cc4448ddd1c3e9a96055, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424808075916142107, guid: 12c3ef660ce1cc4448ddd1c3e9a96055, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5498975018435379207, guid: 12c3ef660ce1cc4448ddd1c3e9a96055, type: 3}
       propertyPath: m_Name
       value: Dialogue Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6667827090975021430, guid: 12c3ef660ce1cc4448ddd1c3e9a96055, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6667827090975021430, guid: 12c3ef660ce1cc4448ddd1c3e9a96055, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6667827090975021430, guid: 12c3ef660ce1cc4448ddd1c3e9a96055, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6667827090975021430, guid: 12c3ef660ce1cc4448ddd1c3e9a96055, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738341432764513885, guid: 12c3ef660ce1cc4448ddd1c3e9a96055, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6738341432764513885, guid: 12c3ef660ce1cc4448ddd1c3e9a96055, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6848853060462599147, guid: 12c3ef660ce1cc4448ddd1c3e9a96055, type: 3}
       propertyPath: m_AnchorMax.x

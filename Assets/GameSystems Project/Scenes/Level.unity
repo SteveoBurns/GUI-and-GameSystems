@@ -1203,7 +1203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialiseFactions:
   - factionName: Vampires
-    _approval: 1
+    _approval: -0.37
   - factionName: Humans
     _approval: 0.32
 --- !u!4 &342548514
