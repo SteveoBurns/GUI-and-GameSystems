@@ -246,6 +246,7 @@ MonoBehaviour:
     damage: 50
     armour: 0
     heal: 0
+    slot: 4
   - name: Apple of Life
     description: Pretty self explanitory
     value: 1000
@@ -256,6 +257,7 @@ MonoBehaviour:
     damage: 0
     armour: 0
     heal: 50
+    slot: 0
   - name: Armour of Hardness
     description: Pretty self explanitory
     value: 1000
@@ -266,6 +268,7 @@ MonoBehaviour:
     damage: 0
     armour: 50
     heal: 0
+    slot: 1
   - name: Leather scraps
     description: Pretty self explanitory
     value: 1
@@ -276,6 +279,7 @@ MonoBehaviour:
     damage: 0
     armour: 0
     heal: 0
+    slot: 0
   - name: Magic mushrooms
     description: Pretty self explanitory
     value: 10
@@ -286,6 +290,7 @@ MonoBehaviour:
     damage: 0
     armour: 0
     heal: 0
+    slot: 0
   - name: Potion of awesomeness
     description: Pretty self explanitory
     value: 500
@@ -296,6 +301,7 @@ MonoBehaviour:
     damage: 0
     armour: 0
     heal: 0
+    slot: 0
   - name: Scroll of Fireball
     description: Fires an Ice spike for some reason
     value: 500
@@ -306,6 +312,7 @@ MonoBehaviour:
     damage: 0
     armour: 0
     heal: 0
+    slot: 4
   - name: Money
     description: Social Construct for trading
     value: 1
@@ -316,6 +323,7 @@ MonoBehaviour:
     damage: 0
     armour: 0
     heal: 0
+    slot: 0
   showIMGUIInventory: 1
   buttonPrefab: {fileID: 6132750433003633604, guid: 52f8b101086429446b02b2749fc5985a, type: 3}
   inventoryGameObject: {fileID: 637322996}
