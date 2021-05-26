@@ -44,13 +44,13 @@ namespace Debugging.Player
             staminaSlider.maxValue = staminaMax;
             stamina = staminaMax;
             
+            
 
         }
         private void Update()
         {
             Move();
             LevelUp();
-            staminaMax = CustomisationGet.stamina;
             #region Stamina Bar update and regen
             staminaSlider.value = stamina;            
             staminaText.text = "Stamina: " + Mathf.RoundToInt(stamina) + "/" + staminaMax;
