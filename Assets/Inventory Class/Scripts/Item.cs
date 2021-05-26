@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Plr;
 
 [System.Serializable]
 public class Item 
@@ -29,6 +30,7 @@ public class Item
     [SerializeField] private int damage;
     [SerializeField] private int armour;
     [SerializeField] private int heal;
+    [SerializeField] private Player.EquipmentSlot slot;
     #endregion
 
     #region Public Properties
@@ -104,5 +106,7 @@ public class Item
 
 
     }
+
+    public virtual void OnClicked() => Debug.Log($"Item pressed was: {name}!");
 
 }
