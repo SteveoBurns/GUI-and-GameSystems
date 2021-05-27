@@ -8,13 +8,19 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<Item> inventory = new List<Item>();
     [SerializeField] private bool showIMGUIInventory = true;
-    private Item selectedItem = null;
+    [NonSerialized] public Item selectedItem = null; // wont show in the inspector
 
     #region Canvas Inventory
     [SerializeField] private Button buttonPrefab;
     [SerializeField] private GameObject inventoryGameObject;
     [SerializeField] private GameObject inventoryContent;
     [SerializeField] private GameObject filterContent;
+
+    [Header("Selected Item Display")]
+    [SerializeField] private RawImage itemImage;
+    [SerializeField] private Text itemName;
+    [SerializeField] private Text itemDescription;
+
     #endregion
 
     #region Display Inventory
@@ -23,40 +29,89 @@ public class Inventory : MonoBehaviour
     #endregion
 
 
+    private void Start()
+    {
+        DisplayFilterCanvas();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            inventoryGameObject.SetActive(true);
-            DisplayItemsCanvas();
+            if (inventoryGameObject.activeSelf)
+            {
+                inventoryGameObject.SetActive(false);
+            }
+            else
+            {
+                inventoryGameObject.SetActive(true);
+                DisplayItemsCanvas();
+            }
         }
     }
     private void DisplayFilterCanvas()
     {
-        //to do
+        List<string> itemType = new List<string>(Enum.GetNames(typeof(Item.ItemType)));
+        itemType.Insert(0, "All");
+
+        for (int i = 0; i < itemType.Count; i++)
+        {
+            Button buttonGo = Instantiate<Button>(buttonPrefab, filterContent.transform);
+            Text buttonText = buttonGo.GetComponentInChildren<Text>();
+            buttonGo.name = itemType[i] + " filter";
+            buttonText.text = itemType[i];
+
+            int x = i;
+            buttonGo.onClick.AddListener(() => { sortType = itemType[x]; });
+            buttonGo.onClick.AddListener(delegate { ChangeFilter(itemType[x]); });
+
+        }
     }
     private void ChangeFilter(string itemType)
     {
-        //to do
+        sortType = itemType;
+        DisplayItemsCanvas();
     }
     void DestroyAllChildren(Transform parent)
     {
-        //to do
+        foreach (Transform child in parent)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     public void AddItem(Item _item)
     {
-        inventory.Add(_item);
+        AddItem(_item, _item.Amount);
+    }
+
+    public void AddItem(Item _item, int count)
+    {
+        Item foundItem = inventory.Find((x) => x.Name == _item.Name);
+
+        if (foundItem == null)
+        {
+            inventory.Add(_item);
+        }
+        else
+        {
+            foundItem.Amount += count;
+        }
+        DisplayItemsCanvas();
+        DisplaySelectedItemOnCanvas(selectedItem);
+
     }
 
     public void RemoveItem(Item _item)
     {
         if (inventory.Contains(_item))
             inventory.Remove(_item);
+        DisplayItemsCanvas();
+        DisplaySelectedItemOnCanvas(selectedItem);
     }
 
     private void DisplayItemsCanvas()
     {
+        DestroyAllChildren(inventoryContent.transform);
         for (int i = 0; i < inventory.Count; i++)
         {
             if (inventory[i].Type.ToString() == sortType || sortType == "All")
@@ -65,11 +120,22 @@ public class Inventory : MonoBehaviour
                 Text buttonText = buttonGo.GetComponentInChildren<Text>();
                 buttonGo.name = inventory[i].Name + " button";
                 buttonText.text = inventory[i].Name;
+
+                Item item = inventory[i];                
+                buttonGo.onClick.AddListener(delegate { DisplaySelectedItemOnCanvas(item); });
             }
         }
     }
       
+    void DisplaySelectedItemOnCanvas(Item _item)
+    {
+        selectedItem = _item;
 
+        itemImage.texture = _item.Icon;
+        itemName.text = _item.Name;
+        itemDescription.text =$" {_item.Description} \n cost: {_item.Value} \n amount: {_item.Amount} ";
+        
+    }
     
     private void OnGUI()
     {
