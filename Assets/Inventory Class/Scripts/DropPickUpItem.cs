@@ -6,13 +6,13 @@ public class DropPickUpItem : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
     [SerializeField] private Transform dropPoint;
-    [SerializeField] private Camera camera;
+    [SerializeField] private Camera cameraItem;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Ray ray = camera.ViewportPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+            Ray ray = cameraItem.ViewportPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
             RaycastHit hitInfo;
             if (Physics.Raycast(ray, out hitInfo, 50f))
             {

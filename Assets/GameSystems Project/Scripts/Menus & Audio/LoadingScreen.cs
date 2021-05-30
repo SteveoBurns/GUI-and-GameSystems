@@ -62,10 +62,10 @@ public class LoadingScreen : MonoBehaviour
         */
 
         //disable the camera and the loading bar
-        canvasCamera.SetActive(false);
+        //canvasCamera.SetActive(false);
         //loadingBarBackground.SetActive(false);
-        loadingBackground.SetActive(false);
-        Destroy(eventSystem);
+        //loadingBackground.SetActive(false);
+        //Destroy(eventSystem);
         SceneManager.UnloadSceneAsync("Loading Screen");
 
     }

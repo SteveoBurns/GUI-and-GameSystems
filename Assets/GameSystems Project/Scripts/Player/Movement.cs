@@ -116,12 +116,15 @@ namespace Debugging.Player
             if (Input.GetButtonDown("LevelUp"))
             {
                 staminaMax  += Mathf.RoundToInt(staminaMax * 0.3f);
+                PlayerData.ThePlayerData.stats[3] = staminaMax;
                 UpdateStamina();
             }
         }
 
         public void UpdateStamina()
         {
+            staminaMax =  PlayerData.ThePlayerData.stats[3];
+
             staminaSlider.maxValue = staminaMax;
         }
 
