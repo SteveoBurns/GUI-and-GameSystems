@@ -51,6 +51,7 @@ namespace Debugging.Player
         {
             Move();
             LevelUp();
+            UpdateStamina();
             #region Stamina Bar update and regen
             staminaSlider.value = stamina;            
             staminaText.text = "Stamina: " + Mathf.RoundToInt(stamina) + "/" + staminaMax;
@@ -115,8 +116,13 @@ namespace Debugging.Player
             if (Input.GetButtonDown("LevelUp"))
             {
                 staminaMax  += Mathf.RoundToInt(staminaMax * 0.3f);
-                staminaSlider.maxValue = staminaMax;
+                UpdateStamina();
             }
+        }
+
+        public void UpdateStamina()
+        {
+            staminaSlider.maxValue = staminaMax;
         }
 
     }

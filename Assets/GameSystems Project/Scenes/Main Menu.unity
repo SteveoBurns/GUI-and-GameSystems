@@ -2109,7 +2109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1283735598
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2677,6 +2677,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 516016183}
+    - target: {fileID: 8441715477538049167, guid: 0c25274e19f09c248a72c0fed0ab20b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8441715477694429252, guid: 0c25274e19f09c248a72c0fed0ab20b9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2788,6 +2792,10 @@ PrefabInstance:
     - target: {fileID: 8441715478446671107, guid: 0c25274e19f09c248a72c0fed0ab20b9, type: 3}
       propertyPath: m_Name
       value: Panel - Options
+      objectReference: {fileID: 0}
+    - target: {fileID: 8441715478446671107, guid: 0c25274e19f09c248a72c0fed0ab20b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8441715478510019610, guid: 0c25274e19f09c248a72c0fed0ab20b9, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
