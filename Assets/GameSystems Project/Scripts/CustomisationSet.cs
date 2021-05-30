@@ -127,7 +127,7 @@ public class CustomisationSet : MonoBehaviour
     {
         SaveSystem.SavePlayer(this);
         Debug.Log("saved");
-        SceneManager.LoadScene("Level");
+        SceneManager.LoadScene("Loading Screen");
     }
 
     
