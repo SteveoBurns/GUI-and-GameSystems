@@ -13,9 +13,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private TMP_Dropdown resDropdown;
     Resolution[] resolutions;
 
+    public static bool loadGame = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         #region Resolutions
         resolutions =  Screen.resolutions;
 
@@ -52,6 +55,12 @@ public class MainMenu : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void LoadGame()
+    {
+        loadGame = true;
+        SceneManager.LoadScene("Level");
     }
 
     public void LoadMainMenu()
@@ -99,10 +108,5 @@ public class MainMenu : MonoBehaviour
     #endregion
 
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

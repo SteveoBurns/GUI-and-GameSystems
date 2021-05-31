@@ -75,13 +75,13 @@ public static class SaveSystem
         }
     }
 
-    public static void SavePlayerInGame(PlayerStats player, PlayerData _data)
+    public static void SavePlayerInGame(PlayerStats player, Movement movement,PlayerData _data)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/playerInGame.save";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerDataInGame data = new PlayerDataInGame(player, _data);
+        PlayerDataInGame data = new PlayerDataInGame(player, movement, _data);
 
 
         formatter.Serialize(stream, data);

@@ -5,8 +5,8 @@ using TMPro;
 using UnityEngine.UI;
 
 
-namespace Debugging.Player
-{
+
+
     /// <summary>
     /// Controls player movement
     /// </summary>
@@ -14,6 +14,7 @@ namespace Debugging.Player
     [RequireComponent(typeof(CharacterController))]
     public class Movement : MonoBehaviour
     {
+       
         
 
         [Header("Speed Vars")]
@@ -37,21 +38,23 @@ namespace Debugging.Player
         {
             _charC = GetComponent<CharacterController>();
             characterAnimator = GetComponentInChildren<Animator>();
-            baseSpeed = CustomisationGet.speed / 2;
-            
+
+            SetValues();
+        }
+        public void SetValues()
+        {
             //Sets stamina values
             staminaMax = CustomisationGet.stamina;
             staminaSlider.maxValue = staminaMax;
             stamina = staminaMax;
-            
-            
-
+            baseSpeed = CustomisationGet.speed / 2;
         }
+
         private void Update()
         {
             Move();
             LevelUp();
-            UpdateStamina();
+            
             #region Stamina Bar update and regen
             staminaSlider.value = stamina;            
             staminaText.text = "Stamina: " + Mathf.RoundToInt(stamina) + "/" + staminaMax;
@@ -116,17 +119,17 @@ namespace Debugging.Player
             if (Input.GetButtonDown("LevelUp"))
             {
                 staminaMax  += Mathf.RoundToInt(staminaMax * 0.3f);
-                PlayerData.ThePlayerData.stats[3] = staminaMax;
-                UpdateStamina();
+                
+                staminaSlider.maxValue = staminaMax;
             }
         }
 
         public void UpdateStamina()
         {
-            staminaMax =  PlayerData.ThePlayerData.stats[3];
+            
 
             staminaSlider.maxValue = staminaMax;
         }
 
     }
-}
+

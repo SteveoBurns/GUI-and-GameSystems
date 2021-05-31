@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CustomisationGet : MonoBehaviour
 {
     [SerializeField] private Renderer characterRenderer;
     [SerializeField] public GameObject player;
 
-    
+    public Movement movement;
     public PlayerStats playerStats;
+    
 
 
     [Header("Names")]
@@ -29,8 +31,14 @@ public class CustomisationGet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Load();
-        
+        if (!MainMenu.loadGame)
+        {
+            Load();
+        }
+        else if (MainMenu.loadGame)
+        {
+            LoadInGame();
+        }
     }
 
     /// <summary>
@@ -63,7 +71,7 @@ public class CustomisationGet : MonoBehaviour
 
     public void SaveInGame()
     {
-        SaveSystem.SavePlayerInGame(playerStats, PlayerData.ThePlayerData);
+        SaveSystem.SavePlayerInGame(playerStats, movement , PlayerData.ThePlayerData);
         Debug.Log("Saved In Game");
     }
 
@@ -84,14 +92,16 @@ public class CustomisationGet : MonoBehaviour
         raceName = data.raceName;
         level = data.level;
 
-        healthMax = data.stats[0];
-        healthRegen = data.stats[1];
-        speed = data.stats[2];
-        stamina = data.stats[3];
-        manaMax = data.stats[4];
-        manaRegen = data.stats[5];
+        healthMax = data.health;
+        healthRegen = data.healthRegen;
+        speed = data.speed;
+        stamina = data.stamina;
+        manaMax = data.manaMax;
+        manaRegen = data.manaRegen;
 
         playerStats.SetValues();
+        movement.SetValues();
+        
 
     }
 

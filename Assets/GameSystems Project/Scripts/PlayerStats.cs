@@ -41,6 +41,9 @@ public class PlayerStats : MonoBehaviour
     public float mana;
     public int manaRegen;
 
+   
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +84,9 @@ public class PlayerStats : MonoBehaviour
         mana = manaMax;
         manaRegen = CustomisationGet.manaRegen;
         manaSlider.maxValue = manaMax;
+        
+
+        
     }
 
     /// <summary>
