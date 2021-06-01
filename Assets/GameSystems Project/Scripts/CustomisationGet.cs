@@ -113,8 +113,7 @@ public class CustomisationGet : MonoBehaviour
         manaMax = data.manaMax;
         manaRegen = data.manaRegen;
 
-        Debug.Log(speed);
-
+        
         playerStats.SetValues();
         Movement.TheMovement.SetValues();
         
