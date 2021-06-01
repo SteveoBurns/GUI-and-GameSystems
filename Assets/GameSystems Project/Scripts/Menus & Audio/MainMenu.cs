@@ -134,7 +134,7 @@ public class MainMenu : MonoBehaviour
 
     public float VolumeRemap(float value)
     {
-        return -60 + (value - 0) * (20 - -60) / (1 - 0);
+        return -40 + (value - 0) * (20 - -40) / (1 - 0);
     }
     #endregion
 

@@ -113,7 +113,8 @@ public class CustomisationGet : MonoBehaviour
         manaMax = data.manaMax;
         manaRegen = data.manaRegen;
 
-        
+        //Debug.Log(speed); // I was debugging why the speed variable was not loading correctly. See Movement Journal.
+
         playerStats.SetValues();
         Movement.TheMovement.SetValues();
         

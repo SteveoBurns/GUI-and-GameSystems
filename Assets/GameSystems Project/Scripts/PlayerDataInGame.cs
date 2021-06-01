@@ -46,7 +46,7 @@ public class PlayerDataInGame
         manaRegen = player.manaRegen;
 
         stamina = movement.staminaMax;
-        speed = movement.baseSpeed;
+        speed = movement.baseSpeed * 2;
 
         
         visual = new int[6];

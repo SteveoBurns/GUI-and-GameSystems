@@ -164,5 +164,8 @@ using UnityEngine.UI;
  * Had some issues with this not becoming a singleton until after the load was called from customisation get.
  * I had to move the singleton into awake and the load functions into start.
  * 
+ * The basespeed variable was getting divided by 2 each time it was loaded into the scene, so eventually would bcome 0 and the character would not move.
+ * I fixed by multiplying it by 2 when loading the data into PlayerDataInGame to save.
+ * 
  */
 
