@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEngine.UI;
 
+/// <summary>
+/// This handles all the information from the customisation scene, then saves it into PlayerData so it can be loaded into the game scene.
+/// </summary>
 public class CustomisationSet : MonoBehaviour
 {
     [Header("Character Name")]
@@ -479,3 +481,9 @@ public class CustomisationSet : MonoBehaviour
         Ranger,
         Mage,
     }
+
+/*Journal
+ * Well, this things a bit of a mess.
+ * Definately could have done things a bit neater and more streamlined.
+ * 
+ */

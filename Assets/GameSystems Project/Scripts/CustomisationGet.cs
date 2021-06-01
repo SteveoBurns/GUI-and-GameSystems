@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class CustomisationGet : MonoBehaviour
 {
+    [Header("Character Properties")]
     [SerializeField] private Renderer characterRenderer;
     [SerializeField] public GameObject player;
 
     public Movement movement;
     public PlayerStats playerStats;
-    
-
 
     [Header("Names")]
     public static string characterName;
@@ -28,11 +27,13 @@ public class CustomisationGet : MonoBehaviour
     public static int manaMax;
     public static int manaRegen;
 
+    [Header("Visual Textures")]
     public int[] visual = new int[6];
 
     // Start is called before the first frame update
     void Awake()
     {
+        // Testing Which load function to run based on bool from main menu
         if (!MainMenu.loadGame)
         {
             Load();
@@ -44,7 +45,7 @@ public class CustomisationGet : MonoBehaviour
     }
 
     /// <summary>
-    /// Loads all the saved player data
+    /// Loads all the saved player data from the customisation scene
     /// </summary>
     public void Load()
     {
@@ -77,13 +78,18 @@ public class CustomisationGet : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// This saves all the updated information from the game
+    /// </summary>
     public void SaveInGame()
     {
         SaveSystem.SavePlayerInGame(playerStats, Movement.TheMovement , this);
         Debug.Log("Saved In Game");
     }
 
-
+    /// <summary>
+    /// This loads all the In game saved information and then updates the relevent scripts
+    /// </summary>
     public void LoadInGame()
     {
         PlayerDataInGame data = SaveSystem.LoadPlayerInGame();
@@ -160,3 +166,12 @@ public class CustomisationGet : MonoBehaviour
     }
     
 }
+/*Journal.
+ * I was having a lot of trouble with the saving and loading of in game information.
+ * I ended up storing new visual [] here from playerdata, that way playerdata wasn't needed after the first customisation screen.
+ * Then I used a static bool from the main menu to then tell this to load the in game save information when using continue or load.
+ * Within the load in game function I then update the information in player stats and movement.
+ * 
+ * This took a while for me to figure out, probably 2-3 days hahaha.
+ * 
+ */

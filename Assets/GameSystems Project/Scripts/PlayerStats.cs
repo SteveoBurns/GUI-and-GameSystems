@@ -42,21 +42,14 @@ public class PlayerStats : MonoBehaviour
     public int manaRegen;
 
 
-    public void Awake()
-    {
-        // This happens on awake so any updated loaded values from another class happen after this.
-        SetValues();
-        
-    }
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
+        SetValues();
         ClassName(classIndex);
-        description.text = raceName + " " + className;
-        //levelInt = 1;
-        //level.text = "Level: " + levelInt;
+
+        description.text = raceName + " " + className;        
         nameText.text = characterName;
     }
 

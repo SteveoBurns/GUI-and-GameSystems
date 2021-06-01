@@ -31,6 +31,8 @@ public class FactionsManager : MonoBehaviour
     public static FactionsManager theManagerOfFactions;
     
     Dictionary<string, Factions> factions;
+
+    [Header("Factions")]
     [SerializeField] public List<Factions> initialiseFactions = new List<Factions>();
 
     private void Awake()
@@ -40,6 +42,7 @@ public class FactionsManager : MonoBehaviour
         else
             Destroy(this);
 
+        // Add all the factions into a dictionary
         factions = new Dictionary<string, Factions>();
         foreach (Factions faction in initialiseFactions)
         {

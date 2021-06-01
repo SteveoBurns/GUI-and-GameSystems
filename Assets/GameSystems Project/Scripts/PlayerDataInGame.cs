@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This handles the save/load for in game information.
+/// </summary>
 [System.Serializable]
 public class PlayerDataInGame
 {
@@ -21,7 +24,7 @@ public class PlayerDataInGame
     public int speed;
     
 
-    //public int[] stats;
+    
     public int[] visual;
 
     /// <summary>
@@ -45,14 +48,7 @@ public class PlayerDataInGame
         stamina = movement.staminaMax;
         speed = movement.baseSpeed;
 
-        //stats = new int[6];
-        //stats[0] = data.stats[0];
-        //stats[1] = data.stats[1];
-        //stats[2] = data.stats[2];
-        //stats[3] = data.stats[3];
-        //stats[4] = data.stats[4];
-        //stats[5] = data.stats[5];
-
+        
         visual = new int[6];
         visual[0] = data.visual[0];
         visual[1] = data.visual[1];
@@ -66,3 +62,11 @@ public class PlayerDataInGame
 
 
 }
+/*Journal
+ * Man.. This took a while to get working.
+ * After a couple of iterations I finally changed it to get the data from stats, moevment and customisation get, which all work.
+ * before I had it taking the visual data from player data, but that didnt work if you were loading into the game and not going through the 
+ * customisation screen as it got its data from customisation set. The work around/ probably better way to do it was to store that data into variables in customisation get
+ * then use that. That meant after the first load i didn't need to use playerdata at all.
+ * 
+ */

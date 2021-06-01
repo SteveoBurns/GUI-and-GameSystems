@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 
     /// <summary>
-    /// Controls player movement
+    /// Controls player movement and stamina usage
     /// </summary>
     [AddComponentMenu("RPG/Player/Movement")]
     [RequireComponent(typeof(CharacterController))]
@@ -21,13 +21,15 @@ using UnityEngine.UI;
         public float moveSpeed;
         public float walkSpeed, runSpeed, crouchSpeed, jumpSpeed;
         public int baseSpeed;
+
         private float _gravity = 20.0f;
         private Vector3 _moveDir;
 
+        [Header("Stamina Vars")]
         public int staminaMax;
         public float stamina;
-        [SerializeField] public Slider staminaSlider;
-        [SerializeField] public TMP_Text staminaText;
+        [SerializeField] private Slider staminaSlider;
+        [SerializeField] private TMP_Text staminaText;
 
 
         private CharacterController _charC;
@@ -44,25 +46,31 @@ using UnityEngine.UI;
     }
 
     private void Start()
-        {
-            _charC = GetComponent<CharacterController>();
-            characterAnimator = GetComponentInChildren<Animator>();
+    {
+        _charC = GetComponent<CharacterController>();
+        characterAnimator = GetComponentInChildren<Animator>();
 
-            SetValues();
-        }
+        SetValues();
+    }
 
+    /// <summary>
+    /// Sets stamina values after a new game
+    /// </summary>
     public void SetValues()
     {
-        //Sets stamina values
+        //Sets stamina values after a new game, pulls from Customisation Get
         staminaMax = CustomisationGet.stamina;
         staminaSlider.maxValue = staminaMax;
         stamina = staminaMax;
         baseSpeed = CustomisationGet.speed / 2;
     }
 
+    /// <summary>
+    /// Sets stamina values when loading a saved game
+    /// </summary>
     public void SetLoadedValues()
     {
-        //Sets stamina values
+        //Sets stamina values when loading a saved game by pulling from playerdataInGame
         staminaMax = PlayerDataInGame.ThePlayerDataInGame.stamina;
         staminaSlider.maxValue = staminaMax;
         stamina = staminaMax;
@@ -70,24 +78,29 @@ using UnityEngine.UI;
     }
 
     private void Update()
-        {
-            Move();
-            LevelUp();
-            
-            #region Stamina Bar update and regen
+    {
+        Move();
+        LevelUp();
+        
+        #region Stamina Bar update and regen
+            // Updates stamina slider and value text
             staminaSlider.value = stamina;            
             staminaText.text = "Stamina: " + Mathf.RoundToInt(stamina) + "/" + staminaMax;
 
             if (stamina < staminaMax && !Input.GetButton("Sprint"))
             {
+                // Regenerate stamina if not using it
                 stamina += Time.deltaTime;
             }
+
             #endregion
-        }
-        private void Move()
+    }
+
+    private void Move()
         {
             Vector2 controlVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             
+            //Controls character animations
             if(controlVector.magnitude >= 0.05f)
             {
                 characterAnimator.SetBool("moving", true);
@@ -99,6 +112,7 @@ using UnityEngine.UI;
             }
             // can also use characterAnimator.SetBool("moving", controlVector.magnitude >= 0.05f); as the test is true or false
 
+            // Controls speeds and animations for Sprint/Crouch/Base and Jump.
             if (_charC.isGrounded)
             {
                 if (Input.GetButton("Sprint") && stamina > 0)
@@ -130,10 +144,10 @@ using UnityEngine.UI;
             _charC.Move(_moveDir * Time.deltaTime);
         }
 
-        /// <summary>
-        /// Controls the stamina bar when levelling up.
-        /// </summary>
-        public void LevelUp()
+    /// <summary>
+    /// Controls the stamina bar when levelling up.
+    /// </summary>
+    public void LevelUp()
         {
             if (Input.GetButtonDown("LevelUp"))
             {
@@ -143,12 +157,7 @@ using UnityEngine.UI;
             }
         }
 
-        public void UpdateStamina()
-        {
-            
-
-            staminaSlider.maxValue = staminaMax;
-        }
+       
 
     }
 

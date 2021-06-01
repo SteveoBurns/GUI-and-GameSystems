@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PauseController : MonoBehaviour
 {
+    [Header("Pause Panel")]
     [SerializeField] private GameObject pausePanel;
     private bool isPaused;
 
@@ -13,8 +14,6 @@ public class PauseController : MonoBehaviour
         pausePanel.SetActive(false);
         isPaused = false;
         Time.timeScale = 1;
-        
-
     }
 
     // Update is called once per frame
@@ -29,6 +28,9 @@ public class PauseController : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Pauses the game and shows the pause menu
+    /// </summary>
     public void PauseGame()
     {
         isPaused = true;
@@ -38,6 +40,9 @@ public class PauseController : MonoBehaviour
         Cursor.visible = true;
     }
 
+    /// <summary>
+    /// Unpauses the game.
+    /// </summary>
     public void UnPauseGame()
     {
         isPaused = false;

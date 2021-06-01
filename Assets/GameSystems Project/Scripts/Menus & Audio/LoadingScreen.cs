@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class LoadingScreen : MonoBehaviour
 {
+    [Header("Loading Screen Properties")]
     [SerializeField] private Image loadingBar;      //this will show the loading progress
-    [SerializeField] private string sceneToLoad;    //this is the scene we will be loading dynamically
-    //[SerializeField] private GameObject loadingBarBackground;    
-    [SerializeField] private GameObject loadingBackground;    
-    [SerializeField] private GameObject eventSystem;    
+    [SerializeField] private string sceneToLoad;    //this is the scene we will be loading dynamically        
     [SerializeField] private GameObject canvasCamera;   //this wll be disabled when the new scene is loaded
 
   
@@ -18,8 +16,7 @@ public class LoadingScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //swap out the objects being shown on the screen
-        //loadingBarBackground.SetActive(false);        
+                
         canvasCamera.SetActive(true);
 
         StartCoroutine(LoadSceneAsync());
@@ -52,20 +49,7 @@ public class LoadingScreen : MonoBehaviour
 
         }
 
-        //update the loading bar to full and wait half a second
         
-
-        /*
-        //find and activate the character controller
-        CharController_Motor motor = FindObjectOfType<CharController_Motor>();
-        motor.Initialize();
-        */
-
-        //disable the camera and the loading bar
-        //canvasCamera.SetActive(false);
-        //loadingBarBackground.SetActive(false);
-        //loadingBackground.SetActive(false);
-        //Destroy(eventSystem);
         SceneManager.UnloadSceneAsync("Loading Screen");
 
     }
