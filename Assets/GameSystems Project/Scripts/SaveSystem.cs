@@ -75,7 +75,7 @@ public static class SaveSystem
         }
     }
 
-    public static void SavePlayerInGame(PlayerStats player, Movement movement,PlayerData _data)
+    public static void SavePlayerInGame(PlayerStats player, Movement movement ,CustomisationGet _data)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/playerInGame.save";

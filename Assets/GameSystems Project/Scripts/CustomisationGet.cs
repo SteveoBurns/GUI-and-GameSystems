@@ -28,8 +28,10 @@ public class CustomisationGet : MonoBehaviour
     public static int manaMax;
     public static int manaRegen;
 
+    public int[] visual = new int[6];
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (!MainMenu.loadGame)
         {
@@ -47,18 +49,17 @@ public class CustomisationGet : MonoBehaviour
     public void Load()
     {
         PlayerData data = SaveSystem.LoadPlayer();
-
-        SetTexture("skin", data.visual[0]);
-        SetTexture("eyes", data.visual[1]);
-        SetTexture("mouth", data.visual[2]);
-        SetTexture("hair", data.visual[3]);
-        SetTexture("armour", data.visual[4]);
-        SetTexture("clothes", data.visual[5]);
+        visual[0] = data.visual[0];
+        visual[1] = data.visual[1];
+        visual[2] = data.visual[2];
+        visual[3] = data.visual[3];
+        visual[4] = data.visual[4];
+        visual[5] = data.visual[5];
+        
         characterName = data.name;
         classIndex = data.classIndex;
         raceIndex = data.raceIndex;
         raceName = data.raceName;
-
 
         healthMax = data.stats[0];
         healthRegen = data.stats[1];
@@ -67,11 +68,18 @@ public class CustomisationGet : MonoBehaviour
         manaMax = data.stats[4];
         manaRegen = data.stats[5];
 
+        SetTexture("skin", visual[0]);
+        SetTexture("eyes", visual[1]);
+        SetTexture("mouth", visual[2]);
+        SetTexture("hair", visual[3]);
+        SetTexture("armour", visual[4]);
+        SetTexture("clothes", visual[5]);
+
     }
 
     public void SaveInGame()
     {
-        SaveSystem.SavePlayerInGame(playerStats, movement , PlayerData.ThePlayerData);
+        SaveSystem.SavePlayerInGame(playerStats, Movement.TheMovement , this);
         Debug.Log("Saved In Game");
     }
 
@@ -100,7 +108,7 @@ public class CustomisationGet : MonoBehaviour
         manaRegen = data.manaRegen;
 
         playerStats.SetValues();
-        movement.SetValues();
+        Movement.TheMovement.SetLoadedValues();
         
 
     }

@@ -28,7 +28,7 @@ public class PlayerDataInGame
     /// The data that is going to be saved pulls from ...
     /// </summary>
     /// <param name="player"></param>
-    public PlayerDataInGame(PlayerStats player, Movement movement,PlayerData data)
+    public PlayerDataInGame(PlayerStats player, Movement movement,CustomisationGet data)
     {
 
         name = player.characterName;

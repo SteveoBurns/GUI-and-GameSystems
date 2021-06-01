@@ -14,7 +14,7 @@ using UnityEngine.UI;
     [RequireComponent(typeof(CharacterController))]
     public class Movement : MonoBehaviour
     {
-       
+        public static Movement TheMovement;
         
 
         [Header("Speed Vars")]
@@ -33,24 +33,43 @@ using UnityEngine.UI;
         private CharacterController _charC;
         private Animator characterAnimator;
 
+    public void Awake()
+    {
+        if (TheMovement == null)
+        {
+            TheMovement = this;
+        }
+        else if (TheMovement != null)
+            Destroy(this);
+    }
 
-        private void Start()
+    private void Start()
         {
             _charC = GetComponent<CharacterController>();
             characterAnimator = GetComponentInChildren<Animator>();
 
             SetValues();
         }
-        public void SetValues()
-        {
-            //Sets stamina values
-            staminaMax = CustomisationGet.stamina;
-            staminaSlider.maxValue = staminaMax;
-            stamina = staminaMax;
-            baseSpeed = CustomisationGet.speed / 2;
-        }
 
-        private void Update()
+    public void SetValues()
+    {
+        //Sets stamina values
+        staminaMax = CustomisationGet.stamina;
+        staminaSlider.maxValue = staminaMax;
+        stamina = staminaMax;
+        baseSpeed = CustomisationGet.speed / 2;
+    }
+
+    public void SetLoadedValues()
+    {
+        //Sets stamina values
+        staminaMax = PlayerDataInGame.ThePlayerDataInGame.stamina;
+        staminaSlider.maxValue = staminaMax;
+        stamina = staminaMax;
+        baseSpeed = PlayerDataInGame.ThePlayerDataInGame.speed / 2;
+    }
+
+    private void Update()
         {
             Move();
             LevelUp();
