@@ -160,4 +160,9 @@ using UnityEngine.UI;
        
 
     }
+/*Journal
+ * Had some issues with this not becoming a singleton until after the load was called from customisation get.
+ * I had to move the singleton into awake and the load functions into start.
+ * 
+ */
 
