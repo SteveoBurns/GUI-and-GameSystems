@@ -31,7 +31,7 @@ public class CustomisationGet : MonoBehaviour
     public int[] visual = new int[6];
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         // Testing Which load function to run based on bool from main menu
         if (!MainMenu.loadGame)
@@ -113,8 +113,10 @@ public class CustomisationGet : MonoBehaviour
         manaMax = data.manaMax;
         manaRegen = data.manaRegen;
 
+        Debug.Log(speed);
+
         playerStats.SetValues();
-        Movement.TheMovement.SetLoadedValues();
+        Movement.TheMovement.SetValues();
         
 
     }

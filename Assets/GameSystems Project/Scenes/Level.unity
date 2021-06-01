@@ -3342,7 +3342,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 7473174681488404626}
   player: {fileID: 1978452232}
+  movement: {fileID: 0}
   playerStats: {fileID: 1978452233}
+  visual: 000000000000000000000000000000000000000000000000
 --- !u!4 &828840749
 Transform:
   m_ObjectHideFlags: 0

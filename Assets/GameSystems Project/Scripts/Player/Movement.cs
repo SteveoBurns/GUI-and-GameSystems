@@ -68,14 +68,14 @@ using UnityEngine.UI;
     /// <summary>
     /// Sets stamina values when loading a saved game
     /// </summary>
-    public void SetLoadedValues()
-    {
-        //Sets stamina values when loading a saved game by pulling from playerdataInGame
-        staminaMax = PlayerDataInGame.ThePlayerDataInGame.stamina;
-        staminaSlider.maxValue = staminaMax;
-        stamina = staminaMax;
-        baseSpeed = PlayerDataInGame.ThePlayerDataInGame.speed / 2;
-    }
+    //public void SetLoadedValues()
+    //{
+    //    //Sets stamina values when loading a saved game by pulling from playerdataInGame
+    //    staminaMax = PlayerDataInGame.ThePlayerDataInGame.stamina;
+    //    staminaSlider.maxValue = staminaMax;
+    //    stamina = staminaMax;
+    //    baseSpeed = PlayerDataInGame.ThePlayerDataInGame.speed / 2;
+    //}
 
     private void Update()
     {
