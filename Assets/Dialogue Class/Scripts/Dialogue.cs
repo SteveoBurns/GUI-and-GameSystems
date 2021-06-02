@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
+    [TextArea(3, 6)]
     public string greeting;
 
     public LineOfDialogue goodbye;

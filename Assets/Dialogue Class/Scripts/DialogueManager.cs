@@ -95,6 +95,8 @@ public class DialogueManager : MonoBehaviour
         //Changing the factions approval when clicking the dialogue option
         FactionsManager.theManagerOfFactions.FactionsApproval(currentDialogue.faction, currentDialogue.dialogueOptions[dialogueNum].changeApproval);
 
+        // I could put a quest show on click here??? With a quest section in LineOfDialogue.
+
         print(currentDialogue.dialogueOptions[dialogueNum].response);
         responsePanel.SetActive(true);
         responseText.text = currentDialogue.dialogueOptions[dialogueNum].response;

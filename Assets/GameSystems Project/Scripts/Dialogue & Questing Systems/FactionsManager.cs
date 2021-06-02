@@ -69,12 +69,5 @@ public class FactionsManager : MonoBehaviour
         return null;
     }
 
-    /*Example of adding to approval function
-    void AddApproval()
-    {
-        
-    }
-
-
-    */
+    
 }
