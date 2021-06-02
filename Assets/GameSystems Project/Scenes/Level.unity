@@ -8853,7 +8853,7 @@ MonoBehaviour:
   - topic: QUEST - Destroy Dracula
     response: If you want to help the people of our land please help us be rid of
       The Evil Dracula.
-    minApproval: 0.5
+    minApproval: 0.8
     changeApproval: 0.2
     nextDialogue: {fileID: 1935997603}
   faction: Humans
