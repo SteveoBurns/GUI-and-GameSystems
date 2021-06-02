@@ -5510,13 +5510,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139086726}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.0000000074505797, y: -0.70710665, z: 0.707107, w: 0.00000006705522}
   m_LocalPosition: {x: 0, y: 7, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1935997609}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
 --- !u!64 &1139086728
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5550,7 +5550,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8cf2e0c3f119d9a4a934903e3a9864d0, type: 2}
+  - {fileID: 2100000, guid: b6403b47190d8504fa85d9c1941d34be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8824,7 +8824,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79497dbeff4fb64dab75c9f5e858479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  greeting: Hey there amigo
+  greeting: Hey there amigo. You might be wondering why I'm holding my arms out like
+    this?
   goodbye:
     topic: See ya round dude!
     response: OK see you bye
@@ -8832,8 +8833,10 @@ MonoBehaviour:
     changeApproval: 0
     nextDialogue: {fileID: 1935997604}
   dialogueOptions:
-  - topic: Hey to you too
-    response: No, hey to you also.
+  - topic: I was actually. Why are you doing that?
+    response: Well I just woke up like this this morning. I think it's because The
+      Creator forgot to give me my movements or he is angry at me perhaps??? Who
+      knows?
     minApproval: -1
     changeApproval: 0.1
     nextDialogue: {fileID: 0}
