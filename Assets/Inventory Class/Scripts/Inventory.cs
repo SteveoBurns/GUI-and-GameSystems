@@ -45,6 +45,8 @@ public class Inventory : MonoBehaviour
             {
                 inventoryGameObject.SetActive(true);
                 DisplayItemsCanvas();
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
     }
@@ -131,9 +133,20 @@ public class Inventory : MonoBehaviour
     {
         selectedItem = _item;
 
-        itemImage.texture = _item.Icon;
-        itemName.text = _item.Name;
-        itemDescription.text =$" {_item.Description} \n cost: {_item.Value} \n amount: {_item.Amount} ";
+        if (_item == null)
+        {
+            itemImage.texture = null;
+            itemName.text = "";
+            itemDescription.text = "";
+        }
+        else
+        {
+            itemImage.texture = selectedItem.Icon;
+            itemName.text = selectedItem.Name;
+            itemDescription.text =$" {selectedItem.Description} \n cost: {selectedItem.Value} \n amount: {selectedItem.Amount} ";
+
+        }
+
         
     }
     
