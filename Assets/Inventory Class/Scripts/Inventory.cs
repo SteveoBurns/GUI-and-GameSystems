@@ -28,6 +28,10 @@ public class Inventory : MonoBehaviour
     private string sortType = "All";
     #endregion
 
+    // add function for equiping item?? item.slot !=null? selected item.equipment slot.primary?
+    // button then wont work if cant be equipped, display a msg.
+    // on Equipment script
+
 
     private void Start()
     {
