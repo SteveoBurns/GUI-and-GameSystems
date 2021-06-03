@@ -149,6 +149,7 @@ public class Inventory : MonoBehaviour
 
         
     }
+    #region On GUI
     
     private void OnGUI()
     {
@@ -173,7 +174,7 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-    
+
 
     private void DisplaySelectedItem()
     {
@@ -201,12 +202,12 @@ public class Inventory : MonoBehaviour
         }
         GUI.EndScrollView();
     }
-    
+    #endregion
 
 
 
 
-    
 
-    
+
+
 }
