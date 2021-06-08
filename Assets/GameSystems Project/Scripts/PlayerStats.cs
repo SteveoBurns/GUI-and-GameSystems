@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 /// <summary>
 /// Holds all the players data other than movement.
@@ -47,7 +48,10 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private TMP_Text damageText;
     [SerializeField] private float damage = 3f;
 
-
+    [Header("Death UI")]
+    [SerializeField] private GameObject deathPanel;
+    [SerializeField] private AudioSource deathSound;
+    private bool alreadyDead = false;
     
     // Start is called before the first frame update
     void Start()
@@ -57,6 +61,8 @@ public class PlayerStats : MonoBehaviour
 
         description.text = raceName + " " + className;        
         nameText.text = characterName;
+        deathPanel.SetActive(false);
+        alreadyDead = false;
     }
 
     // Update is called once per frame
@@ -150,16 +156,17 @@ public class PlayerStats : MonoBehaviour
         if (Input.GetButtonDown("Damage"))
         {
             health -= damage;
+            // This is the damage pop up when getting hurt.
             GameObject popUp = Instantiate(damagePrefab, popUpLocation);
             damageText = popUp.GetComponentInChildren<TMP_Text>();
-            damageText.text = damage.ToString("0");
-            popUp.gameObject.transform.Translate(new Vector3(0, 1, 0) * Time.deltaTime, Space.World);
+            damageText.text = damage.ToString("0");            
             Destroy(popUp, .5f);
         }
         if(health < healthMax)
         {
             health += (healthRegen*0.1f) * Time.deltaTime;
         }
+        
         if (health <= 0)
         {
             Die();
@@ -168,7 +175,15 @@ public class PlayerStats : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("Dead");
+        if (!alreadyDead)
+        {
+            deathSound.Play();
+            Debug.Log("Dead");
+            deathPanel.SetActive(true);
+            alreadyDead = true;
+
+        }
+        // Needs to fade to black then reload the scene
     }
 
     /// <summary>
