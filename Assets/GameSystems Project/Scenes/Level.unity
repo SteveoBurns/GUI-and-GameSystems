@@ -9185,6 +9185,7 @@ MonoBehaviour:
   popUpLocation: {fileID: 305811387}
   damagePrefab: {fileID: 9133130116706809408, guid: 27e78e36888a2d1418700909e9424a59, type: 3}
   damageText: {fileID: 0}
+  damage: 4
 --- !u!114 &1978452234
 MonoBehaviour:
   m_ObjectHideFlags: 0

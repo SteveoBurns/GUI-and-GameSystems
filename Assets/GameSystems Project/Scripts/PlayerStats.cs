@@ -45,7 +45,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private Transform popUpLocation;
     [SerializeField] private GameObject damagePrefab;
     [SerializeField] private TMP_Text damageText;
-    private float damage = 3f;
+    [SerializeField] private float damage = 3f;
 
 
     
@@ -147,13 +147,14 @@ public class PlayerStats : MonoBehaviour
     /// </summary>
     private void GetHurt()
     {
-        if (Input.GetButton("Damage"))
+        if (Input.GetButtonDown("Damage"))
         {
-            health -= damage * Time.deltaTime;
-            //damageText.text = damage.ToString();
+            health -= damage;
             GameObject popUp = Instantiate(damagePrefab, popUpLocation);
-            popUp.transform.Translate(new Vector3(0, 1, 0) * Time.deltaTime, Space.World);
-            Destroy(popUp, 1f);
+            damageText = popUp.GetComponentInChildren<TMP_Text>();
+            damageText.text = damage.ToString("0");
+            popUp.gameObject.transform.Translate(new Vector3(0, 1, 0) * Time.deltaTime, Space.World);
+            Destroy(popUp, .5f);
         }
         if(health < healthMax)
         {
