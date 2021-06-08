@@ -33,13 +33,19 @@ public class PlayerStats : MonoBehaviour
     public int healthMax;
     public float health;
     public int healthRegen;
-
+    
     [Header("Mana")]
     [SerializeField] private Slider manaSlider;
     [SerializeField] private TMP_Text manatext;
     public int manaMax;
     public float mana;
     public int manaRegen;
+
+    [Header("Damage UI")]
+    [SerializeField] private Transform popUpLocation;
+    [SerializeField] private GameObject damagePrefab;
+    [SerializeField] private TMP_Text damageText;
+    private float damage = 3f;
 
 
     
@@ -143,12 +149,25 @@ public class PlayerStats : MonoBehaviour
     {
         if (Input.GetButton("Damage"))
         {
-            health -= 3 * Time.deltaTime;
+            health -= damage * Time.deltaTime;
+            //damageText.text = damage.ToString();
+            GameObject popUp = Instantiate(damagePrefab, popUpLocation);
+            popUp.transform.Translate(new Vector3(0, 1, 0) * Time.deltaTime, Space.World);
+            Destroy(popUp, 1f);
         }
         if(health < healthMax)
         {
             health += (healthRegen*0.1f) * Time.deltaTime;
         }
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Debug.Log("Dead");
     }
 
     /// <summary>
