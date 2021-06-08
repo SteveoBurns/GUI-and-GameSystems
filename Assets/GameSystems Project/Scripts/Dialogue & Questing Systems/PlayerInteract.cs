@@ -13,11 +13,10 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
-        {
-            
+        {            
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, 20))
-            {
+            {                
                 // If hit NPC start dialogue with them.
                 if (hit.transform.tag == "NPC")
                 {

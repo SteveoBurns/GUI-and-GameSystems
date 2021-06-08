@@ -173,17 +173,20 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// For when the character Dies.
+    /// </summary>
     public void Die()
     {
+        // Using a bool so this only happens once as GetHurt is happening in Update.
         if (!alreadyDead)
         {
             deathSound.Play();
             Debug.Log("Dead");
+            // Death panel is animated and then runs the LoadScene function as an event within the animation.
             deathPanel.SetActive(true);
             alreadyDead = true;
-
-        }
-        // Needs to fade to black then reload the scene
+        }        
     }
 
     /// <summary>
