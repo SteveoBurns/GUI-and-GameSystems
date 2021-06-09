@@ -25,7 +25,7 @@ public class PauseController : MonoBehaviour
             UnPauseGame();
         if(!isPaused && !DialogueManager.inDialogue)
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = false;
+        
         
     }
 

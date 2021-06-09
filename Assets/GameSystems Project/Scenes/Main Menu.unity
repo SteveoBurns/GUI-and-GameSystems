@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &12163051 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8441715477888560263, guid: 0c25274e19f09c248a72c0fed0ab20b9, type: 3}
+  m_PrefabInstance: {fileID: 8441715478680464577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &133770807
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +337,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133770807}
   m_CullTransparentMesh: 1
+--- !u!114 &147450032 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8441715477264882674, guid: 0c25274e19f09c248a72c0fed0ab20b9, type: 3}
+  m_PrefabInstance: {fileID: 8441715478680464577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &221120124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,6 +1101,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568340092}
   m_CullTransparentMesh: 1
+--- !u!114 &596619676 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8441715477203786575, guid: 0c25274e19f09c248a72c0fed0ab20b9, type: 3}
+  m_PrefabInstance: {fileID: 8441715478680464577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &603883600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,6 +1941,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: e85ac06f80eba824090282901977ea27, type: 2}
   resDropdown: {fileID: 732879247}
+  qualityDropdown: {fileID: 147450032}
+  fullscreenToggle: {fileID: 1426115473}
+  masterVolumeSlider: {fileID: 12163051}
+  sfxVolumeSlider: {fileID: 596619676}
 --- !u!4 &837985501
 Transform:
   m_ObjectHideFlags: 0
@@ -2544,6 +2581,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1426115473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8441715478510019610, guid: 0c25274e19f09c248a72c0fed0ab20b9, type: 3}
+  m_PrefabInstance: {fileID: 8441715478680464577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1755989968
 GameObject:
   m_ObjectHideFlags: 0

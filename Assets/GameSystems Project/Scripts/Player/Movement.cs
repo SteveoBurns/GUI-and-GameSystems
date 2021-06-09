@@ -97,11 +97,23 @@ using UnityEngine.UI;
     }
 
     private void Move()
-        {
-            Vector2 controlVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            
-            //Controls character animations
-            if(controlVector.magnitude >= 0.05f)
+    {
+        
+        if (BindingManager.BindingHeld("Forward"))
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+
+        if (BindingManager.BindingHeld("Right"))
+            transform.position += transform.right * moveSpeed * Time.deltaTime;
+
+        if (BindingManager.BindingHeld("Backward"))
+            transform.position -= transform.forward * moveSpeed * Time.deltaTime;
+
+        if (BindingManager.BindingHeld("Left"))
+            transform.position -= transform.right * moveSpeed * Time.deltaTime;
+        //Vector2 controlVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        //Controls character animations
+        if (transform.position.magnitude >= 0.05f)
             {
                 characterAnimator.SetBool("moving", true);
             }
@@ -131,7 +143,7 @@ using UnityEngine.UI;
                     moveSpeed = walkSpeed * baseSpeed;
                     characterAnimator.SetFloat("speed", 1);
                 }
-                _moveDir = transform.TransformDirection(new Vector3(controlVector.x, 0, controlVector.y) * moveSpeed); 
+                _moveDir = transform.TransformDirection(new Vector3(transform.position.x, 0, transform.position.y) * moveSpeed); 
                 
                 if (Input.GetButton("Jump"))
                 {
@@ -141,7 +153,7 @@ using UnityEngine.UI;
             }
             
             _moveDir.y -= _gravity * Time.deltaTime;
-            _charC.Move(_moveDir * Time.deltaTime);
+            //_charC.Move(_moveDir * Time.deltaTime);
         }
 
     /// <summary>
