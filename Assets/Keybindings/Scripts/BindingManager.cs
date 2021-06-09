@@ -179,7 +179,7 @@ public class BindingManager : MonoBehaviour
     /// <summary>
     /// Saves the data of every binding in the bindings list
     /// </summary>
-    private void SaveBindings()
+    public void SaveBindings()
     {
         foreach(Binding binding in bindingsList)
         {
