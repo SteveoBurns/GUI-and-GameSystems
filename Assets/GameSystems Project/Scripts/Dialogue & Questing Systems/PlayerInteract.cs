@@ -15,7 +15,7 @@ public class PlayerInteract : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {            
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 20))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 5))
             {                
                 // If hit NPC start dialogue with them.
                 if (hit.transform.tag == "NPC")

@@ -36,6 +36,6 @@ namespace Quests
     {
         public float experience;
         public int gold;
-        //public float factionIncrease;
+        public float factionIncrease;
     }
 }

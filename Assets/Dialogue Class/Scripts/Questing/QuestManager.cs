@@ -45,6 +45,8 @@ namespace Quests
                     {
                         //Update their stages
                         unlocked.stage = QuestStage.Unlocked;
+
+                        // Display unlocked quests
                     }
                        
                 }
