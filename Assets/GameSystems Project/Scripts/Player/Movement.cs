@@ -140,7 +140,7 @@ using UnityEngine.UI;
                 if (BindingManager.BindingPressed("Jump"))
                 {
                 
-                    rb.AddForce(transform.up, ForceMode.Impulse);
+                    rb.AddForce((transform.up * jumpSpeed), ForceMode.VelocityChange);
                     //_moveDir.y = jumpSpeed * Time.deltaTime;
                 }                
             }
