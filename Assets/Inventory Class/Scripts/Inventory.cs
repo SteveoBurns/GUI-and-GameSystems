@@ -23,7 +23,7 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
-    #region Display Inventory
+    #region Display Inventory ONGUI
     private Vector2 scrollposition;
     private string sortType = "All";
     #endregion

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 namespace Quests
 {
@@ -14,6 +16,80 @@ namespace Quests
         private Dictionary<string, Quest> questDatabase = new Dictionary<string, Quest>();
 
         public List<Quest> GetActiveQuests() => activeQuests;
+
+        [NonSerialized] public Quest selectedQuest = null;
+
+        [Header("Quest UI")]
+        [SerializeField] private Button buttonPrefab;
+        [SerializeField] private GameObject questsGameObject;
+        [SerializeField] private GameObject questsContent;
+
+        [Header("Selected Quest Display")]
+        [SerializeField] private Text questTitle;
+        [SerializeField] private Text questDescription;
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if (questsGameObject.activeSelf)
+                {
+                    questsGameObject.SetActive(false);
+                }
+                else
+                {
+                    questsGameObject.SetActive(true);
+                    DisplayQuestsCanvas();
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
+            }
+        }
+
+        private void DisplayQuestsCanvas()
+        {
+            DestroyAllChildren(questsContent.transform);
+            for (int i = 0; i < quests.Count; i++)
+            {                
+                {
+                    Button buttonGo = Instantiate<Button>(buttonPrefab, questsContent.transform);
+                    Text buttonText = buttonGo.GetComponentInChildren<Text>();
+                    buttonGo.name = quests[i].title + " button";
+                    buttonText.text = quests[i].title;
+
+                    Quest quest = quests[i];
+                    buttonGo.onClick.AddListener(delegate { DisplaySelectedQuestOnCanvas(quest); });
+                }
+            }
+        }
+
+        void DisplaySelectedQuestOnCanvas(Quest _quest)
+        {
+            selectedQuest = _quest;
+
+            if (_quest == null)
+            {                
+                questTitle.text = "";
+                questDescription.text = "";
+            }
+            else
+            {
+                questTitle.text = selectedQuest.title;
+                questDescription.text = $" {selectedQuest.description} \n Required Level: {selectedQuest.requiredLevel} \n Reward: {selectedQuest.reward.gold} ";
+
+            }
+
+
+        }
+
+        void DestroyAllChildren(Transform parent)
+        {
+            foreach (Transform child in parent)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+
 
         //pass a player into this function
         public void UpdateQuest(string _id)

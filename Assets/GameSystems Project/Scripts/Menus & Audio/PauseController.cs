@@ -24,7 +24,8 @@ public class PauseController : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
             UnPauseGame();
         if(!isPaused && !DialogueManager.inDialogue)
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
         
     }
 
