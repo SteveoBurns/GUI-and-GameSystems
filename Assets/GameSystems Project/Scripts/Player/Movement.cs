@@ -22,8 +22,8 @@ using UnityEngine.UI;
         public float walkSpeed, runSpeed, crouchSpeed, jumpSpeed;
         public int baseSpeed;
 
-        private float _gravity = 20.0f;
-        private Vector3 _moveDir;
+        //private float _gravity = 20.0f;
+        //private Vector3 _moveDir;
 
         [Header("Stamina Vars")]
         public int staminaMax;
@@ -31,7 +31,7 @@ using UnityEngine.UI;
         [SerializeField] private Slider staminaSlider;
         [SerializeField] private TMP_Text staminaText;
 
-    private Rigidbody rb;
+        private Rigidbody rb;
         //private CharacterController _charC;
         private Animator characterAnimator;
 
@@ -66,18 +66,7 @@ using UnityEngine.UI;
         baseSpeed = CustomisationGet.speed / 2;
     }
 
-    /// <summary>
-    /// Sets stamina values when loading a saved game
-    /// </summary>
-    //public void SetLoadedValues()
-    //{
-    //    //Sets stamina values when loading a saved game by pulling from playerdataInGame
-    //    staminaMax = PlayerDataInGame.ThePlayerDataInGame.stamina;
-    //    staminaSlider.maxValue = staminaMax;
-    //    stamina = staminaMax;
-    //    baseSpeed = PlayerDataInGame.ThePlayerDataInGame.speed / 2;
-    //}
-
+    
     private void Update()
     {
         Move();
@@ -112,6 +101,7 @@ using UnityEngine.UI;
 
         if (BindingManager.BindingHeld("Left"))
             transform.position -= transform.right * moveSpeed * Time.deltaTime;
+
         //Vector2 controlVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         //Controls character animations
@@ -145,18 +135,17 @@ using UnityEngine.UI;
                     moveSpeed = walkSpeed * baseSpeed;
                     characterAnimator.SetFloat("speed", 1);
                 }
-                _moveDir = transform.TransformDirection(new Vector3(transform.position.x, 0, transform.position.z) * moveSpeed); 
+                //_moveDir = transform.TransformDirection(new Vector3(transform.position.x, 0, transform.position.z) * moveSpeed); 
                 
                 if (BindingManager.BindingPressed("Jump"))
                 {
-                             
-                    rb.AddForce((Vector3.up * jumpSpeed),ForceMode.Impulse);
-                    _moveDir.y = jumpSpeed * Time.deltaTime;
-                   
+                
+                    rb.AddForce(transform.up, ForceMode.Impulse);
+                    //_moveDir.y = jumpSpeed * Time.deltaTime;
                 }                
             }
             
-            _moveDir.y -= _gravity * Time.deltaTime;
+            //_moveDir.y -= _gravity * Time.deltaTime;
             //_charC.Move(_moveDir * Time.deltaTime);
         }
 
