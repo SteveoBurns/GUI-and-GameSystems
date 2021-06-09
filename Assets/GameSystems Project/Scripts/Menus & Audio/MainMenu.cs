@@ -48,6 +48,7 @@ public class MainMenu : MonoBehaviour
         }
 
         resDropdown.AddOptions(resOptions);
+        // Loads any settings saved in playerprefs, or sets it to the current screen resolution
         if (PlayerPrefs.HasKey("Resolution"))
         {
             int resIndex = PlayerPrefs.GetInt("Resolution");
@@ -70,6 +71,9 @@ public class MainMenu : MonoBehaviour
         LoadPlayerPrefs();
     }
 
+    /// <summary>
+    /// Loads all the saved values for settings from playerprefs.
+    /// </summary>
     public void LoadPlayerPrefs()
     {
         if (PlayerPrefs.HasKey("Resolution"))
