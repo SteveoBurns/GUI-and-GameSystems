@@ -112,7 +112,6 @@ using UnityEngine.UI;
             else
             {
                 characterAnimator.SetBool("moving", false);
-
             }
             // can also use characterAnimator.SetBool("moving", controlVector.magnitude >= 0.05f); as the test is true or false
 
@@ -140,7 +139,7 @@ using UnityEngine.UI;
                 if (BindingManager.BindingPressed("Jump"))
                 {
                 
-                    rb.AddForce((transform.up * jumpSpeed), ForceMode.VelocityChange);
+                    rb.AddForce((transform.up * jumpSpeed), ForceMode.Force);
                     //_moveDir.y = jumpSpeed * Time.deltaTime;
                 }                
             }
