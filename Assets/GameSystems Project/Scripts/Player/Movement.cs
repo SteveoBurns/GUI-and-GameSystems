@@ -11,7 +11,7 @@ using UnityEngine.UI;
     /// Controls player movement and stamina usage
     /// </summary>
     [AddComponentMenu("RPG/Player/Movement")]
-    [RequireComponent(typeof(CharacterController))]
+    //[RequireComponent(typeof(CharacterController))]
     public class Movement : MonoBehaviour
     {
         public static Movement TheMovement;
@@ -31,8 +31,8 @@ using UnityEngine.UI;
         [SerializeField] private Slider staminaSlider;
         [SerializeField] private TMP_Text staminaText;
 
-
-        private CharacterController _charC;
+    private Rigidbody rb;
+        //private CharacterController _charC;
         private Animator characterAnimator;
 
     public void Awake()
@@ -47,7 +47,8 @@ using UnityEngine.UI;
 
     private void Start()
     {
-        _charC = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
+       // _charC = GetComponent<CharacterController>();
         characterAnimator = GetComponentInChildren<Animator>();
 
         SetValues();
@@ -98,6 +99,7 @@ using UnityEngine.UI;
 
     private void Move()
     {
+        bool isGrounded = true;
         
         if (BindingManager.BindingHeld("Forward"))
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
@@ -125,15 +127,15 @@ using UnityEngine.UI;
             // can also use characterAnimator.SetBool("moving", controlVector.magnitude >= 0.05f); as the test is true or false
 
             // Controls speeds and animations for Sprint/Crouch/Base and Jump.
-            if (_charC.isGrounded)
+            if (isGrounded)
             {
-                if (Input.GetButton("Sprint") && stamina > 0)
+                if (BindingManager.BindingHeld("Run") && stamina > 0)
                 {
                     moveSpeed = runSpeed * baseSpeed;
                     stamina -= Time.deltaTime;
                     characterAnimator.SetFloat("speed", 2);
                 }
-                else if (Input.GetButton("Crouch"))
+                else if (BindingManager.BindingHeld("Crouch"))
                 {
                     moveSpeed = crouchSpeed * baseSpeed;
                     characterAnimator.SetFloat("speed", 0.5f);
@@ -143,11 +145,13 @@ using UnityEngine.UI;
                     moveSpeed = walkSpeed * baseSpeed;
                     characterAnimator.SetFloat("speed", 1);
                 }
-                _moveDir = transform.TransformDirection(new Vector3(transform.position.x, 0, transform.position.y) * moveSpeed); 
+                _moveDir = transform.TransformDirection(new Vector3(transform.position.x, 0, transform.position.z) * moveSpeed); 
                 
-                if (Input.GetButton("Jump"))
+                if (BindingManager.BindingPressed("Jump"))
                 {
-                    _moveDir.y = jumpSpeed;
+                             
+                    rb.AddForce((Vector3.up * jumpSpeed),ForceMode.Impulse);
+                    _moveDir.y = jumpSpeed * Time.deltaTime;
                    
                 }                
             }

@@ -48,8 +48,18 @@ public class MainMenu : MonoBehaviour
         }
 
         resDropdown.AddOptions(resOptions);
-        resDropdown.value = currentResolution;
-        resDropdown.RefreshShownValue();
+        if (PlayerPrefs.HasKey("Resolution"))
+        {
+            int resIndex = PlayerPrefs.GetInt("Resolution");
+            resDropdown.value = resIndex;
+            resDropdown.RefreshShownValue();
+            SetResolution(resIndex);
+        }
+        else
+        {
+            resDropdown.value = currentResolution;
+            resDropdown.RefreshShownValue();
+        }
         #endregion
 
     }
@@ -65,9 +75,9 @@ public class MainMenu : MonoBehaviour
         if (PlayerPrefs.HasKey("Resolution"))
         {
             int resIndex = PlayerPrefs.GetInt("Resolution");
-            SetResolution(resIndex);            
             resDropdown.value = resIndex;
             resDropdown.RefreshShownValue();
+            SetResolution(resIndex);            
             
         }
         if (PlayerPrefs.HasKey("Quality"))
