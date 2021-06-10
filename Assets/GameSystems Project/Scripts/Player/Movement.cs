@@ -186,5 +186,14 @@ using UnityEngine.UI;
  * The basespeed variable was getting divided by 2 each time it was loaded into the scene, so eventually would bcome 0 and the character would not move.
  * I fixed by multiplying it by 2 when loading the data into PlayerDataInGame to save.
  * 
+ * 9/6
+ * I had to get rid of the character controller so I can use the keybindings to control the movement of the character.
+ * i actually thought the keybindings changed the player settings of unity, hence why I had set it in, but not actualy changed how the inputs are used, oops!
+ * This meant I then needed to change how it controls the animation and also, now I can't get the jump working again.
+ * I've added a rigidbody and still it doesn't seem to work properly. The assessment doesn't need a Jump, so i might just take it out.
+ * 
+ * 10/6
+ * Now the character is clipping through everything, including the terrain. gravity also isn't affecting it. I'm trying to work out what is happening!
+ * 
  */
 

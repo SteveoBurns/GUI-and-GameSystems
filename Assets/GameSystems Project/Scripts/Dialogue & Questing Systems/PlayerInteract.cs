@@ -29,6 +29,13 @@ public class PlayerInteract : MonoBehaviour
                         Cursor.visible = true;
                     }
                 }
+
+                if (hit.transform.tag == "Quest Board")
+                {
+                    Quests.QuestManager.instance.LoadQuests();
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
             }
             
         }

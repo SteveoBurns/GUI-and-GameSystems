@@ -46,6 +46,20 @@ namespace Quests
             }
         }
 
+        public void LoadQuests()
+        {
+            if (questsGameObject.activeSelf)
+            {
+                questsGameObject.SetActive(false);
+            }
+            else
+            {
+                questsGameObject.SetActive(true);
+                DisplayQuestsCanvas();
+                
+            }
+        }
+
         private void DisplayQuestsCanvas()
         {
             DestroyAllChildren(questsContent.transform);
