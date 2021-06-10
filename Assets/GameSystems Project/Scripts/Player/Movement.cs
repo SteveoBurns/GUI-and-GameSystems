@@ -31,7 +31,7 @@ using UnityEngine.UI;
         [SerializeField] private Slider staminaSlider;
         [SerializeField] private TMP_Text staminaText;
 
-        private Rigidbody rb;
+        public Rigidbody rb;
         //private CharacterController _charC;
         private Animator characterAnimator;
 
@@ -47,7 +47,7 @@ using UnityEngine.UI;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
        // _charC = GetComponent<CharacterController>();
         characterAnimator = GetComponentInChildren<Animator>();
 
@@ -89,34 +89,49 @@ using UnityEngine.UI;
     private void Move()
     {
         bool isGrounded = true;
-        
+        characterAnimator.SetBool("moving", false);
+
         if (BindingManager.BindingHeld("Forward"))
+        {
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
+            characterAnimator.SetBool("moving", true);
+        }
 
         if (BindingManager.BindingHeld("Right"))
+        {
             transform.position += transform.right * moveSpeed * Time.deltaTime;
+            characterAnimator.SetBool("moving", true);
+        }
+
 
         if (BindingManager.BindingHeld("Backward"))
+        {
             transform.position -= transform.forward * moveSpeed * Time.deltaTime;
+            characterAnimator.SetBool("moving", true);
+        }
 
         if (BindingManager.BindingHeld("Left"))
+        {
             transform.position -= transform.right * moveSpeed * Time.deltaTime;
+            characterAnimator.SetBool("moving", true);
+        }
 
         //Vector2 controlVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
+        /*
         //Controls character animations
-        if (transform.position.magnitude >= 0.05f)
-            {
-                characterAnimator.SetBool("moving", true);
-            }
-            else
+        if (rb.velocity.magnitude <= 0.01f)
             {
                 characterAnimator.SetBool("moving", false);
             }
+            else
+            {
+                characterAnimator.SetBool("moving", true);
+            }
             // can also use characterAnimator.SetBool("moving", controlVector.magnitude >= 0.05f); as the test is true or false
+        */
 
-            // Controls speeds and animations for Sprint/Crouch/Base and Jump.
-            if (isGrounded)
+        // Controls speeds and animations for Sprint/Crouch/Base and Jump.
+        if (isGrounded)
             {
                 if (BindingManager.BindingHeld("Run") && stamina > 0)
                 {
