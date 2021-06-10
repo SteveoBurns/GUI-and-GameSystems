@@ -46,6 +46,9 @@ namespace Quests
             }
         }
 
+        /// <summary>
+        /// Called from playerInteract
+        /// </summary>
         public void LoadQuests()
         {
             if (questsGameObject.activeSelf)
@@ -63,16 +66,18 @@ namespace Quests
         private void DisplayQuestsCanvas()
         {
             DestroyAllChildren(questsContent.transform);
-            for (int i = 0; i < quests.Count; i++)
-            {                
-                {
+            foreach (Quest quest in quests)
+            {           
+                // Put a test in here to test if the quest hass been unlocked yet??
+                if (quest.stage == QuestStage.Unlocked)
+                {                               
                     Button buttonGo = Instantiate<Button>(buttonPrefab, questsContent.transform);
                     Text buttonText = buttonGo.GetComponentInChildren<Text>();
-                    buttonGo.name = quests[i].title + " button";
-                    buttonText.text = quests[i].title;
+                    buttonGo.name = quest.title + " button";
+                    buttonText.text = quest.title;
 
-                    Quest quest = quests[i];
-                    buttonGo.onClick.AddListener(delegate { DisplaySelectedQuestOnCanvas(quest); });
+                    Quest _quest = quest;
+                    buttonGo.onClick.AddListener(delegate { DisplaySelectedQuestOnCanvas(_quest); });
                 }
             }
         }

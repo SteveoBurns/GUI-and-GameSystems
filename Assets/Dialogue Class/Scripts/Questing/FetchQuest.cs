@@ -4,19 +4,18 @@ using UnityEngine;
 
 namespace Quests
 {
-
-    public class MorgulBladeQuest : Quest
+    public class FetchQuest : Quest
     {
-        public bool foundMorgulBlade = false;
-        
+        public bool gotItem = false;
+
         public override bool CheckQuestCompletion()
         {
-            if (foundMorgulBlade)
+            if (gotItem)
             {
                 return true;
             }
             else
-            return false;
+                return false;
         }
 
         
