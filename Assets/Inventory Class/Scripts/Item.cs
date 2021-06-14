@@ -84,6 +84,13 @@ public class Item
         get { return heal; }
         set { heal = value; }
     }
+    public Player.EquipmentSlot Slot
+    {
+        get { return slot; }
+        set { slot = value; }
+    }
+
+
     #endregion
 
     public Item()

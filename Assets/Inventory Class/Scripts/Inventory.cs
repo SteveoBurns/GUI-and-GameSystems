@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Plr;
 
 public class Inventory : MonoBehaviour
 {
@@ -31,6 +32,23 @@ public class Inventory : MonoBehaviour
     // add function for equiping item?? item.slot !=null? selected item.equipment slot.primary?
     // button then wont work if cant be equipped, display a msg.
     // on Equipment script
+
+    /*
+    public void EquipSelectedItemPrimary()
+    {
+        if (Equipment.primary != null)
+        {
+            inventory.Add(Equipment.primary.item);
+        }
+        else
+        {
+            Equipment.primary.EquipedItem = selectedItem;
+        }
+        // Check if primary slot is null
+        //If an item exists already in the slot, add it back into the inventory
+        //get selected item, set it to equal the primary slots item.
+    }
+    */
 
 
     private void Start()
