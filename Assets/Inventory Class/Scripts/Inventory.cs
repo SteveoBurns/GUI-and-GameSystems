@@ -7,6 +7,8 @@ using Plr;
 
 public class Inventory : MonoBehaviour
 {
+    
+
     [SerializeField] private List<Item> inventory = new List<Item>();
     [SerializeField] private bool showIMGUIInventory = true;
     [NonSerialized] public Item selectedItem = null; // wont show in the inspector
@@ -33,22 +35,14 @@ public class Inventory : MonoBehaviour
     // button then wont work if cant be equipped, display a msg.
     // on Equipment script
 
-    /*
+    
     public void EquipSelectedItemPrimary()
     {
-        if (Equipment.primary != null)
-        {
-            inventory.Add(Equipment.primary.item);
-        }
-        else
-        {
-            Equipment.primary.EquipedItem = selectedItem;
-        }
-        // Check if primary slot is null
-        //If an item exists already in the slot, add it back into the inventory
-        //get selected item, set it to equal the primary slots item.
+        Equipment.TheEquipment.primary.EquipedItem = selectedItem;
+        Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.primary);          
+                
     }
-    */
+    
 
 
     private void Start()

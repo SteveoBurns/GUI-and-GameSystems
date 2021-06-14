@@ -94,6 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67a8a09999fd4824aad35cb8fa32ea7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positionOffset: {x: -0.3, y: -0.05, z: -0.014}
-  rotationOffset: {x: 346.68884, y: 172.98897, z: 99.85379}
+  positionOffset: {x: -0.235, y: 0.193, z: -0.021}
+  rotationOffset: {x: 357.05957, y: 355.77615, z: 260.40073}
   scaleOffset: {x: 0.092291325, y: 0.092291325, z: 0.092291325}

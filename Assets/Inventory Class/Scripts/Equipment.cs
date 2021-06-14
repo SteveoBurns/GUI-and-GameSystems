@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class Equipment : MonoBehaviour
 {
+    public static Equipment TheEquipment;
+
     public EquipmentSlot primary;
     public EquipmentSlot secondary;
     public EquipmentSlot defensive;
 
     private void Awake()
     {
+        if (TheEquipment == null)
+        {
+            TheEquipment = this;
+        }
+        else
+            Destroy(this);
+
         primary.itemEquiped += EquipItem;
         secondary.itemEquiped += EquipItem;
         defensive.itemEquiped += EquipItem;
