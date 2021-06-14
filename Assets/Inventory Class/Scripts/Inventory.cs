@@ -35,6 +35,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        inventoryGameObject.SetActive(false);
         DisplayFilterCanvas();
     }
     private void Update()
