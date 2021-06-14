@@ -21,10 +21,7 @@ using UnityEngine.UI;
         public float moveSpeed;
         public float walkSpeed, runSpeed, crouchSpeed, jumpSpeed;
         public int baseSpeed;
-
-        //private float _gravity = 20.0f;
-        //private Vector3 _moveDir;
-
+            
         [Header("Stamina Vars")]
         public int staminaMax;
         public float stamina;
@@ -32,7 +29,6 @@ using UnityEngine.UI;
         [SerializeField] private TMP_Text staminaText;
 
         public Rigidbody rb;
-        //private CharacterController _charC;
         private Animator characterAnimator;
 
     public void Awake()
@@ -46,9 +42,7 @@ using UnityEngine.UI;
     }
 
     private void Start()
-    {
-        //rb = GetComponent<Rigidbody>();
-       // _charC = GetComponent<CharacterController>();
+    {        
         characterAnimator = GetComponentInChildren<Animator>();
 
         SetValues();
@@ -86,6 +80,9 @@ using UnityEngine.UI;
             #endregion
     }
 
+    /// <summary>
+    /// Controls the character movement using the saved keybinds from BindingManager
+    /// </summary>
     private void Move()
     {
         bool isGrounded = true;
@@ -117,20 +114,7 @@ using UnityEngine.UI;
             characterAnimator.SetBool("moving", true);
         }
 
-        //Vector2 controlVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        /*
-        //Controls character animations
-        if (rb.velocity.magnitude <= 0.01f)
-            {
-                characterAnimator.SetBool("moving", false);
-            }
-            else
-            {
-                characterAnimator.SetBool("moving", true);
-            }
-            // can also use characterAnimator.SetBool("moving", controlVector.magnitude >= 0.05f); as the test is true or false
-        */
-
+        
         // Controls speeds and animations for Sprint/Crouch/Base and Jump.
         if (isGrounded)
             {
@@ -150,18 +134,15 @@ using UnityEngine.UI;
                     moveSpeed = walkSpeed * baseSpeed;
                     characterAnimator.SetFloat("speed", 1);
                 }
-                //_moveDir = transform.TransformDirection(new Vector3(transform.position.x, 0, transform.position.z) * moveSpeed); 
                 
+                // Still not working correctly
                 if (BindingManager.BindingPressed("Jump"))
-                {
-                
+                {                
                     rb.AddForce((transform.up * jumpSpeed), ForceMode.Force);
-                    //_moveDir.y = jumpSpeed * Time.deltaTime;
+                    
                 }                
             }
-            
-            //_moveDir.y -= _gravity * Time.deltaTime;
-            //_charC.Move(_moveDir * Time.deltaTime);
+                       
         }
 
     /// <summary>
