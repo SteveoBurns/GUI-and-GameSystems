@@ -12,6 +12,7 @@ public class MouseLook : MonoBehaviour
         MouseY,
     }
     
+    
     [Header("Rotation Variables")]
     public RotationalAxis axis = RotationalAxis.MouseX;
     [Range(0,200)]

@@ -108,6 +108,7 @@ using UnityEngine.UI;
         {
             transform.position -= transform.forward * moveSpeed * Time.deltaTime;
             characterAnimator.SetBool("moving", true);
+
         }
 
         if (BindingManager.BindingHeld("Left"))
@@ -194,6 +195,8 @@ using UnityEngine.UI;
  * 
  * 10/6
  * Now the character is clipping through everything, including the terrain. gravity also isn't affecting it. I'm trying to work out what is happening!
+ * Apparantly there were 2 colliders on the character, so they werent working properly, now they are.
+ * 
  * 
  */
 
