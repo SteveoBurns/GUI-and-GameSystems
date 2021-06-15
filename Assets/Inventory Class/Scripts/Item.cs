@@ -104,7 +104,7 @@ public class Item
         Name = copyItem.Name;
         Description = copyItem.Description;
         Value = copyItem.Value;
-        Amount = copyItem.Amount;
+        Amount = copyAmount;
         Icon = copyItem.Icon;
         Mesh = copyItem.Mesh;
         Type = copyItem.Type;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Handles character interaction with objects
@@ -8,6 +9,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
+    [SerializeField] private Text pickUpText;
 
     // Update is called once per frame
     void Update()
@@ -36,20 +38,20 @@ public class PlayerInteract : MonoBehaviour
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                 }
+            }
 
+            if (Physics.SphereCast(transform.position, 1f, transform.forward, out hit, 5f))
+            {
                 DroppedItem droppedItem = hit.collider.gameObject.GetComponent<DroppedItem>();
                 if (droppedItem != null)
                 {
+                    pickUpText.text = "Picked up a " + droppedItem.name.TrimEnd();
                     inventory.AddItem(droppedItem.item);
                     Destroy(hit.collider.gameObject);
+
                 }
             }
-             void OnDrawGizmos()
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(transform.position, transform.forward);
-            }
-            
+                         
         }
     }
 
