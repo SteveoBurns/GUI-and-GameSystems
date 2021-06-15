@@ -243,7 +243,7 @@ public class Inventory : MonoBehaviour
         defenceImage.texture = Equipment.TheEquipment.defensive.item.Icon;
     }
       
-    void DisplaySelectedItemOnCanvas(Item _item)
+    public void DisplaySelectedItemOnCanvas(Item _item)
     {
         selectedItem = _item;
 

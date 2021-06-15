@@ -53,10 +53,13 @@ public class DropPickUpItem : MonoBehaviour
         }
 
         inventory.selectedItem.Amount--; // Subtract from the item amount
+        inventory.DisplaySelectedItemOnCanvas(inventory.selectedItem);
         if (inventory.selectedItem.Amount <= 0) // If there is nothing left in the inventory
         {
             inventory.RemoveItem(inventory.selectedItem); //remove it from the inventory
             inventory.selectedItem = null; // make selected item null as there will still be a reference to it
+            inventory.DisplaySelectedItemOnCanvas(inventory.selectedItem);
+
         }
     }
 }

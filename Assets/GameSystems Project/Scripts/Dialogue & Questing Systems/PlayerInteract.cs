@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class PlayerInteract : MonoBehaviour
 {
-    
+    [SerializeField] private Inventory inventory;
 
     // Update is called once per frame
     void Update()
@@ -36,8 +36,21 @@ public class PlayerInteract : MonoBehaviour
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                 }
+
+                DroppedItem droppedItem = hit.collider.gameObject.GetComponent<DroppedItem>();
+                if (droppedItem != null)
+                {
+                    inventory.AddItem(droppedItem.item);
+                    Destroy(hit.collider.gameObject);
+                }
+            }
+             void OnDrawGizmos()
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(transform.position, transform.forward);
             }
             
         }
     }
+
 }

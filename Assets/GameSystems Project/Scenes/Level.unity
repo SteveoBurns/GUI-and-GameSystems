@@ -2269,7 +2269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247463322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.383}
+  m_LocalPosition: {x: 0, y: -0.5, z: 1.383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1978452236}
@@ -2503,6 +2503,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3733769330043609332, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 295120609}
+    - target: {fileID: 3733769330043609332, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EquipSelectedItemDefence
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733769330043609332, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Inventory, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3747417731304487742, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2700,6 +2712,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 769235621}
     - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.size
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
       propertyPath: inventory.Array.data[2].type
       value: 3
       objectReference: {fileID: 0}
@@ -2734,6 +2750,154 @@ PrefabInstance:
     - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
       propertyPath: inventory.Array.data[12].type
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 2a73ed2560797dc45ad4b1ee5c331f4b, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].mesh
+      value: 
+      objectReference: {fileID: 6070177642642273928, guid: 51278ef83bb2a514eb3dd4880a243cab, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].name
+      value: Helmet of Legend
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].slot
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 2a73ed2560797dc45ad4b1ee5c331f4b, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].mesh
+      value: 
+      objectReference: {fileID: 6070177642642273928, guid: c279c23521d7e744e9d14db8a0b02bec, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].name
+      value: Helmet of Readiness
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].slot
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 4dd722466b06d8d499788facd1135a31, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].mesh
+      value: 
+      objectReference: {fileID: 4411508380916598519, guid: b93d76a8d70751e4493f1accdc8d5b78, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].name
+      value: Sword of Awesomeness
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].slot
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 4dd722466b06d8d499788facd1135a31, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].mesh
+      value: 
+      objectReference: {fileID: 4411508380916598519, guid: 2b0225b3490911d4aa06818b86acddab, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].name
+      value: Sword of Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].slot
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].value
+      value: 100000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].value
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].value
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].value
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].armour
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].armour
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].armour
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].damage
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].damage
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].description
+      value: The Legendary Helmet of Legends
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].description
+      value: Be always alert with this helmet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].description
+      value: This sword makes the bearer way more awesome
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].description
+      value: This sword beams with an Inner Light
       objectReference: {fileID: 0}
     - target: {fileID: 5035518059400100626, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
       propertyPath: dropPoint
@@ -12831,6 +12995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77600de2ed05c8e42a0094c4c6be67d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 295120609}
 --- !u!82 &1978452235
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13061,17 +13226,17 @@ MonoBehaviour:
     offset: {x: 0, y: 0, z: 0}
   defensive:
     item:
-      name: 
-      description: 
-      value: 0
-      amount: 0
-      icon: {fileID: 0}
-      mesh: {fileID: 832178320438147840}
-      type: 0
+      name: Helmet of Legend
+      description: The Legendary Helmet of Legends
+      value: 100000000
+      amount: 1
+      icon: {fileID: 2800000, guid: 2a73ed2560797dc45ad4b1ee5c331f4b, type: 3}
+      mesh: {fileID: 6070177642642273928, guid: 51278ef83bb2a514eb3dd4880a243cab, type: 3}
+      type: 2
       damage: 0
-      armour: 0
+      armour: 100
       heal: 0
-      slot: 0
+      slot: 4
     visualLocation: {fileID: 188039999}
     offset: {x: 1.01, y: 0, z: 0}
 --- !u!1 &1985353466
