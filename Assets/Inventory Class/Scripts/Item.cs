@@ -10,6 +10,7 @@ public class Item
     {
         Food,
         Weapon,
+        Helmet,
         Apparel,
         Crafting,
         Ingredients,

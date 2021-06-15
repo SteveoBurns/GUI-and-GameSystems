@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public struct EquipmentSlot
 {
-    [SerializeField] private Item item;
+    [SerializeField] public Item item;
 
     public Item EquipedItem
     {

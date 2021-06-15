@@ -24,6 +24,11 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Text itemName;
     [SerializeField] private Text itemDescription;
 
+    [Header("Equipped Item UI")]
+    [SerializeField] private RawImage primaryImage;
+    [SerializeField] private RawImage secondaryImage;
+    [SerializeField] private RawImage defenceImage;
+
     #endregion
 
     #region Display Inventory ONGUI
@@ -38,11 +43,69 @@ public class Inventory : MonoBehaviour
     
     public void EquipSelectedItemPrimary()
     {
-        Equipment.TheEquipment.primary.EquipedItem = selectedItem;
-        Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.primary);          
+        //Check if the selected item is a weapon
+        if (selectedItem.Type == Item.ItemType.Weapon)
+        {
+            if (Equipment.TheEquipment.primary.EquipedItem != null)
+            {
+                AddItem(Equipment.TheEquipment.primary.EquipedItem,1);
+
+            }
+
+           
+            Equipment.TheEquipment.primary.EquipedItem = selectedItem;
+            Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.primary);
+            primaryImage.texture = selectedItem.Icon;
+            selectedItem.Amount --;
+            if (selectedItem.Amount <=0)
+            {
+                RemoveItem(selectedItem);
+                selectedItem = null;
+            }
+            DisplayItemsCanvas();
+            DisplaySelectedItemOnCanvas(selectedItem);
+                
+            
+        }
+        else
+        {
+            Debug.Log("Can only equip a weapon in this slot");
+        }
                 
     }
-    
+    public void EquipSelectedItemSecondary()
+    {
+        //Check if the selected item is a weapon
+        if (selectedItem.Type == Item.ItemType.Weapon)
+        {
+            if (Equipment.TheEquipment.secondary.EquipedItem != null)
+            {
+                AddItem(Equipment.TheEquipment.secondary.EquipedItem, 1);
+
+            }
+
+
+            Equipment.TheEquipment.secondary.EquipedItem = selectedItem;
+            Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.secondary);
+            secondaryImage.texture = selectedItem.Icon;
+            selectedItem.Amount--;
+            if (selectedItem.Amount <= 0)
+            {
+                RemoveItem(selectedItem);
+                selectedItem = null;
+            }
+            DisplayItemsCanvas();
+            DisplaySelectedItemOnCanvas(selectedItem);
+
+
+        }
+        else
+        {
+            Debug.Log("Can only equip a weapon in this slot");
+        }
+
+    }
+
 
 
     private void Start()
@@ -144,6 +207,9 @@ public class Inventory : MonoBehaviour
                 buttonGo.onClick.AddListener(delegate { DisplaySelectedItemOnCanvas(item); });
             }
         }
+
+        primaryImage.texture = Equipment.TheEquipment.primary.item.Icon;
+        secondaryImage.texture = Equipment.TheEquipment.secondary.item.Icon;
     }
       
     void DisplaySelectedItemOnCanvas(Item _item)
