@@ -49,23 +49,21 @@ public class Inventory : MonoBehaviour
             if (Equipment.TheEquipment.primary.EquipedItem != null)
             {
                 AddItem(Equipment.TheEquipment.primary.EquipedItem,1);
-
             }
 
-           
+            // Set selected item and equip into slot
             Equipment.TheEquipment.primary.EquipedItem = selectedItem;
             Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.primary);
             primaryImage.texture = selectedItem.Icon;
             selectedItem.Amount --;
+            // If item amount reaches zero, remove from inventory.
             if (selectedItem.Amount <=0)
             {
                 RemoveItem(selectedItem);
                 selectedItem = null;
             }
             DisplayItemsCanvas();
-            DisplaySelectedItemOnCanvas(selectedItem);
-                
-            
+            DisplaySelectedItemOnCanvas(selectedItem);            
         }
         else
         {
@@ -78,17 +76,49 @@ public class Inventory : MonoBehaviour
         //Check if the selected item is a weapon
         if (selectedItem.Type == Item.ItemType.Weapon)
         {
+            // if there is a weapon in the slot already then add it back into the inventory
             if (Equipment.TheEquipment.secondary.EquipedItem != null)
             {
                 AddItem(Equipment.TheEquipment.secondary.EquipedItem, 1);
-
             }
 
-
+            // Set selected item and equip into slot
             Equipment.TheEquipment.secondary.EquipedItem = selectedItem;
             Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.secondary);
             secondaryImage.texture = selectedItem.Icon;
             selectedItem.Amount--;
+            // If item amount reaches zero, remove from inventory.
+            if (selectedItem.Amount <= 0)
+            {
+                RemoveItem(selectedItem);
+                selectedItem = null;
+            }
+            DisplayItemsCanvas();
+            DisplaySelectedItemOnCanvas(selectedItem);
+        }
+        else
+        {
+            Debug.Log("Can only equip a weapon in this slot");
+        }
+
+    }
+    public void EquipSelectedItemDefence()
+    {
+        //Check if the selected item is a weapon
+        if (selectedItem.Type == Item.ItemType.Helmet)
+        {
+            if (Equipment.TheEquipment.defensive.EquipedItem != null)
+            {
+                AddItem(Equipment.TheEquipment.defensive.EquipedItem, 1);
+
+            }
+
+            // Set selected item and equip into slot
+            Equipment.TheEquipment.defensive.EquipedItem = selectedItem;
+            Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.defensive);
+            defenceImage.texture = selectedItem.Icon;
+            selectedItem.Amount--;
+            // If item amount reaches zero, remove from inventory.
             if (selectedItem.Amount <= 0)
             {
                 RemoveItem(selectedItem);
@@ -105,7 +135,6 @@ public class Inventory : MonoBehaviour
         }
 
     }
-
 
 
     private void Start()
@@ -208,8 +237,10 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        // create functions for these that also display item information, can then run during equip too.
         primaryImage.texture = Equipment.TheEquipment.primary.item.Icon;
         secondaryImage.texture = Equipment.TheEquipment.secondary.item.Icon;
+        defenceImage.texture = Equipment.TheEquipment.defensive.item.Icon;
     }
       
     void DisplaySelectedItemOnCanvas(Item _item)
