@@ -28,6 +28,9 @@ public class Inventory : MonoBehaviour
     [SerializeField] private RawImage primaryImage;
     [SerializeField] private RawImage secondaryImage;
     [SerializeField] private RawImage defenceImage;
+    [SerializeField] private Text primaryText;
+    [SerializeField] private Text secondaryText;
+    [SerializeField] private Text defenceText;
 
     #endregion
 
@@ -40,7 +43,22 @@ public class Inventory : MonoBehaviour
     // button then wont work if cant be equipped, display a msg.
     // on Equipment script
 
-    
+    private void UpdatePrimarySlot(Item _item)
+    {
+        primaryImage.texture = _item.Icon;
+        primaryText.text = $"{_item.Name} \n Desciption: {_item.Description} \n Damage: {_item.Damage} \n Value: {_item.Value}";
+    }
+    private void UpdateSecondarySlot(Item _item)
+    {
+        secondaryImage.texture = _item.Icon;
+        secondaryText.text = $"{_item.Name} \n Desciption: {_item.Description} \n Damage: {_item.Damage} \n Value: {_item.Value}";
+    }
+    private void UpdateDefenceSlot(Item _item)
+    {
+        defenceImage.texture = _item.Icon;
+        defenceText.text = $"{_item.Name} \n Desciption: {_item.Description} \n Armour: {_item.Armour} \n Value: {_item.Value}";
+    }
+
     public void EquipSelectedItemPrimary()
     {
         //Check if the selected item is a weapon
@@ -54,7 +72,8 @@ public class Inventory : MonoBehaviour
             // Set selected item and equip into slot
             Equipment.TheEquipment.primary.EquipedItem = selectedItem;
             Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.primary);
-            primaryImage.texture = selectedItem.Icon;
+
+            UpdatePrimarySlot(selectedItem);
             selectedItem.Amount --;
             // If item amount reaches zero, remove from inventory.
             if (selectedItem.Amount <=0)
@@ -85,7 +104,8 @@ public class Inventory : MonoBehaviour
             // Set selected item and equip into slot
             Equipment.TheEquipment.secondary.EquipedItem = selectedItem;
             Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.secondary);
-            secondaryImage.texture = selectedItem.Icon;
+
+            UpdateSecondarySlot(selectedItem);
             selectedItem.Amount--;
             // If item amount reaches zero, remove from inventory.
             if (selectedItem.Amount <= 0)
@@ -116,7 +136,8 @@ public class Inventory : MonoBehaviour
             // Set selected item and equip into slot
             Equipment.TheEquipment.defensive.EquipedItem = selectedItem;
             Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.defensive);
-            defenceImage.texture = selectedItem.Icon;
+
+            UpdateDefenceSlot(selectedItem);
             selectedItem.Amount--;
             // If item amount reaches zero, remove from inventory.
             if (selectedItem.Amount <= 0)
@@ -237,10 +258,11 @@ public class Inventory : MonoBehaviour
             }
         }
 
-        // create functions for these that also display item information, can then run during equip too.
-        primaryImage.texture = Equipment.TheEquipment.primary.item.Icon;
-        secondaryImage.texture = Equipment.TheEquipment.secondary.item.Icon;
-        defenceImage.texture = Equipment.TheEquipment.defensive.item.Icon;
+        UpdatePrimarySlot(Equipment.TheEquipment.primary.item);
+        UpdateSecondarySlot(Equipment.TheEquipment.secondary.item);
+        UpdateDefenceSlot(Equipment.TheEquipment.defensive.item);
+
+        
     }
       
     public void DisplaySelectedItemOnCanvas(Item _item)

@@ -45,7 +45,7 @@ public class PlayerInteract : MonoBehaviour
                 DroppedItem droppedItem = hit.collider.gameObject.GetComponent<DroppedItem>();
                 if (droppedItem != null)
                 {
-                    pickUpText.text = "Picked up a " + droppedItem.name.TrimEnd();
+                    pickUpText.text = "Picked up a " + droppedItem.name; // Can I trim the (Clone) off the end of the name?
                     inventory.AddItem(droppedItem.item);
                     Destroy(hit.collider.gameObject);
 
