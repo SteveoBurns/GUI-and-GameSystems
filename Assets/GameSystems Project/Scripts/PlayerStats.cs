@@ -73,6 +73,9 @@ public class PlayerStats : MonoBehaviour
         nameText.text = characterName;
         deathPanel.SetActive(false);
         alreadyDead = false;
+
+        // Don't think this is working properly as potions and food can increase above the max amount.
+        health = Mathf.Clamp(health, 0, healthMax);
     }
 
     // Update is called once per frame

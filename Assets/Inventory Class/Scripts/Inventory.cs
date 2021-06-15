@@ -40,10 +40,7 @@ public class Inventory : MonoBehaviour
     private string sortType = "All";
     #endregion
 
-    // add function for equiping item?? item.slot !=null? selected item.equipment slot.primary?
-    // button then wont work if cant be equipped, display a msg.
-    // on Equipment script
-
+    
     //Updates image and description of item equip slots
     #region Update Slots
     private void UpdatePrimarySlot(Item _item)
@@ -164,9 +161,48 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
+    /// <summary>
+    /// Only shows the Use Item button when selecting a usable item type
+    /// </summary>    
+    private void ShowUseItemButton(Item _item)
+    {
+        switch (_item.Type)
+        {
+            case Item.ItemType.Food:
+                useButton.gameObject.SetActive(true);
+                useButton.enabled = true;
+                break;
+            case Item.ItemType.Potions:
+                useButton.gameObject.SetActive(true);
+                useButton.enabled = true;
+                break;
+            default:
+                useButton.gameObject.SetActive(false);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Function for using an item. Put on the Use Item button
+    /// </summary>
     public void UseItem()
     {
         if (selectedItem.Type == Item.ItemType.Food)
+        {
+            PlayerStats.ThePlayerStats.health += selectedItem.Heal;
+            // Removes 1 from the item amount
+            selectedItem.Amount--;
+            // If item amount drops to 0 remove from the inventory.
+            if (selectedItem.Amount <= 0)
+            {
+                RemoveItem(selectedItem);
+                selectedItem = null;
+            }
+            //Update display
+            DisplayItemsCanvas();
+            DisplaySelectedItemOnCanvas(selectedItem);
+        }
+        else if (selectedItem.Type == Item.ItemType.Potions)
         {
             PlayerStats.ThePlayerStats.health += selectedItem.Heal;
             selectedItem.Amount--;
@@ -205,6 +241,7 @@ public class Inventory : MonoBehaviour
                 Cursor.visible = true;
             }
         }
+        
     }
     private void DisplayFilterCanvas()
     {
@@ -237,11 +274,20 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds the passed item into the inventory
+    /// </summary>
+    /// <param name="_item">Item to add</param>
     public void AddItem(Item _item)
     {
         AddItem(_item, _item.Amount);
     }
 
+    /// <summary>
+    /// Adds Item and amount to inventory
+    /// </summary>
+    /// <param name="_item">Item to add</param>
+    /// <param name="count">Item amount</param>
     public void AddItem(Item _item, int count)
     {
         Item foundItem = inventory.Find((x) => x.Name == _item.Name);
@@ -260,6 +306,10 @@ public class Inventory : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Removes passed item from inventory and updates displays.
+    /// </summary>
+    /// <param name="_item">Item to remove</param>
     public void RemoveItem(Item _item)
     {
         if (inventory.Contains(_item))
@@ -268,6 +318,9 @@ public class Inventory : MonoBehaviour
         DisplaySelectedItemOnCanvas(selectedItem);
     }
 
+    /// <summary>
+    /// Used when opening the inventory to display content of inventory and equip slots.
+    /// </summary>
     private void DisplayItemsCanvas()
     {
         DestroyAllChildren(inventoryContent.transform);
@@ -291,7 +344,10 @@ public class Inventory : MonoBehaviour
 
         
     }
-      
+    
+    /// <summary>
+    /// Used to update the selected item display area.
+    /// </summary>
     public void DisplaySelectedItemOnCanvas(Item _item)
     {
         selectedItem = _item;
@@ -306,13 +362,14 @@ public class Inventory : MonoBehaviour
         {
             itemImage.texture = selectedItem.Icon;
             itemName.text = selectedItem.Name;
-            itemDescription.text =$" {selectedItem.Description} \n cost: {selectedItem.Value} \n amount: {selectedItem.Amount} \n Damage: {selectedItem.Damage} " +
-                $"\n Armour: {selectedItem.Armour} \n Heal Amount: {selectedItem.Heal}";
+            itemDescription.text =$" {selectedItem.Description} \n Cost: {selectedItem.Value}  \n Damage: {selectedItem.Damage} " +
+                $"\n Armour: {selectedItem.Armour} \n Heal Amount: {selectedItem.Heal} \n Amount: {selectedItem.Amount}";
 
+            ShowUseItemButton(selectedItem);
         }
-
         
     }
+
     #region On GUI
     
     private void OnGUI()
@@ -375,7 +432,8 @@ public class Inventory : MonoBehaviour
      * Maybe need to defaul the item number to 1 when adding to inventory??
      * - Yep, needed to set _item.amount to 1, before adding it back into the inventory in AddItem function.
      * 
-     * 
+     * 15/6
+     * When using potions and food the health can raise higher than the max? I've tried to clamp it, but I don't think it is working.
      * 
      */
 

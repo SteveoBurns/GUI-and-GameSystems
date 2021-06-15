@@ -40,6 +40,7 @@ public class PlayerInteract : MonoBehaviour
                 }
             }
 
+            // Casts a shpere to pick up dropped items.
             if (Physics.SphereCast(transform.position, 1f, transform.forward, out hit, 5f))
             {
                 DroppedItem droppedItem = hit.collider.gameObject.GetComponent<DroppedItem>();

@@ -7,27 +7,10 @@ public class DropPickUpItem : MonoBehaviour
     [SerializeField] private Inventory inventory;
     [SerializeField] private Transform dropPoint;
     [SerializeField] private Camera cameraItem;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            
-            Ray ray = cameraItem.ViewportPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-            RaycastHit hitInfo;
-            if (Physics.Raycast(ray, out hitInfo, 50f))
-            {
-                DroppedItem droppedItem = hitInfo.collider.gameObject.GetComponent<DroppedItem>();
-                if (droppedItem != null)
-                {
-                    inventory.AddItem(droppedItem.item);
-                    Destroy(hitInfo.collider.gameObject);
-                }
-            }
-        }
-    }
-
-
+    
+    /// <summary>
+    /// Drops the selected item. Spawns the items mesh and attaches the DroppedItem script.
+    /// </summary>
     public void DropItem()
     {
         if (inventory.selectedItem == null)
@@ -53,12 +36,12 @@ public class DropPickUpItem : MonoBehaviour
         }
 
         inventory.selectedItem.Amount--; // Subtract from the item amount
-        inventory.DisplaySelectedItemOnCanvas(inventory.selectedItem);
+        inventory.DisplaySelectedItemOnCanvas(inventory.selectedItem); // Update displayed item
         if (inventory.selectedItem.Amount <= 0) // If there is nothing left in the inventory
         {
             inventory.RemoveItem(inventory.selectedItem); //remove it from the inventory
             inventory.selectedItem = null; // make selected item null as there will still be a reference to it
-            inventory.DisplaySelectedItemOnCanvas(inventory.selectedItem);
+            inventory.DisplaySelectedItemOnCanvas(inventory.selectedItem); //Update displayed item
 
         }
     }
