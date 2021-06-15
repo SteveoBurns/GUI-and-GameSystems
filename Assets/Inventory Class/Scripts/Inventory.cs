@@ -23,6 +23,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private RawImage itemImage;
     [SerializeField] private Text itemName;
     [SerializeField] private Text itemDescription;
+    [SerializeField] private Button useButton;
 
     [Header("Equipped Item UI")]
     [SerializeField] private RawImage primaryImage;
@@ -43,6 +44,8 @@ public class Inventory : MonoBehaviour
     // button then wont work if cant be equipped, display a msg.
     // on Equipment script
 
+    //Updates image and description of item equip slots
+    #region Update Slots
     private void UpdatePrimarySlot(Item _item)
     {
         primaryImage.texture = _item.Icon;
@@ -58,7 +61,10 @@ public class Inventory : MonoBehaviour
         defenceImage.texture = _item.Icon;
         defenceText.text = $"{_item.Name} \n Desciption: {_item.Description} \n Armour: {_item.Armour} \n Value: {_item.Value}";
     }
+    #endregion
 
+    // Functions for equipping the selected item into each slot
+    #region Equip Item Functions
     public void EquipSelectedItemPrimary()
     {
         //Check if the selected item is a weapon
@@ -156,7 +162,27 @@ public class Inventory : MonoBehaviour
         }
 
     }
+    #endregion
 
+    public void UseItem()
+    {
+        if (selectedItem.Type == Item.ItemType.Food)
+        {
+            PlayerStats.ThePlayerStats.health += selectedItem.Heal;
+            selectedItem.Amount--;
+            if (selectedItem.Amount <= 0)
+            {
+                RemoveItem(selectedItem);
+                selectedItem = null;
+            }
+            DisplayItemsCanvas();
+            DisplaySelectedItemOnCanvas(selectedItem);
+        }
+        else
+        {
+            Debug.Log("Can't use that Item");
+        }
+    }
 
     private void Start()
     {

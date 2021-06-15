@@ -52,7 +52,17 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private AudioSource deathSound;
     private bool alreadyDead = false;
-    
+
+    private void Awake()
+    {
+        if (ThePlayerStats == null)
+        {
+            ThePlayerStats = this;
+        }
+        else
+            Destroy(this);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
