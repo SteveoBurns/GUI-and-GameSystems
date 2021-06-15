@@ -135,7 +135,7 @@ public class Inventory : MonoBehaviour
         {
             if (Equipment.TheEquipment.defensive.EquipedItem != null)
             {
-                AddItem(Equipment.TheEquipment.defensive.EquipedItem, 1);
+                AddItem(Equipment.TheEquipment.defensive.EquipedItem);
 
             }
 
@@ -248,6 +248,7 @@ public class Inventory : MonoBehaviour
 
         if (foundItem == null)
         {
+            _item.Amount = 1;
             inventory.Add(_item);
         }
         else
@@ -305,7 +306,8 @@ public class Inventory : MonoBehaviour
         {
             itemImage.texture = selectedItem.Icon;
             itemName.text = selectedItem.Name;
-            itemDescription.text =$" {selectedItem.Description} \n cost: {selectedItem.Value} \n amount: {selectedItem.Amount} ";
+            itemDescription.text =$" {selectedItem.Description} \n cost: {selectedItem.Value} \n amount: {selectedItem.Amount} \n Damage: {selectedItem.Damage} " +
+                $"\n Armour: {selectedItem.Armour} \n Heal Amount: {selectedItem.Heal}";
 
         }
 
@@ -366,7 +368,16 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
-
+    /*Journal
+     * 15/6
+     * Having trouble when adding the equipped item back into the inventory it changes the amount to zero, not 1.
+     * and then each subsequent time you do it it keeps taking 1 off the number?? 
+     * Maybe need to defaul the item number to 1 when adding to inventory??
+     * - Yep, needed to set _item.amount to 1, before adding it back into the inventory in AddItem function.
+     * 
+     * 
+     * 
+     */
 
 
 
