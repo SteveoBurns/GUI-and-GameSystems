@@ -2492,6 +2492,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 217533890}
     m_Modifications:
+    - target: {fileID: 5035518057810537024, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518057810537024, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5035518058397032200, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2580,6 +2588,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory Group
       objectReference: {fileID: 0}
+    - target: {fileID: 5035518058653930532, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518058653930532, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518058653930532, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518058653930532, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518058715414825, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518058715414825, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5035518058981485021, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2591,6 +2623,339 @@ PrefabInstance:
     - target: {fileID: 5035518058981485021, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.size
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[4].mesh
+      value: 
+      objectReference: {fileID: 2369025578119135362, guid: c190384bbe727fc42a52b775b936f49a, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[4].type
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[7].heal
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[7].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 11eb22b7b90ea2f419efd471e64b39e9, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[7].mesh
+      value: 
+      objectReference: {fileID: 8332847411502475318, guid: 6a873346233feb3459ecfa910d89b0c1, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[7].name
+      value: Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[7].type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[8].heal
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[8].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 25119424e9da243408665211643b7dfe, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[8].mesh
+      value: 
+      objectReference: {fileID: 2181015850107336234, guid: 6098ba90924f4b349b67f9d0b0c98d3a, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[8].name
+      value: Potion of Health
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[8].type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[9].heal
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[9].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 8c31c7800be14b64b92776eb9c59f87b, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[9].mesh
+      value: 
+      objectReference: {fileID: 8401066371091826656, guid: f8a44e009701504499c3f15302146787, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[9].name
+      value: Axe of Carnage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[9].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[10].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 94b4f8897dcf9d24b90878ef2a33f05f, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[10].mesh
+      value: 
+      objectReference: {fileID: 6079526630415477182, guid: c107b7c6b5930f14ab7c75ba89eb31f6, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[10].name
+      value: Crystal of Lightning
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[10].type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[11].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 6423dc5142eb467439dc0f894c6c1450, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[11].mesh
+      value: 
+      objectReference: {fileID: 6651608890628428571, guid: 63c1710bdc6b12448af8f2756e326b09, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[11].name
+      value: The One Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[11].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[12].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 2a73ed2560797dc45ad4b1ee5c331f4b, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[12].mesh
+      value: 
+      objectReference: {fileID: 6070177642642273928, guid: 51278ef83bb2a514eb3dd4880a243cab, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[12].name
+      value: Helmet of Legend
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[12].type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].mesh
+      value: 
+      objectReference: {fileID: 6070177642642273928, guid: c279c23521d7e744e9d14db8a0b02bec, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].name
+      value: Helmet of Readiness
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: 4dd722466b06d8d499788facd1135a31, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].mesh
+      value: 
+      objectReference: {fileID: 4411508380916598519, guid: b93d76a8d70751e4493f1accdc8d5b78, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].name
+      value: Sword of Awesomeness
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].mesh
+      value: 
+      objectReference: {fileID: 4411508380916598519, guid: 2b0225b3490911d4aa06818b86acddab, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].name
+      value: Sword of Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: ac9cbfacedface1479adcbbe2f2107cf, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].mesh
+      value: 
+      objectReference: {fileID: 6651608890628428571, guid: 63c1710bdc6b12448af8f2756e326b09, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].name
+      value: Money
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[17].icon
+      value: 
+      objectReference: {fileID: 2800000, guid: ac9cbfacedface1479adcbbe2f2107cf, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[17].mesh
+      value: 
+      objectReference: {fileID: 6651608890628428571, guid: 63c1710bdc6b12448af8f2756e326b09, type: 3}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[17].name
+      value: Money
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[17].type
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[7].value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[8].value
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[9].value
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[10].value
+      value: 1001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[11].value
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[12].value
+      value: 100000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].value
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].value
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].value
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[17].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[7].amount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[9].amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[9].damage
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[10].damage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[11].damage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[12].amount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[12].armour
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].armour
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].armour
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].damage
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].damage
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].amount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].damage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[17].amount
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[17].damage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[7].description
+      value: It was an animal of some kind
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[8].description
+      value: Heals you
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[9].description
+      value: Release carnage on your enemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[10].description
+      value: Call forth the wrath of Thor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[11].description
+      value: One ring to rule them all, one ring to find them, one ring to bring
+        them all and in the darkness bind them
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[12].description
+      value: The Legendary Helmet of Legends
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[13].description
+      value: Be always alert with this helmet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[14].description
+      value: This sword makes the bearer way more awesome
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[15].description
+      value: This sword beams with an Inner Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[16].description
+      value: it's money, for buying things
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059400100624, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: inventory.Array.data[17].description
+      value: it's money, for buying things
       objectReference: {fileID: 0}
     - target: {fileID: 5035518059400100626, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
       propertyPath: dropPoint
@@ -2606,6 +2971,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5035518059490085579, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035518059490085579, guid: 1dfa3cc52beca6648b50d573f9e7aaff, type: 3}
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12914,7 +13283,6 @@ MonoBehaviour:
       damage: 35
       armour: 0
       heal: 0
-      slot: 4
     visualLocation: {fileID: 233187104}
     offset: {x: 0, y: 0, z: 0}
   secondary:
@@ -12929,7 +13297,6 @@ MonoBehaviour:
       damage: 50
       armour: 0
       heal: 0
-      slot: 4
     visualLocation: {fileID: 1444115400}
     offset: {x: 0, y: 0, z: 0}
   defensive:
@@ -12944,7 +13311,6 @@ MonoBehaviour:
       damage: 0
       armour: 100
       heal: 0
-      slot: 4
     visualLocation: {fileID: 188039999}
     offset: {x: 1.01, y: 0, z: 0}
 --- !u!1 &1985353466

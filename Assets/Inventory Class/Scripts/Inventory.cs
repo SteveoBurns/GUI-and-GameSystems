@@ -74,7 +74,7 @@ public class Inventory : MonoBehaviour
 
             // Set selected item and equip into slot
             Equipment.TheEquipment.primary.EquipedItem = selectedItem;
-            Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.primary);
+            
 
             UpdatePrimarySlot(selectedItem);
             selectedItem.Amount --;
@@ -106,7 +106,7 @@ public class Inventory : MonoBehaviour
 
             // Set selected item and equip into slot
             Equipment.TheEquipment.secondary.EquipedItem = selectedItem;
-            Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.secondary);
+            
 
             UpdateSecondarySlot(selectedItem);
             selectedItem.Amount--;
@@ -138,7 +138,7 @@ public class Inventory : MonoBehaviour
 
             // Set selected item and equip into slot
             Equipment.TheEquipment.defensive.EquipedItem = selectedItem;
-            Equipment.TheEquipment.EquipItem(Equipment.TheEquipment.defensive);
+            
 
             UpdateDefenceSlot(selectedItem);
             selectedItem.Amount--;
