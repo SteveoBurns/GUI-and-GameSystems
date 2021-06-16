@@ -15,8 +15,7 @@ public class Item
         Crafting,
         Ingredients,
         Potions,
-        Scrolls,
-        Quest,
+        Scrolls,        
         Money
     }
 
@@ -30,8 +29,7 @@ public class Item
     [SerializeField] private ItemType type;
     [SerializeField] private int damage;
     [SerializeField] private int armour;
-    [SerializeField] private int heal;
-    [SerializeField] private Player.EquipmentSlot slot;
+    [SerializeField] private int heal;    
     #endregion
 
     #region Public Properties
@@ -85,11 +83,7 @@ public class Item
         get { return heal; }
         set { heal = value; }
     }
-    public Player.EquipmentSlot Slot
-    {
-        get { return slot; }
-        set { slot = value; }
-    }
+    
 
 
     #endregion

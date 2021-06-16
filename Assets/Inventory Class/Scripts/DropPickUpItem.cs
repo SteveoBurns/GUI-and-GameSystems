@@ -6,7 +6,7 @@ public class DropPickUpItem : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
     [SerializeField] private Transform dropPoint;
-    [SerializeField] private Camera cameraItem;
+    //[SerializeField] private Camera cameraItem;
     
     /// <summary>
     /// Drops the selected item. Spawns the items mesh and attaches the DroppedItem script.

@@ -46,7 +46,7 @@ public class PlayerInteract : MonoBehaviour
                 DroppedItem droppedItem = hit.collider.gameObject.GetComponent<DroppedItem>();
                 if (droppedItem != null)
                 {
-                    pickUpText.text = "Picked up a " + droppedItem.name; // Can I trim the (Clone) off the end of the name?
+                    pickUpText.text = "Picked up a " + droppedItem.name.Substring(0, droppedItem.name.Length - 7); // Can I trim the (Clone) off the end of the name?
                     inventory.AddItem(droppedItem.item);
                     Destroy(hit.collider.gameObject);
 
@@ -57,3 +57,9 @@ public class PlayerInteract : MonoBehaviour
     }
 
 }
+/*Journal
+ * 15/6
+ * Wanted to try and trim the name of the collected item to omit "(clone)" from the end of it. Tried Trim and TrimEnd but could'nt make it work by using characters.
+ * FIX - Used .Substring and then specified name.length - 7 which has worked, Thanks James.
+ * 
+ */
