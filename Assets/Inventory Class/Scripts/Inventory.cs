@@ -7,8 +7,6 @@ using Plr;
 
 public class Inventory : MonoBehaviour
 {
-    
-
     [SerializeField] private List<Item> inventory = new List<Item>();
     [SerializeField] private bool showIMGUIInventory = true;
     [NonSerialized] public Item selectedItem = null; // wont show in the inspector
@@ -225,6 +223,7 @@ public class Inventory : MonoBehaviour
         inventoryGameObject.SetActive(false);
         DisplayFilterCanvas();
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -243,6 +242,10 @@ public class Inventory : MonoBehaviour
         }
         
     }
+
+    /// <summary>
+    /// Displays all the Item Types as filter buttons, and runs the ChangeFilter Function when clicked.
+    /// </summary>
     private void DisplayFilterCanvas()
     {
         List<string> itemType = new List<string>(Enum.GetNames(typeof(Item.ItemType)));
@@ -261,11 +264,21 @@ public class Inventory : MonoBehaviour
 
         }
     }
+
+    /// <summary>
+    /// Set sortType to the passed string and runs DisplayItemsCanvas to refresh shown items in inventory. 
+    /// </summary>
+    /// <param name="itemType">item type</param>
     private void ChangeFilter(string itemType)
     {
         sortType = itemType;
         DisplayItemsCanvas();
     }
+
+    /// <summary>
+    /// Destroys all transforms within the passed parent transform.
+    /// </summary>
+    /// <param name="parent">parent transform</param>
     void DestroyAllChildren(Transform parent)
     {
         foreach (Transform child in parent)

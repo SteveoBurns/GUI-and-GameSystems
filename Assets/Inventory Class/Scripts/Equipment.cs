@@ -19,6 +19,7 @@ public class Equipment : MonoBehaviour
         else
             Destroy(this);
 
+        //adding this function to the equipmentslot set event.
         primary.itemEquiped += EquipItem;
         secondary.itemEquiped += EquipItem;
         defensive.itemEquiped += EquipItem;
@@ -31,6 +32,10 @@ public class Equipment : MonoBehaviour
         EquipItem(defensive);
     }
 
+    /// <summary>
+    /// This function runs when setting the equipment slots item. It also sets the mesh to the location.
+    /// </summary>
+    /// <param name="item">Which equipment slot</param>
     public void EquipItem(EquipmentSlot item)
     {
         if (item.visualLocation == null)

@@ -7,6 +7,7 @@ public struct EquipmentSlot
 {
     [SerializeField] public Item item;
 
+    // Property for setting the item for this slot. Invokes the delegate which calls the function on equipment for setting the mesh.
     public Item EquipedItem
     {
         get
