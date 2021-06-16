@@ -12,7 +12,7 @@ namespace Quests
 
         public List<Quest> quests = new List<Quest>();
 
-        private List<Quest> activeQuests = new List<Quest>();
+        public List<Quest> activeQuests = new List<Quest>();
         private Dictionary<string, Quest> questDatabase = new Dictionary<string, Quest>();
 
         public List<Quest> GetActiveQuests() => activeQuests;
@@ -21,8 +21,9 @@ namespace Quests
 
         [Header("Quest UI")]
         [SerializeField] private Button buttonPrefab;
-        [SerializeField] private GameObject questsGameObject;
+        [SerializeField] private GameObject activeQuestsGameObject;
         [SerializeField] private GameObject questsContent;
+        [SerializeField] private GameObject questUIButtons;
 
         [Header("Selected Quest Display")]
         [SerializeField] private Text questTitle;
@@ -32,37 +33,51 @@ namespace Quests
         {
             if (Input.GetKeyDown(KeyCode.Tab))
             {
-                if (questsGameObject.activeSelf)
+                if (activeQuestsGameObject.activeSelf)
                 {
-                    questsGameObject.SetActive(false);
+                    activeQuestsGameObject.SetActive(false);
                 }
                 else
                 {
-                    questsGameObject.SetActive(true);
+                    activeQuestsGameObject.SetActive(true);
                     DisplayQuestsCanvas();
+                    // Set buttons unactive when accessing quests with tab.
+                    questUIButtons.SetActive(false);
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                 }
             }
         }
 
+        public void AcceptQuestButton()
+        {
+            AcceptQuest(selectedQuest.title);
+        }
+
+
+
         /// <summary>
         /// Called from playerInteract
         /// </summary>
         public void LoadQuests()
         {
-            if (questsGameObject.activeSelf)
+            if (activeQuestsGameObject.activeSelf)
             {
-                questsGameObject.SetActive(false);
+                activeQuestsGameObject.SetActive(false);
             }
             else
             {
-                questsGameObject.SetActive(true);
+                activeQuestsGameObject.SetActive(true);
+                //Set the buttons visable when accessing quests from the quest board
+                questUIButtons.SetActive(true);
                 DisplayQuestsCanvas();
                 
             }
         }
 
+        /// <summary>
+        /// Displays unlocked quests to the canvas
+        /// </summary>
         private void DisplayQuestsCanvas()
         {
             DestroyAllChildren(questsContent.transform);
@@ -82,6 +97,10 @@ namespace Quests
             }
         }
 
+        /// <summary>
+        /// Displays the selected quest to the canvas
+        /// </summary>
+        /// <param name="_quest"></param>
         void DisplaySelectedQuestOnCanvas(Quest _quest)
         {
             selectedQuest = _quest;
@@ -101,6 +120,10 @@ namespace Quests
 
         }
 
+        /// <summary>
+        /// Destroys all transforms in the parent transform
+        /// </summary>
+        /// <param name="parent">parent transform</param>
         void DestroyAllChildren(Transform parent)
         {
             foreach (Transform child in parent)
@@ -142,9 +165,10 @@ namespace Quests
                         unlocked.stage = QuestStage.Unlocked;
 
                         // Display unlocked quests
-                    }
-                       
+                        DisplayQuestsCanvas();
+                    }                       
                 }
+
 
                 //Give the player their reward
                 // quest.reward
