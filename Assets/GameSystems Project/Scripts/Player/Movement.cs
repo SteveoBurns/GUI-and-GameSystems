@@ -7,32 +7,36 @@ using UnityEngine.UI;
 
 
 
-    /// <summary>
-    /// Controls player movement and stamina usage
-    /// </summary>
-    [AddComponentMenu("RPG/Player/Movement")]
-    //[RequireComponent(typeof(CharacterController))]
-    public class Movement : MonoBehaviour
-    {
-        public static Movement TheMovement;
-        
+/// <summary>
+/// Controls player movement and stamina usage
+/// </summary>
+[AddComponentMenu("RPG/Player/Movement")]
+//[RequireComponent(typeof(CharacterController))]
+public class Movement : MonoBehaviour
+{
+    public static Movement TheMovement;
 
-        [Header("Speed Vars")]
-        public float moveSpeed;
-        public float walkSpeed, runSpeed, crouchSpeed, jumpSpeed;
-        public int baseSpeed;
-            
-        [Header("Stamina Vars")]
-        public int staminaMax;
-        public float stamina;
-        [SerializeField] private Slider staminaSlider;
-        [SerializeField] private TMP_Text staminaText;
 
-        public Rigidbody rb;
-        private Animator characterAnimator;
+    [Header("Speed Vars")]
+    public float moveSpeed;
+    public float walkSpeed, runSpeed, crouchSpeed, jumpSpeed;
+    public int baseSpeed;
+
+    [Header("Stamina Vars")]
+    public int staminaMax;
+    public float stamina;
+    [SerializeField] private Slider staminaSlider;
+    [SerializeField] private TMP_Text staminaText;
+
+    public Rigidbody rb;
+    private Animator characterAnimator;
+
+    Collider _collider;
+    bool isGrounded;
 
     public void Awake()
     {
+        _collider = GetComponent<Collider>();
         if (TheMovement == null)
         {
             TheMovement = this;
@@ -42,7 +46,7 @@ using UnityEngine.UI;
     }
 
     private void Start()
-    {        
+    {
         characterAnimator = GetComponentInChildren<Animator>();
 
         SetValues();
@@ -60,24 +64,36 @@ using UnityEngine.UI;
         baseSpeed = CustomisationGet.speed / 2;
     }
 
-    
+    private void FixedUpdate()
+    {
+        isGrounded = CheckIsGrounded();
+    }
+
     private void Update()
     {
         Move();
         LevelUp();
-        
+
         #region Stamina Bar update and regen
-            // Updates stamina slider and value text
-            staminaSlider.value = stamina;            
-            staminaText.text = "Stamina: " + Mathf.RoundToInt(stamina) + "/" + staminaMax;
+        // Updates stamina slider and value text
+        staminaSlider.value = stamina;
+        staminaText.text = "Stamina: " + Mathf.RoundToInt(stamina) + "/" + staminaMax;
 
-            if (stamina < staminaMax && !Input.GetButton("Sprint"))
-            {
-                // Regenerate stamina if not using it
-                stamina += Time.deltaTime;
-            }
+        if (stamina < staminaMax && !Input.GetButton("Sprint"))
+        {
+            // Regenerate stamina if not using it
+            stamina += Time.deltaTime;
+        }
 
-            #endregion
+        #endregion
+    }
+
+    bool CheckIsGrounded()
+    {
+        float DisstanceToTheGround = _collider.bounds.extents.y;
+        Debug.DrawRay(transform.position, Vector3.down * (DisstanceToTheGround + 0.2f));
+        return Physics.Raycast(transform.position, Vector3.down, DisstanceToTheGround + 0.2f);
+       
     }
 
     /// <summary>
@@ -85,19 +101,27 @@ using UnityEngine.UI;
     /// </summary>
     private void Move()
     {
-        bool isGrounded = true;
+        print(isGrounded);
         characterAnimator.SetBool("moving", false);
+
+        Vector3 gravity = Physics.gravity * 4f;
+        if(isGrounded)
+        {
+            gravity = Vector3.down * 2f;
+        }
+
 
         if (BindingManager.BindingHeld("Forward"))
         {
-            rb.AddForce(transform.forward * moveSpeed);
+            rb.AddForce(transform.forward * moveSpeed + gravity);
             //transform.position += transform.forward * moveSpeed * Time.deltaTime;
             characterAnimator.SetBool("moving", true);
+
         }
 
         if (BindingManager.BindingHeld("Right"))
         {
-            rb.AddForce(transform.right * moveSpeed);
+            rb.AddForce(transform.right * moveSpeed + gravity);
             //transform.position += transform.right * moveSpeed * Time.deltaTime;
             characterAnimator.SetBool("moving", true);
         }
@@ -105,7 +129,7 @@ using UnityEngine.UI;
 
         if (BindingManager.BindingHeld("Backward"))
         {
-            rb.AddForce(-transform.forward * moveSpeed);
+            rb.AddForce(-transform.forward * moveSpeed + gravity);
             //transform.position -= transform.forward * moveSpeed * Time.deltaTime;
             characterAnimator.SetBool("moving", true);
 
@@ -113,58 +137,63 @@ using UnityEngine.UI;
 
         if (BindingManager.BindingHeld("Left"))
         {
-            rb.AddForce(-transform.right * moveSpeed);
+            rb.AddForce(-transform.right * moveSpeed + gravity);
             //transform.position -= transform.right * moveSpeed * Time.deltaTime;
             characterAnimator.SetBool("moving", true);
         }
 
-        
+
         // Controls speeds and animations for Sprint/Crouch/Base and Jump.
         if (isGrounded)
+        {
+            if (BindingManager.BindingHeld("Run") && stamina > 0)
             {
-                if (BindingManager.BindingHeld("Run") && stamina > 0)
-                {
-                    moveSpeed = runSpeed * baseSpeed;
-                    stamina -= Time.deltaTime;
-                    characterAnimator.SetFloat("speed", 2);
-                }
-                else if (BindingManager.BindingHeld("Crouch"))
-                {
-                    moveSpeed = crouchSpeed * baseSpeed;
-                    characterAnimator.SetFloat("speed", 0.5f);
-                }
-                else
-                {
-                    moveSpeed = walkSpeed * baseSpeed;
-                    characterAnimator.SetFloat("speed", 1);
-                }
-                
-                // Still not working correctly
-                if (BindingManager.BindingPressed("Jump"))
-                {                
-                    rb.AddForce(new Vector3(rb.velocity.x,1, rb.velocity.y), ForceMode.Force);
-                    
-                }                
+                moveSpeed = runSpeed * baseSpeed;
+                stamina -= Time.deltaTime;
+                characterAnimator.SetFloat("speed", 2);
             }
-                       
+            else if (BindingManager.BindingHeld("Crouch"))
+            {
+                moveSpeed = crouchSpeed * baseSpeed;
+                characterAnimator.SetFloat("speed", 0.5f);
+            }
+            else
+            {
+                moveSpeed = walkSpeed * baseSpeed;
+                characterAnimator.SetFloat("speed", 1);
+            }
+
+            // Still not working correctly
+            if (BindingManager.BindingPressed("Jump"))
+            {
+                rb.AddForce(new Vector3(0, jumpSpeed, 0), ForceMode.Impulse);
+
+            }
         }
+        else
+        {
+            moveSpeed = walkSpeed * baseSpeed;
+            characterAnimator.SetFloat("speed", 1);
+            rb.AddForce(gravity, ForceMode.Acceleration);
+        }
+    }
 
     /// <summary>
     /// Controls the stamina bar when levelling up.
     /// </summary>
     public void LevelUp()
+    {
+        if (Input.GetButtonDown("LevelUp"))
         {
-            if (Input.GetButtonDown("LevelUp"))
-            {
-                staminaMax  += Mathf.RoundToInt(staminaMax * 0.3f);
-                
-                staminaSlider.maxValue = staminaMax;
-            }
+            staminaMax += Mathf.RoundToInt(staminaMax * 0.3f);
+
+            staminaSlider.maxValue = staminaMax;
         }
-
-       
-
     }
+
+
+
+}
 /*Journal
  * Had some issues with this not becoming a singleton until after the load was called from customisation get.
  * I had to move the singleton into awake and the load functions into start.
