@@ -87,6 +87,8 @@ public class DialogueManager : MonoBehaviour
             CleanUpButtons();
             dialoguePanel.SetActive(false);
             inDialogue = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = false;
         }    
     }
 

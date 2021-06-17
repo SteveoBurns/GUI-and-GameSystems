@@ -64,8 +64,9 @@ namespace Quests
             {
                 if (activeQuestsGameObject.activeSelf)
                 {
-
                     activeQuestsGameObject.SetActive(false);
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = false;
                 }
                 else
                 {
