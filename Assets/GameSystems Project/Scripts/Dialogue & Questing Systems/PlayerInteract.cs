@@ -43,9 +43,11 @@ public class PlayerInteract : MonoBehaviour
             // Casts a shpere to pick up dropped items.
             if (Physics.SphereCast(transform.position, 1f, transform.forward, out hit, 5f))
             {
+                FetchQuestItem fetchQuest = hit.collider.gameObject.GetComponent<FetchQuestItem>();
                 DroppedItem droppedItem = hit.collider.gameObject.GetComponent<DroppedItem>();
                 if (droppedItem != null)
                 {
+                    fetchQuest.UpdateQuest();
                     pickUpText.text = "Picked up a " + droppedItem.name.Substring(0, droppedItem.name.Length - 7); // Can I trim the (Clone) off the end of the name?
                     inventory.AddItem(droppedItem.item);
                     Destroy(hit.collider.gameObject);

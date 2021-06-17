@@ -34,6 +34,7 @@ namespace Quests
     [System.Serializable]
     public struct Reward
     {
+        public Item rewardItem;
         public float experience;
         public int gold;
         public float factionIncrease;

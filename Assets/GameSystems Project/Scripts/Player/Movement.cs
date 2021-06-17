@@ -90,27 +90,31 @@ using UnityEngine.UI;
 
         if (BindingManager.BindingHeld("Forward"))
         {
-            transform.position += transform.forward * moveSpeed * Time.deltaTime;
+            rb.AddForce(transform.forward * moveSpeed);
+            //transform.position += transform.forward * moveSpeed * Time.deltaTime;
             characterAnimator.SetBool("moving", true);
         }
 
         if (BindingManager.BindingHeld("Right"))
         {
-            transform.position += transform.right * moveSpeed * Time.deltaTime;
+            rb.AddForce(transform.right * moveSpeed);
+            //transform.position += transform.right * moveSpeed * Time.deltaTime;
             characterAnimator.SetBool("moving", true);
         }
 
 
         if (BindingManager.BindingHeld("Backward"))
         {
-            transform.position -= transform.forward * moveSpeed * Time.deltaTime;
+            rb.AddForce(-transform.forward * moveSpeed);
+            //transform.position -= transform.forward * moveSpeed * Time.deltaTime;
             characterAnimator.SetBool("moving", true);
 
         }
 
         if (BindingManager.BindingHeld("Left"))
         {
-            transform.position -= transform.right * moveSpeed * Time.deltaTime;
+            rb.AddForce(-transform.right * moveSpeed);
+            //transform.position -= transform.right * moveSpeed * Time.deltaTime;
             characterAnimator.SetBool("moving", true);
         }
 
@@ -138,7 +142,7 @@ using UnityEngine.UI;
                 // Still not working correctly
                 if (BindingManager.BindingPressed("Jump"))
                 {                
-                    rb.AddForce((transform.up * jumpSpeed), ForceMode.Force);
+                    rb.AddForce(new Vector3(rb.velocity.x,1, rb.velocity.y), ForceMode.Force);
                     
                 }                
             }

@@ -29,6 +29,24 @@ namespace Quests
         [SerializeField] private Text questTitle;
         [SerializeField] private Text questDescription;
 
+        [SerializeField] private Inventory inventory;
+
+        private void Awake()
+        {
+            // If the instance isn't set, set it to this gameObject
+            if (instance == null)
+            {
+                instance = this;
+            }
+            // If the instance is already set and it isn't this, destroy this gameobject.
+            else if (instance != this)
+            {
+                Destroy(gameObject);
+            }
+
+            activeQuestsGameObject.SetActive(false);
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Tab))
@@ -40,7 +58,7 @@ namespace Quests
                 else
                 {
                     activeQuestsGameObject.SetActive(true);
-                    DisplayQuestsCanvas();
+                    DisplayActiveQuestsCanvas();
                     // Set buttons unactive when accessing quests with tab.
                     questUIButtons.SetActive(false);
                     Cursor.lockState = CursorLockMode.None;
@@ -49,9 +67,59 @@ namespace Quests
             }
         }
 
+        private void GiveReward(Quest quest)
+        {
+            inventory.AddItem(quest.reward.rewardItem);
+        }
+
+
+        /// <summary>
+        /// Gets the quest from the quest database
+        /// </summary>
+        /// <param name="title">Quest Title</param>
+        /// <returns>the corresponding quest</returns>
+        public Quest GetQuest(string title)
+        {
+            questDatabase.TryGetValue(title, out Quest quest);
+            return quest;
+        }
+
+        //claim rewqards button
+        public void ClaimRewardsButton()
+        {
+            CompleteQuest(selectedQuest.title);
+
+            // activate game object to inform player of quest rewards
+        }
+
+        /// <summary>
+        /// Function for the decline quests button, closes the quest panel
+        /// </summary>
+        public void DeclineQuestButton()
+        {
+            activeQuestsGameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// Function for the Accept quest button. 
+        /// </summary>
         public void AcceptQuestButton()
         {
-            AcceptQuest(selectedQuest.title);
+            if (selectedQuest != null)
+            {
+                if (selectedQuest.requiredLevel <= PlayerStats.ThePlayerStats.levelInt)
+                {
+                    AcceptQuest(selectedQuest.title);
+                    selectedQuest = null;
+                    DisplayQuestsCanvas();
+                    DisplaySelectedQuestOnCanvas(selectedQuest);
+                }
+                else
+                    Debug.Log("You need to be " + selectedQuest.requiredLevel.ToString() + " to accept this quest");
+
+            }
+            else
+                Debug.Log("No quest selected");
         }
 
 
@@ -84,8 +152,28 @@ namespace Quests
             foreach (Quest quest in quests)
             {           
                 // Put a test in here to test if the quest hass been unlocked yet??
-                if (quest.stage == QuestStage.Unlocked)
+                if (quest.stage == QuestStage.Unlocked ||quest.stage == QuestStage.InProgress || quest.stage == QuestStage.RequirementsMet)
                 {                               
+                    Button buttonGo = Instantiate<Button>(buttonPrefab, questsContent.transform);
+                    Text buttonText = buttonGo.GetComponentInChildren<Text>();
+                    buttonGo.name = quest.title + " button";
+                    buttonText.text = quest.title;
+
+                    Quest _quest = quest;
+                    buttonGo.onClick.AddListener(delegate { DisplaySelectedQuestOnCanvas(_quest); });
+                }
+            }
+            
+        }
+
+        private void DisplayActiveQuestsCanvas()
+        {
+            DestroyAllChildren(questsContent.transform);
+            foreach (Quest quest in activeQuests)
+            {
+                // Put a test in here to test if the quest hass been unlocked yet??
+                if (quest.stage == QuestStage.InProgress || quest.stage == QuestStage.RequirementsMet)
+                {
                     Button buttonGo = Instantiate<Button>(buttonPrefab, questsContent.transform);
                     Text buttonText = buttonGo.GetComponentInChildren<Text>();
                     buttonGo.name = quest.title + " button";
@@ -153,28 +241,40 @@ namespace Quests
         {
             if(questDatabase.TryGetValue(_id, out Quest quest))
             {
-                quest.stage = QuestStage.Complete;
-                activeQuests.Remove(quest);
-
-                //Find all related quests that are going to be unlocked
-                foreach (string questId in quest.unlockedQuests)
+                if (quest.stage == QuestStage.RequirementsMet)
                 {
-                    if(questDatabase.TryGetValue(questId, out Quest unlocked))
+                    quest.stage = QuestStage.Complete;
+                    //Give the player their reward
+                    GiveReward(quest);
+
+                    activeQuests.Remove(quest);
+
+                    //Find all related quests that are going to be unlocked
+                    foreach (string questId in quest.unlockedQuests)
                     {
-                        //Update their stages
-                        unlocked.stage = QuestStage.Unlocked;
+                        if (questDatabase.TryGetValue(questId, out Quest unlocked))
+                        {
+                            //Update their stages
+                            unlocked.stage = QuestStage.Unlocked;                            
+                        }
+                    }
+                    selectedQuest = null;
+                    DisplayQuestsCanvas();
+                    DisplaySelectedQuestOnCanvas(selectedQuest);
 
-                        // Display unlocked quests
-                        DisplayQuestsCanvas();
-                    }                       
+
                 }
+                else
+                    Debug.Log("You havent completed this quest yet");
 
-
-                //Give the player their reward
-                // quest.reward
+                
             }
         }
 
+        /// <summary>
+        /// Accecpts the passed quest, adds it to sctive quests and changes its status to InProgress.
+        /// </summary>
+        /// <param name="_id">quest.Title</param>
         public void AcceptQuest(string _id)
         {
             if(questDatabase.TryGetValue(_id, out Quest quest))
@@ -188,19 +288,7 @@ namespace Quests
         }
 
 
-        private void Awake()
-        {
-            // If the instance isn't set, set it to this gameObject
-            if(instance == null)
-            {
-                instance = this;
-            }
-            // If the instance is already set and it isn't this, destroy this gameobject.
-            else if(instance != this)
-            {
-                Destroy(gameObject);
-            }
-        }
+       
 
 
         // Start is called before the first frame update
