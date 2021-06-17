@@ -166,7 +166,7 @@ public class Movement : MonoBehaviour
             // Still not working correctly
             if (BindingManager.BindingPressed("Jump"))
             {
-                rb.AddForce(new Vector3(0, jumpSpeed, 0), ForceMode.Impulse);
+                rb.AddForce(new Vector3(0, jumpSpeed, 0), ForceMode.Acceleration);
 
             }
         }

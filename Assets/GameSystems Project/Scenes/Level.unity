@@ -1129,7 +1129,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160524858}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06667, y: 0.52488, z: 0.018}
+  m_LocalPosition: {x: 0.06667, y: -0.458, z: 0.826}
   m_LocalScale: {x: 0.120323524, y: 0.050319236, z: 0.13099}
   m_Children:
   - {fileID: 1740270103}
@@ -13162,7 +13162,7 @@ MonoBehaviour:
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 65
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -13585,7 +13585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1908012544}
   m_LocalRotation: {x: -0, y: -0, z: -0.3088222, w: 0.9511198}
-  m_LocalPosition: {x: 1.168, y: 0.006, z: 0}
+  m_LocalPosition: {x: 1.1702, y: 0.012, z: 0}
   m_LocalScale: {x: 0.16608, y: 1, z: 0.03213}
   m_Children: []
   m_Father: {fileID: 1481252213}
@@ -16214,7 +16214,7 @@ GameObject:
   - component: {fileID: 5645938224083126767}
   - component: {fileID: 5645938224083126766}
   m_Layer: 0
-  m_Name: Blade of Light
+  m_Name: Blade of Light(clone)
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -16233,7 +16233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    name: Blade of Light(clone)
+    name: Blade of Light
     description: This sword beams with an Inner Light
     value: 100000
     amount: 1
@@ -16692,7 +16692,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5645938224083126765}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -295.09, y: 10.662, z: -57.665}
+  m_LocalPosition: {x: -295.09, y: 0.84, z: -41.39}
   m_LocalScale: {x: 0.01, y: 0.5, z: 0.03}
   m_Children: []
   m_Father: {fileID: 0}
