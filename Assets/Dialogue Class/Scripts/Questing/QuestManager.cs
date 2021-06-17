@@ -25,6 +25,8 @@ namespace Quests
         [SerializeField] private GameObject questsContent;
         [SerializeField] private GameObject questUIButtons;
         [SerializeField] private GameObject claimRewardButton;
+        [SerializeField] private GameObject rewardPanel;
+        [SerializeField] private Text rewardText;
 
         [Header("Selected Quest Display")]
         [SerializeField] private Text questTitle;
