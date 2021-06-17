@@ -316,6 +316,10 @@ namespace Quests
                     quest.stage = QuestStage.InProgress;
                     activeQuests.Add(quest);
                 }
+                if (quest.stage == QuestStage.InProgress)
+                {
+                    UpdateQuest(quest.title);
+                }
             }
         }
 
