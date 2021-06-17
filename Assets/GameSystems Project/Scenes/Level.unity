@@ -1837,7 +1837,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &226104597
 MonoBehaviour:
@@ -3259,7 +3259,6 @@ GameObject:
   - component: {fileID: 357003264}
   - component: {fileID: 357003263}
   - component: {fileID: 357003268}
-  - component: {fileID: 357003269}
   m_Layer: 0
   m_Name: The Dude
   m_TagString: NPC
@@ -3303,11 +3302,6 @@ MonoBehaviour:
     minApproval: -1
     changeApproval: -0.1
     nextDialogue: {fileID: 0}
-  - topic: QUEST - Find The Blade of Light?
-    response: You'll find The Blade of Light deep in the Moors of Death.
-    minApproval: 0.5
-    changeApproval: 0
-    nextDialogue: {fileID: 357003269}
   faction: Vampires
 --- !u!136 &357003264
 CapsuleCollider:
@@ -3416,27 +3410,6 @@ MonoBehaviour:
     minApproval: -1
     changeApproval: 0.1
     nextDialogue: {fileID: 0}
-  faction: Vampires
---- !u!114 &357003269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 357003262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c79497dbeff4fb64dab75c9f5e858479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  greeting: You'll find The Blade of Light deep in the Moors of Death.
-  goodbye:
-    topic: ACCEPT QUEST - Oh sweet, thanks.
-    response: 
-    minApproval: -1
-    changeApproval: 0
-    nextDialogue: {fileID: 0}
-  dialogueOptions: []
   faction: Vampires
 --- !u!1 &358513522
 GameObject:
@@ -4785,7 +4758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0029664075}
+  m_AnchoredPosition: {x: 0, y: 18.611591}
   m_SizeDelta: {x: 0, y: 496.54}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &758637105
@@ -6808,8 +6781,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 190671491}
   m_HandleRect: {fileID: 190671490}
   m_Direction: 2
-  m_Value: -0.010309278
-  m_Size: 0.9952302
+  m_Value: -6286.258
+  m_Size: 0.6067528
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8131,11 +8104,22 @@ MonoBehaviour:
   title: Kill Dracula
   description: Kill Dracula and save the world
   reward:
+    rewardItem:
+      name: 
+      description: 
+      value: 0
+      amount: 0
+      icon: {fileID: 0}
+      mesh: {fileID: 0}
+      type: 0
+      damage: 0
+      armour: 0
+      heal: 0
     experience: 100
     gold: 400
     factionIncrease: 0.05
   stage: 0
-  requiredLevel: 0
+  requiredLevel: 6
   previousQuest: 
   unlockedQuests: []
   requiredKills: 1
@@ -8160,8 +8144,10 @@ MonoBehaviour:
   activeQuestsGameObject: {fileID: 1406004781}
   questsContent: {fileID: 758637103}
   questUIButtons: {fileID: 1417639485}
+  claimRewardButton: {fileID: 2021028335}
   questTitle: {fileID: 1957734513}
   questDescription: {fileID: 1376494499}
+  inventory: {fileID: 295120609}
 --- !u!4 &1124826234
 Transform:
   m_ObjectHideFlags: 0
@@ -8192,7 +8178,18 @@ MonoBehaviour:
   description: Go to the Moors of Death and find the Blade of Light. Only then will
     you have a chance to defeat Dracula
   reward:
-    experience: 300
+    rewardItem:
+      name: Money
+      description: it's money, for buying things
+      value: 1
+      amount: 300
+      icon: {fileID: 2800000, guid: ac9cbfacedface1479adcbbe2f2107cf, type: 3}
+      mesh: {fileID: 6651608890628428571, guid: 63c1710bdc6b12448af8f2756e326b09, type: 3}
+      type: 8
+      damage: 0
+      armour: 0
+      heal: 0
+    experience: 0
     gold: 300
     factionIncrease: 0
   stage: 1
@@ -12565,7 +12562,6 @@ GameObject:
   - component: {fileID: 1935997606}
   - component: {fileID: 1935997605}
   - component: {fileID: 1935997604}
-  - component: {fileID: 1935997603}
   m_Layer: 0
   m_Name: The Man
   m_TagString: NPC
@@ -12573,28 +12569,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1935997603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935997602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c79497dbeff4fb64dab75c9f5e858479, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  greeting: If you want to help the people of our land please help us be rid of The
-    Evil Dracula.
-  goodbye:
-    topic: ACCEPT QUEST - I'll see what I can do.
-    response: 
-    minApproval: -1
-    changeApproval: 0.2
-    nextDialogue: {fileID: 0}
-  dialogueOptions: []
-  faction: Humans
 --- !u!114 &1935997604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12616,8 +12590,8 @@ MonoBehaviour:
     nextDialogue: {fileID: 0}
   dialogueOptions:
   - topic: Yeah sure, whatcan i do to help?
-    response: Find the Blade of Light and defeat Dracula. My mate Skelly can help
-      you out with that.
+    response: Find the Blade of Light and defeat Dracula. I've posted on the QUEST
+      board over there if you feel like a Hero.
     minApproval: -1
     changeApproval: 0.1
     nextDialogue: {fileID: 0}
@@ -12660,12 +12634,6 @@ MonoBehaviour:
     minApproval: -1
     changeApproval: 0.1
     nextDialogue: {fileID: 0}
-  - topic: QUEST - Destroy Dracula
-    response: If you want to help the people of our land please help us be rid of
-      The Evil Dracula.
-    minApproval: 0.8
-    changeApproval: 0.2
-    nextDialogue: {fileID: 1935997603}
   faction: Humans
 --- !u!136 &1935997606
 CapsuleCollider:
@@ -13270,8 +13238,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0
-  walkSpeed: 6
-  runSpeed: 8
+  walkSpeed: 4
+  runSpeed: 6
   crouchSpeed: 1
   jumpSpeed: 10
   baseSpeed: 0
@@ -13599,7 +13567,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 511, y: -141}
-  m_SizeDelta: {x: 185.6107, y: 49.2081}
+  m_SizeDelta: {x: 293.106, y: 62.99}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2021028337
 MonoBehaviour:
@@ -13644,7 +13612,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2021028338}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1124826233}
+        m_TargetAssemblyTypeName: Quests.QuestManager, Assembly-CSharp
+        m_MethodName: ClaimRewardsButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2021028338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13671,7 +13651,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 51
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -14732,9 +14712,9 @@ GameObject:
   - component: {fileID: 5645938224083126767}
   - component: {fileID: 5645938224083126766}
   m_Layer: 0
-  m_Name: Sword of Light Mesh
+  m_Name: Blade of Light
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -14751,7 +14731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    name: Sword of Light
+    name: Blade of Light
     description: This sword beams with an Inner Light
     value: 100000
     amount: 1

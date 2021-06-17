@@ -24,6 +24,7 @@ namespace Quests
         [SerializeField] private GameObject activeQuestsGameObject;
         [SerializeField] private GameObject questsContent;
         [SerializeField] private GameObject questUIButtons;
+        [SerializeField] private GameObject claimRewardButton;
 
         [Header("Selected Quest Display")]
         [SerializeField] private Text questTitle;
@@ -45,6 +46,7 @@ namespace Quests
             }
 
             activeQuestsGameObject.SetActive(false);
+            claimRewardButton.SetActive(false);
         }
 
         private void Update()
@@ -59,6 +61,8 @@ namespace Quests
                 {
                     activeQuestsGameObject.SetActive(true);
                     DisplayActiveQuestsCanvas();
+                    selectedQuest = null;
+                    DisplaySelectedQuestOnCanvas(selectedQuest);
                     // Set buttons unactive when accessing quests with tab.
                     questUIButtons.SetActive(false);
                     Cursor.lockState = CursorLockMode.None;
@@ -202,7 +206,12 @@ namespace Quests
             {
                 questTitle.text = selectedQuest.title;
                 questDescription.text = $" {selectedQuest.description} \n Required Level: {selectedQuest.requiredLevel} \n Reward: {selectedQuest.reward.gold} ";
-
+                if (_quest.stage == QuestStage.RequirementsMet)
+                {
+                    claimRewardButton.SetActive(true);
+                }
+                else
+                    claimRewardButton.SetActive(false);
             }
 
 
