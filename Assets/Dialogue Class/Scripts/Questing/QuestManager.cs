@@ -27,12 +27,17 @@ namespace Quests
         [SerializeField] private GameObject claimRewardButton;
         [SerializeField] private GameObject rewardPanel;
         [SerializeField] private Text rewardText;
+        [SerializeField] private GameObject requirementsMetText;
+        [SerializeField] private GameObject cantAcceptQuestPanel;
+        [SerializeField] private Text cantAcceptQuestText;
 
         [Header("Selected Quest Display")]
         [SerializeField] private Text questTitle;
         [SerializeField] private Text questDescription;
 
         [SerializeField] private Inventory inventory;
+
+
 
         private void Awake()
         {
@@ -49,6 +54,8 @@ namespace Quests
 
             activeQuestsGameObject.SetActive(false);
             claimRewardButton.SetActive(false);
+            requirementsMetText.SetActive(false);
+            cantAcceptQuestPanel.SetActive(false);
         }
 
         private void Update()
@@ -57,10 +64,12 @@ namespace Quests
             {
                 if (activeQuestsGameObject.activeSelf)
                 {
+
                     activeQuestsGameObject.SetActive(false);
                 }
                 else
                 {
+                    
                     activeQuestsGameObject.SetActive(true);
                     DisplayActiveQuestsCanvas();
                     selectedQuest = null;
@@ -75,6 +84,9 @@ namespace Quests
 
         private void GiveReward(Quest quest)
         {
+            rewardPanel.SetActive(true);
+            rewardText.text = "Money: " + quest.reward.rewardItem.Amount.ToString();
+
             inventory.AddItem(quest.reward.rewardItem);
         }
 
@@ -121,7 +133,11 @@ namespace Quests
                     DisplaySelectedQuestOnCanvas(selectedQuest);
                 }
                 else
+                {
+                    cantAcceptQuestPanel.SetActive(true);
+                    cantAcceptQuestText.text = "You need to be level " + selectedQuest.requiredLevel.ToString() + " to accept this quest";
                     Debug.Log("You need to be " + selectedQuest.requiredLevel.ToString() + " to accept this quest");
+                }
 
             }
             else
@@ -210,10 +226,14 @@ namespace Quests
                 questDescription.text = $" {selectedQuest.description} \n Required Level: {selectedQuest.requiredLevel} \n Reward: {selectedQuest.reward.gold} ";
                 if (_quest.stage == QuestStage.RequirementsMet)
                 {
+                    requirementsMetText.SetActive(true);
                     claimRewardButton.SetActive(true);
                 }
                 else
+                {
+                    requirementsMetText.SetActive(false);
                     claimRewardButton.SetActive(false);
+                }
             }
 
 
