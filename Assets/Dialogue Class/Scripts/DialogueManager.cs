@@ -35,7 +35,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Loading the NPC's dialogue
+    /// </summary>
+    /// <param name="dialogue">Takes in the NPC's dialogue</param>
     public void LoadDialogue(Dialogue dialogue)
     {
         inDialogue = true;
@@ -58,8 +61,7 @@ public class DialogueManager : MonoBehaviour
 
                 int i2 = i;
                 spawnedButton.onClick.AddListener(delegate { ButtonClick(i2); });
-                //i++;
-                //print(item.topic);
+                
             }
             i++;
         }
@@ -72,7 +74,10 @@ public class DialogueManager : MonoBehaviour
 
     }
 
-    void EndConversation()
+    /// <summary>
+    /// Function for ending the dialogue and closing panels.
+    /// </summary>
+    public void EndConversation()
     {
         responsePanel.SetActive(true);
         responseText.text = currentDialogue.goodbye.response;
@@ -92,13 +97,16 @@ public class DialogueManager : MonoBehaviour
         }    
     }
 
+    /// <summary>
+    /// Shows response when clicking the options buttons. If dialogue option has a next dialogue, shows that.
+    /// </summary>
+    /// <param name="dialogueNum"></param>
     public void ButtonClick(int dialogueNum)
     {
         //Changing the factions approval when clicking the dialogue option
         FactionsManager.theManagerOfFactions.FactionsApproval(currentDialogue.faction, currentDialogue.dialogueOptions[dialogueNum].changeApproval);
 
-        // I could put a quest show on click here??? With a quest section in LineOfDialogue.
-
+        
         print(currentDialogue.dialogueOptions[dialogueNum].response);
         responsePanel.SetActive(true);
         responseText.text = currentDialogue.dialogueOptions[dialogueNum].response;
@@ -109,6 +117,9 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Destroys all children in a parent transform
+    /// </summary>
     public void CleanUpButtons()
     {
         foreach (Transform child in buttonPanel)
@@ -116,10 +127,5 @@ public class DialogueManager : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
         
-    }
 }

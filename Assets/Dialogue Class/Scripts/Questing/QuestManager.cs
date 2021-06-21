@@ -85,6 +85,10 @@ namespace Quests
             }
         }
 
+        /// <summary>
+        /// Adds the reward from the passed quest into the inventory
+        /// </summary>
+        /// <param name="quest">the completed quest</param>
         private void GiveReward(Quest quest)
         {
             rewardPanel.SetActive(true);
@@ -191,6 +195,9 @@ namespace Quests
             
         }
 
+        /// <summary>
+        /// Only displays the quests in the active quests list
+        /// </summary>
         private void DisplayActiveQuestsCanvas()
         {
             DestroyAllChildren(questsContent.transform);
@@ -214,7 +221,7 @@ namespace Quests
         /// Displays the selected quest to the canvas
         /// </summary>
         /// <param name="_quest"></param>
-        void DisplaySelectedQuestOnCanvas(Quest _quest)
+        public void DisplaySelectedQuestOnCanvas(Quest _quest)
         {
             selectedQuest = _quest;
 
@@ -246,7 +253,7 @@ namespace Quests
         /// Destroys all transforms in the parent transform
         /// </summary>
         /// <param name="parent">parent transform</param>
-        void DestroyAllChildren(Transform parent)
+        public void DestroyAllChildren(Transform parent)
         {
             foreach (Transform child in parent)
             {
@@ -255,13 +262,16 @@ namespace Quests
         }
 
 
-        //pass a player into this function
+        /// <summary>
+        /// Upadtes the passed quest.
+        /// </summary>
+        /// <param name="_id">quest title</param>
         public void UpdateQuest(string _id)
         {
             // This is the same as checking if the key exists, if it does, return it.
             // Trygetvalue returns a bool if it successfully got the item
             if(questDatabase.TryGetValue(_id, out Quest quest))
-            {
+            {                
                 if(quest.stage == QuestStage.InProgress)
                 {
                     //Check if the quest is ready to complete, if it is , update the stage, otherwise retain the stage.
@@ -275,7 +285,10 @@ namespace Quests
             }
         }
 
-        // Take in the player
+        /// <summary>
+        /// Pass in the quest title. Completes the quest and gives reward
+        /// </summary>
+        /// <param name="_id">quest title</param>
         public void CompleteQuest(string _id)
         {
             if(questDatabase.TryGetValue(_id, out Quest quest))

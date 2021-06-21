@@ -7,7 +7,7 @@ public class Factions
 {
     public string factionName;
     [SerializeField, Range(-1,1)] float _approval;
-    public float approval
+    public float Approval
     {
         set
         {
@@ -20,7 +20,7 @@ public class Factions
     }
     public Factions(float initialApproval)
     {
-        approval = initialApproval;
+        Approval = initialApproval;
     }
 
 }
@@ -54,8 +54,8 @@ public class FactionsManager : MonoBehaviour
     {
         if (factions.ContainsKey(factionName))
         {
-            factions[factionName].approval += value;
-            return factions[factionName].approval;
+            factions[factionName].Approval += value;
+            return factions[factionName].Approval;
         }
         return null;
     }
@@ -64,7 +64,7 @@ public class FactionsManager : MonoBehaviour
     {
         if (factions.ContainsKey(factionName))
         {            
-            return factions[factionName].approval;
+            return factions[factionName].Approval;
         }
         return null;
     }
