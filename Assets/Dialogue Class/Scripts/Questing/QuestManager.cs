@@ -30,6 +30,8 @@ namespace Quests
         [SerializeField] private GameObject requirementsMetText;
         [SerializeField] private GameObject cantAcceptQuestPanel;
         [SerializeField] private Text cantAcceptQuestText;
+        [SerializeField] private GameObject foundQuestItemPanel;
+        [SerializeField] private Transform spawnLocation;
 
         [Header("Selected Quest Display")]
         [SerializeField] private Text questTitle;
@@ -264,6 +266,11 @@ namespace Quests
                 {
                     //Check if the quest is ready to complete, if it is , update the stage, otherwise retain the stage.
                     quest.stage = quest.CheckQuestCompletion() ? QuestStage.RequirementsMet : quest.stage;
+                }
+                if(quest.stage == QuestStage.RequirementsMet)
+                {
+                    GameObject spawnPanel = Instantiate(foundQuestItemPanel, spawnLocation);
+                    Destroy(spawnPanel, 3f);
                 }
             }
         }
