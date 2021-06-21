@@ -495,11 +495,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45773331}
   m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071069}
-  m_LocalPosition: {x: -303.7, y: 4.8, z: -53}
+  m_LocalPosition: {x: -463.8843, y: -218.98395, z: -30.769197}
   m_LocalScale: {x: 20, y: 10, z: 2.3488836}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_Father: {fileID: 1606671104}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &60522288
 GameObject:
@@ -1224,12 +1224,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160524858}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -295.6666, y: 0.22, z: -45.4685}
+  m_LocalPosition: {x: -455.8509, y: -223.56395, z: -23.237696}
   m_LocalScale: {x: 2.4064705, y: 0.50319237, z: 2.1596758}
   m_Children:
   - {fileID: 1740270103}
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 1606671104}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &160524860
 BoxCollider:
@@ -2923,11 +2923,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288133124}
   m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071069}
-  m_LocalPosition: {x: -303.7, y: 4.8, z: -39.5}
+  m_LocalPosition: {x: -463.8843, y: -218.98395, z: -17.269197}
   m_LocalScale: {x: 20, y: 10, z: 2.3488836}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_Father: {fileID: 1606671104}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &295120606
 PrefabInstance:
@@ -3729,6 +3729,11 @@ MonoBehaviour:
     changeApproval: 0
     nextDialogue: {fileID: 357003268}
   dialogueOptions:
+  - topic: Hey Skelly, I've got mad cred with the Vampire faction now, check it!
+    response: Wow bro, you are like super dope!
+    minApproval: 0.9
+    changeApproval: 0
+    nextDialogue: {fileID: 0}
   - topic: Yo, whats happening player?
     response: Not much bro
     minApproval: -1
@@ -3744,6 +3749,12 @@ MonoBehaviour:
     response: the shop...duh!
     minApproval: -1
     changeApproval: -0.1
+    nextDialogue: {fileID: 0}
+  - topic: Hey mate, I'm climbing the ranks with the Vampires, Can't wait to meet
+      Dracula.
+    response: Keep climbing my warmblood brother.
+    minApproval: 0.2
+    changeApproval: 0.1
     nextDialogue: {fileID: 0}
   faction: Vampires
 --- !u!136 &357003264
@@ -5046,12 +5057,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665713031}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -294.68, y: 4.8, z: -30.48}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -454.8643, y: -218.98395, z: -8.249197}
   m_LocalScale: {x: 20, y: 10, z: 2.3488836}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_Father: {fileID: 1606671104}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &682962888
 GameObject:
@@ -9484,7 +9495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1320248780}
   m_Layer: 0
-  m_Name: Quest Board (1)
+  m_Name: Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11277,12 +11288,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481252209}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -293.27, y: 4.8, z: -61.83}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -453.45428, y: -218.98395, z: -39.599197}
   m_LocalScale: {x: 20, y: 10, z: 2.3488836}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_Father: {fileID: 1606671104}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1484014134
 GameObject:
@@ -11974,6 +11985,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586132339}
   m_CullTransparentMesh: 1
+--- !u!1 &1606671103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1606671104}
+  m_Layer: 0
+  m_Name: Ruins
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1606671104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606671103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 160.1843, y: 223.78395, z: -22.230803}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 160524859}
+  - {fileID: 1481252213}
+  - {fileID: 665713035}
+  - {fileID: 45773335}
+  - {fileID: 288133128}
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1625805940
 GameObject:
   m_ObjectHideFlags: 0
@@ -14127,6 +14173,11 @@ MonoBehaviour:
     changeApproval: 0
     nextDialogue: {fileID: 1935997604}
   dialogueOptions:
+  - topic: Yo T-man, Humans forever am I right!
+    response: Yeah bro, those Vampires arn't gonna know what hit them!
+    minApproval: 0.9
+    changeApproval: 0
+    nextDialogue: {fileID: 0}
   - topic: I was actually. Why are you doing that?
     response: Well I just woke up like this this morning. I think it's because The
       Creator forgot to give me my movements or he is angry at me perhaps??? Who
@@ -14142,7 +14193,7 @@ MonoBehaviour:
   - topic: Where can I get supplies?
     response: The shopkeeper will sell you anything you need.
     minApproval: -1
-    changeApproval: 0.1
+    changeApproval: 0
     nextDialogue: {fileID: 0}
   faction: Humans
 --- !u!136 &1935997606

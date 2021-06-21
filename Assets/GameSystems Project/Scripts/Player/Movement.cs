@@ -101,7 +101,7 @@ public class Movement : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        print(isGrounded);
+        //print(isGrounded);
         characterAnimator.SetBool("moving", false);
 
         Vector3 gravity = Physics.gravity * 4f;
